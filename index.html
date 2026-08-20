@@ -228,109 +228,7 @@
   </div>
 </section>
 
-<!-- ================= SECTION 2 — INTRO (Roberta's menu-intro, Jordy's skin) ================= -->
-<style>
-  /* scalloped dome trim — the brand support graphic as a section edge
-     (Roberta's checkerboard moment, done the Jordy's way) */
-  #jordys4 .j4-trim{
-    height:22px;background:var(--paper);position:relative;z-index:2;
-  }
-  #jordys4 .j4-trim::before{
-    content:"";position:absolute;left:0;right:0;bottom:100%;height:22px;
-    background-image:radial-gradient(circle at 50% 100%,var(--terra) 0 62%,transparent calc(62% + 1px));
-    background-size:44px 22px;background-repeat:repeat-x;background-position:center bottom;
-  }
-  #jordys4 .j4-intro{
-    position:relative;background:var(--paper);overflow:clip;
-    padding:clamp(90px,12vw,180px) 20px;
-    text-align:center;
-  }
-  /* round photo discs bleeding off both edges, like the reference cutouts */
-  #jordys4 .j4-intro-ph{
-    position:absolute;top:50%;width:clamp(300px,34vw,620px);aspect-ratio:1;
-    border-radius:50%;overflow:hidden;display:none;
-    box-shadow:0 30px 60px rgba(36,27,18,.28);
-  }
-  #jordys4 .j4-intro-ph img{width:100%;height:100%;object-fit:cover}
-  #jordys4 .j4-intro-ph--l{left:0;transform:translate(-42%,-50%) rotate(-6deg)}
-  #jordys4 .j4-intro-ph--r{right:0;transform:translate(42%,-50%) rotate(5deg)}
-  #jordys4 .j4-intro-copy{position:relative;z-index:1;max-width:46ch;margin-inline:auto}
-  #jordys4 .j4-intro-copy p{
-    font-family:var(--disp);font-weight:430;font-variation-settings:'opsz' 30,'SOFT' 70,'WONK' 0;
-    font-size:clamp(19px,1.7vw,24px);line-height:1.6;color:var(--ink);
-  }
-  #jordys4 .j4-intro-copy .j4-btn{margin-top:clamp(26px,3vw,40px)}
-  /* reveal */
-  #jordys4 .j4-rv{opacity:0;transform:translateY(24px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
-  #jordys4 .j4-rv.in{opacity:1;transform:none}
-  #jordys4 .j4-intro-ph.j4-rv{transform:translate(-42%,-50%) rotate(-6deg) translateY(24px)}
-  #jordys4 .j4-intro-ph--r.j4-rv{transform:translate(42%,-50%) rotate(5deg) translateY(24px)}
-  #jordys4 .j4-intro-ph.j4-rv.in{transform:translate(-42%,-50%) rotate(-6deg)}
-  #jordys4 .j4-intro-ph--r.j4-rv.in{transform:translate(42%,-50%) rotate(5deg)}
-  @media (prefers-reduced-motion:reduce){
-    #jordys4 .j4-rv{opacity:1;transform:none;transition:none}
-    #jordys4 .j4-intro-ph.j4-rv{transform:translate(-42%,-50%) rotate(-6deg)}
-    #jordys4 .j4-intro-ph--r.j4-rv{transform:translate(42%,-50%) rotate(5deg)}
-  }
-  @media (min-width:700px){
-    #jordys4 .j4-intro-ph{display:block}
-    #jordys4 .j4-intro{padding-inline:clamp(320px,36vw,660px)}
-  }
-
-  /* ============ terracotta sunburst band (brand icon, slow marquee) ============ */
-  #jordys4 .j4-band{background:var(--terra);overflow:hidden;padding-block:clamp(18px,2.4vw,30px)}
-  #jordys4 .j4-band-track{display:flex;width:max-content;animation:j4-mq 30s linear infinite}
-  #jordys4 .j4-band-seq{display:flex;align-items:center;flex:none}
-  #jordys4 .j4-band-seq svg{width:clamp(34px,3.4vw,48px);height:auto;margin-inline:clamp(28px,4vw,64px);flex:none}
-  @keyframes j4-mq{to{transform:translate3d(-50%,0,0)}}
-  @media (prefers-reduced-motion:reduce){
-    #jordys4 .j4-band-track{animation:none;width:100%;justify-content:space-around}
-    #jordys4 .j4-band-seq[aria-hidden]{display:none}
-  }
-</style>
-
-<div class="j4-trim" aria-hidden="true"></div>
-<section class="j4-intro" id="j4-intro">
-  <figure class="j4-intro-ph j4-intro-ph--l j4-rv" aria-hidden="true">
-    <img loading="lazy" decoding="async" src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/3b8a7a36-fe1f-4680-afec-bfc4bf5b085a/Screenshot+2026-03-19+at+07.42.04.png?format=750w" alt="" width="586" height="784">
-  </figure>
-  <figure class="j4-intro-ph j4-intro-ph--r j4-rv" aria-hidden="true">
-    <img loading="lazy" decoding="async" src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/77d5dadd-90d9-43b7-a522-bd7849b4ee56/Screenshot+2026-03-19+at+07.41.37.png?format=750w" alt="" width="590" height="776">
-  </figure>
-  <div class="j4-intro-copy j4-rv">
-    <p>Naturally leavened sourdough, wood-fired every night. Local ingredients, pizzas named after the towns around here, and crust dips worth ordering twice. That's the whole trick &mdash; there isn't one.</p>
-    <!-- ★LINKS menu -->
-    <a class="j4-btn j4-btn--terra" href="https://jordyscasuarina.com/menu">View the menu</a>
-  </div>
-</section>
-
-<!-- sunburst band -->
-<div class="j4-band" aria-hidden="true">
-  <div class="j4-band-track">
-    <div class="j4-band-seq">
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-    </div>
-    <div class="j4-band-seq" aria-hidden="true">
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-      <svg viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 2l2.6 12.4L33 4l-1.9 12.6L40.8 8l-6.4 11 12.2-3.9-10 7.9 12.8 1-12.8 1 10 7.9-12.2-3.9 6.4 11-9.7-8.6L33 44l-6.4-10.4L24 46l-2.6-12.4L15 44l1.9-12.6L7.2 40l6.4-11-12.2 3.9 10-7.9-12.8-1 12.8-1-10-7.9 12.2 3.9-6.4-11 9.7 8.6L15 4l6.4 10.4z"/></svg>
-    </div>
-  </div>
-</div>
-
-<!-- ★NEXT-SECTION — sections 3+ get appended here -->
+<!-- ★NEXT-SECTION — sections 2+ get appended here -->
 
 <script>
 (function(){
@@ -355,17 +253,6 @@
     if(closeBtn)closeBtn.addEventListener('click',function(){setMenu(false)});
     ovl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
-  }
-
-  /* reveals */
-  var rvEls=root.querySelectorAll('.j4-rv');
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){
-    rvEls.forEach(function(el){el.classList.add('in')});
-  }else{
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
-    },{threshold:.15,rootMargin:'1200px 0px -5% 0px'});
-    rvEls.forEach(function(el){io.observe(el)});
   }
 
   /* header turns paper once past the hero (ready for the sections below) */
