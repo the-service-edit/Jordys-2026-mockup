@@ -117,8 +117,11 @@
   #jordys4 .j4-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:clip;background:var(--ink)}
   #jordys4 .j4-hero-media{position:absolute;inset:0;z-index:0}
   #jordys4 .j4-hero-media img{
-    width:100%;height:100%;object-fit:cover;object-position:60% 40%;
+    width:100%;height:100%;object-fit:cover;object-position:50% 50%; /* mobile: keep the pack + sky headroom centred */
     transform:scale(1.06);transition:transform 1.6s var(--ease);
+  }
+  @media (min-width:700px){
+    #jordys4 .j4-hero-media img{object-position:60% 40%}
   }
   #jordys4 .j4-hero.loaded .j4-hero-media img{transform:scale(1)}
   /* quiet scrim — just enough for the buttons and logo to sit on */
@@ -203,10 +206,10 @@
   <h1 class="j4-sr">Jordy's Casuarina — wood-fired sourdough pizza, Casuarina NSW</h1>
   <div class="j4-hero-media">
     <picture>
-      <!-- ★HERO-IMG mobile (portrait crop) -->
+      <!-- ★HERO-IMG mobile (portrait crop, sky headroom for the logo) -->
       <source media="(max-width:699px)"
-        srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/0beaab07-5939-4657-b8c3-33936c6193f5/ChatGPT+Image+Aug+20%2C+2026%2C+02_07_48+PM.png?format=1000w 1000w,
-                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/0beaab07-5939-4657-b8c3-33936c6193f5/ChatGPT+Image+Aug+20%2C+2026%2C+02_07_48+PM.png?format=1500w 1500w"
+        srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4c745de5-4f41-4041-b20f-416c226ddcef/6eff5dbb-fe4b-4c0e-b0ac-18e140dc6667.png?format=1000w 1000w,
+                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4c745de5-4f41-4041-b20f-416c226ddcef/6eff5dbb-fe4b-4c0e-b0ac-18e140dc6667.png?format=1500w 1500w"
         sizes="100vw">
       <!-- ★HERO-IMG desktop (landscape crop) -->
       <img fetchpriority="high" decoding="async" id="j4-hero-img"
