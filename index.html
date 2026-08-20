@@ -230,25 +230,26 @@
 
 <!-- ================= SECTION 2 — HOURS + SOCIALS ================= -->
 <style>
-  #jordys4 .j4-info{background:var(--paper);text-align:center;padding:clamp(60px,8vw,110px) 0}
+  #jordys4 .j4-info{background:var(--paper);text-align:center;padding:clamp(84px,11vw,150px) 0}
   /* scrolling hours/location tickers — Halfday-style, Jordy's skin */
   #jordys4 .j4-tick{overflow:hidden;user-select:none}
-  #jordys4 .j4-tick + .j4-tick{margin-top:clamp(10px,1.6vw,22px)}
-  #jordys4 .j4-tick-track{display:flex;width:max-content;animation:j4-tk 30s linear infinite}
-  #jordys4 .j4-tick--rev .j4-tick-track{animation-direction:reverse;animation-duration:36s}
+  #jordys4 .j4-tick + .j4-tick{margin-top:clamp(18px,2.6vw,36px)}
+  #jordys4 .j4-tick-track{display:flex;width:max-content;animation:j4-tk 55s linear infinite}
+  #jordys4 .j4-tick--rev .j4-tick-track{animation-direction:reverse;animation-duration:64s}
   #jordys4 .j4-tick-seq{display:flex;align-items:center;flex:none}
   #jordys4 .j4-tick-seq span{
     font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.22em;
     font-size:clamp(18px,2.6vw,34px);white-space:nowrap;color:var(--terraD);padding-inline:clamp(18px,2.4vw,34px);
   }
-  #jordys4 .j4-tick-seq i{font-style:normal;color:var(--terra);font-size:.85em}
+  #jordys4 .j4-ti{display:inline-flex;color:var(--terra);flex:none}
+  #jordys4 .j4-ti svg{width:clamp(22px,2.6vw,34px);height:clamp(22px,2.6vw,34px)}
   @keyframes j4-tk{to{transform:translate3d(-50%,0,0)}}
   @media (prefers-reduced-motion:reduce){
     #jordys4 .j4-tick-track{animation:none;width:100%;justify-content:center}
     #jordys4 .j4-tick-seq[aria-hidden]{display:none}
     #jordys4 .j4-tick-seq{flex-wrap:wrap;justify-content:center}
   }
-  #jordys4 .j4-soc{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 16px;margin-top:clamp(32px,4vw,52px);padding-inline:24px}
+  #jordys4 .j4-soc{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 16px;margin-top:22px;padding-inline:24px}
   #jordys4 .j4-soc a{
     display:inline-flex;align-items:center;gap:10px;
     font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:13px;
@@ -260,38 +261,47 @@
 </style>
 
 <section class="j4-info" id="j4-info">
-  <!-- ★HOURS -->
-  <p class="j4-sr">Open Wed&ndash;Sun, 5pm till 9pm. Closed Mon + Tue. 480 Casuarina Way, at The Commons, Casuarina NSW.</p>
+  <!-- ★HOURS ★HAPPY -->
+  <p class="j4-sr">Open Wed&ndash;Sun, 5pm till 9pm. Closed Mon + Tue. Happy Nights Wed + Thu &mdash; $10 margs, beer and wine. 480 Casuarina Way, at The Commons, Casuarina NSW.</p>
+  <!-- brand ticker icons: spritz glass + pizza wedge -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="j4-ic-drink" viewBox="0 0 32 32">
+      <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 8.5 8.6 26a3 3 0 0 0 3 2.5h8.8a3 3 0 0 0 3-2.5L26 8.5"/>
+        <path d="M6.4 11 24 7"/>
+        <circle cx="13" cy="16.5" r="2.6"/>
+        <circle cx="17.5" cy="22" r="2.3"/>
+      </g>
+      <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M20.5 9.5 A6.4 6.4 0 0 1 29.5 6.8 L25.3 2.4 A6.4 6.4 0 0 0 20.5 9.5 Z" fill="currentColor" stroke="none" opacity=".25"/>
+        <path d="M20.7 9.3 A6.2 6.2 0 0 1 29.2 6.9 L25.2 2.7 A6.2 6.2 0 0 0 20.7 9.3 Z"/>
+        <path d="M24 6.5 22.3 8.2 M26.6 5.2 24.6 7.4"/>
+      </g>
+    </symbol>
+    <symbol id="j4-ic-slice" viewBox="0 0 32 32">
+      <path fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+        d="M6.5 26.5 10 9.5 A17.5 17.5 0 0 1 25.5 20.5 Z"/>
+    </symbol>
+  </svg>
   <div class="j4-tick" aria-hidden="true">
     <div class="j4-tick-track">
       <div class="j4-tick-seq">
-        <span>Open Wed&ndash;Sun</span><i>&#9733;</i><span>5pm till 9pm</span><i>&#9733;</i><span>Closed Mon + Tue</span><i>&#9733;</i><span>Open Wed&ndash;Sun</span><i>&#9733;</i><span>5pm till 9pm</span><i>&#9733;</i><span>Wood-fired sourdough</span><i>&#9733;</i>
+        <span>Open Wed&ndash;Sun</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>5pm till 9pm</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>Closed Mon + Tue</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Happy Nights Wed + Thu</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>$10 margs, beer + wine</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Wood-fired sourdough</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i>
       </div>
       <div class="j4-tick-seq" aria-hidden="true">
-        <span>Open Wed&ndash;Sun</span><i>&#9733;</i><span>5pm till 9pm</span><i>&#9733;</i><span>Closed Mon + Tue</span><i>&#9733;</i><span>Open Wed&ndash;Sun</span><i>&#9733;</i><span>5pm till 9pm</span><i>&#9733;</i><span>Wood-fired sourdough</span><i>&#9733;</i>
+        <span>Open Wed&ndash;Sun</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>5pm till 9pm</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>Closed Mon + Tue</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Happy Nights Wed + Thu</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>$10 margs, beer + wine</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Wood-fired sourdough</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i>
       </div>
     </div>
   </div>
   <div class="j4-tick j4-tick--rev" aria-hidden="true">
     <div class="j4-tick-track">
       <div class="j4-tick-seq">
-        <span>480 Casuarina Way</span><i>&#9733;</i><span>At The Commons</span><i>&#9733;</i><span>Casuarina NSW</span><i>&#9733;</i><span>480 Casuarina Way</span><i>&#9733;</i><span>At The Commons</span><i>&#9733;</i><span>Beside the playground</span><i>&#9733;</i>
+        <span>480 Casuarina Way</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>At The Commons</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Casuarina NSW</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>480 Casuarina Way</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>At The Commons</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>Beside the playground</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i>
       </div>
       <div class="j4-tick-seq" aria-hidden="true">
-        <span>480 Casuarina Way</span><i>&#9733;</i><span>At The Commons</span><i>&#9733;</i><span>Casuarina NSW</span><i>&#9733;</i><span>480 Casuarina Way</span><i>&#9733;</i><span>At The Commons</span><i>&#9733;</i><span>Beside the playground</span><i>&#9733;</i>
+        <span>480 Casuarina Way</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>At The Commons</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Casuarina NSW</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>480 Casuarina Way</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>At The Commons</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>Beside the playground</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i>
       </div>
     </div>
-  </div>
-  <div class="j4-soc">
-    <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg>
-      @jordys.casuarina
-    </a>
-    <!-- ★REVIEWS — 4.7 / 349 reviews verified on Google Maps 20 Aug 2026 -->
-    <a href="https://www.google.com/maps/search/?api=1&amp;query=Jordy%27s+Pizza+Casuarina+Shop+2%2F480+Casuarina+Way+Casuarina+NSW" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-      4.7 on Google &middot; 300+ reviews
-    </a>
   </div>
 </section>
 
@@ -333,6 +343,10 @@
     #jordys4 .j4-sign form{flex-direction:column}
     #jordys4 .j4-sign .j4-btn{width:100%}
   }
+  /* socials live under the signup form — white on the image */
+  #jordys4 .j4-sign .j4-soc{margin-top:clamp(28px,3.5vw,40px);padding-inline:0}
+  #jordys4 .j4-sign .j4-soc a{border-color:rgba(255,255,255,.9);color:#fff}
+  #jordys4 .j4-sign .j4-soc a:hover{background:#fff;border-color:#fff;color:var(--terraDD)}
 </style>
 
 <section class="j4-sign" id="j4-sign">
@@ -350,6 +364,17 @@
     </form>
     <span class="j4-fine">No spam. Unsubscribe any time.</span>
     <p class="j4-done">You're in. See you Wednesday. &mdash; Jordy</p>
+    <div class="j4-soc">
+      <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg>
+        @jordys.casuarina
+      </a>
+      <!-- ★REVIEWS — 4.7 / 349 reviews verified on Google Maps 20 Aug 2026 -->
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Jordy%27s+Pizza+Casuarina+Shop+2%2F480+Casuarina+Way+Casuarina+NSW" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+        4.7 on Google &middot; 300+ reviews
+      </a>
+    </div>
   </div>
 </section>
 
