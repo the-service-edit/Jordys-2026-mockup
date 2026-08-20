@@ -883,7 +883,11 @@
         msg='Back Wednesday · 5pm';
       }
       txt.textContent=msg;
-      if(wrap)wrap.setAttribute('aria-label','Jordy\'s is '+msg.replace(' · ',', ')+'. Open Wednesday to Sunday, 5pm till 9pm.');
+      /* "Jordy's is " + msg only parses for the "Open now" branch — the others
+         start with a verb ("Opens 5pm tonight") or an adverb ("Back Wednesday"),
+         so the prefix has to be punctuation, not a copula. */
+      if(wrap)wrap.setAttribute('aria-label',
+        'Jordy\'s — '+msg.replace(' · ',', ')+'. Trading Wednesday to Sunday, 5pm till 9pm.');
     }
   }catch(e){}
 
