@@ -262,14 +262,67 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg>
       @jordys.casuarina
     </a>
-    <a href="https://www.facebook.com/jordys.casuarina" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.93.26-1.56 1.6-1.56h1.7V4.3c-.3-.04-1.3-.13-2.47-.13-2.44 0-4.12 1.5-4.12 4.24v2.37H7.5V14h2.7v8h3.3z"/></svg>
-      Facebook
+    <!-- ★REVIEWS — 4.7 / 349 reviews verified on Google Maps 20 Aug 2026 -->
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=Jordy%27s+Pizza+Casuarina+Shop+2%2F480+Casuarina+Way+Casuarina+NSW" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+      4.7 on Google &middot; 300+ reviews
     </a>
   </div>
 </section>
 
-<!-- ★NEXT-SECTION — sections 3+ get appended here -->
+<!-- ================= SECTION 3 — EMAIL SIGNUP (image underlay) ================= -->
+<style>
+  #jordys4 .j4-sign{position:relative;overflow:clip;min-height:clamp(480px,64vh,640px);display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(70px,9vw,120px) 24px}
+  #jordys4 .j4-sign-media{position:absolute;inset:0;z-index:0}
+  #jordys4 .j4-sign-media img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  #jordys4 .j4-sign-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,27,18,.55),rgba(36,27,18,.62))}
+  #jordys4 .j4-sign-in{position:relative;z-index:1;max-width:620px;margin-inline:auto;color:#fff}
+  #jordys4 .j4-sign .j4-kick2{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.28em;font-size:12px;color:#fff;opacity:.85;display:block}
+  #jordys4 .j4-sign h2{
+    font-family:var(--disp);font-weight:640;font-variation-settings:'opsz' 120,'SOFT' 88,'WONK' 1;
+    font-size:clamp(34px,5.6vw,64px);line-height:1.04;letter-spacing:-.015em;text-transform:none;
+    margin-top:14px;
+  }
+  #jordys4 .j4-sign p{font-family:var(--grot);font-weight:500;font-size:15px;letter-spacing:.04em;margin-top:14px;color:rgba(255,255,255,.9)}
+  /* ★SIGNUP — point this form's action at the Talkbox signup form once created.
+     Until then it shows a local thank-you and stores nothing. */
+  #jordys4 .j4-sign form{display:flex;gap:10px;margin-top:clamp(24px,3vw,36px)}
+  #jordys4 .j4-sign input[type=email]{
+    flex:1;min-width:0;min-height:56px;padding:0 20px;border:0;border-radius:6px;
+    font-family:var(--grot);font-size:16px;color:var(--ink);background:#fff;
+  }
+  #jordys4 .j4-sign input[type=email]::placeholder{color:rgba(36,27,18,.5)}
+  #jordys4 .j4-sign input[type=email]:focus-visible{outline:3px solid var(--terra);outline-offset:2px}
+  #jordys4 .j4-sign .j4-btn{flex:none}
+  #jordys4 .j4-sign .j4-fine{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:rgba(255,255,255,.75);margin-top:16px;display:block}
+  #jordys4 .j4-sign .j4-done{display:none;font-family:var(--disp);font-style:italic;font-weight:520;font-variation-settings:'opsz' 60,'SOFT' 90,'WONK' 1;font-size:clamp(20px,2.4vw,28px);margin-top:clamp(24px,3vw,36px)}
+  #jordys4 .j4-sign.done form,#jordys4 .j4-sign.done .j4-fine{display:none}
+  #jordys4 .j4-sign.done .j4-done{display:block}
+  @media (max-width:559px){
+    #jordys4 .j4-sign form{flex-direction:column}
+    #jordys4 .j4-sign .j4-btn{width:100%}
+  }
+</style>
+
+<section class="j4-sign" id="j4-sign">
+  <div class="j4-sign-media" aria-hidden="true">
+    <!-- ★SIGNUP-IMG -->
+    <img loading="lazy" decoding="async" src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/22c0a147-ed82-4c02-b16f-593705341455/Screenshot+2026-03-19+at+07.41.51.png?format=1500w" alt="" width="626" height="781">
+  </div>
+  <div class="j4-sign-in">
+    <span class="j4-kick2">The mailing list</span>
+    <h2>Never miss a happy night.</h2>
+    <p>Specials, events and $10 marg nights &mdash; straight to your inbox, every so often.</p>
+    <form id="j4-sign-form" novalidate>
+      <input type="email" name="email" placeholder="Your email" aria-label="Your email address" autocomplete="email" required>
+      <button class="j4-btn j4-btn--terra" type="submit">Sign me up</button>
+    </form>
+    <span class="j4-fine">No spam. Unsubscribe any time.</span>
+    <p class="j4-done">You're in. See you Wednesday. &mdash; Jordy</p>
+  </div>
+</section>
+
+<!-- ★NEXT-SECTION -->
 
 <script>
 (function(){
@@ -294,6 +347,20 @@
     if(closeBtn)closeBtn.addEventListener('click',function(){setMenu(false)});
     ovl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+  }
+
+  /* ★SIGNUP — mockup behaviour: validate + show thanks locally.
+     For production, remove this block and set the form's action to the
+     Talkbox signup form endpoint (or replace the section's form with the
+     Talkbox/Squarespace newsletter embed). */
+  var signForm=document.getElementById('j4-sign-form'),signSec=document.getElementById('j4-sign');
+  if(signForm&&signSec){
+    signForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      var em=signForm.querySelector('input[type=email]');
+      if(em&&em.value&&/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){signSec.classList.add('done')}
+      else if(em){em.focus()}
+    });
   }
 
   /* header turns paper once past the hero (ready for the sections below) */
