@@ -1,46 +1,67 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jordy's v4 — hero preview</title>
-<style>html,body{margin:0;padding:0;background:#fff}</style>
-</head>
-<body>
+<html lang="en-AU"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jordy's Casuarina — v5 mockup</title>
+<meta name="description" content="Sourdough pizza, Casuarina NSW. Wed–Sun 5–9pm. Happy Nights Wed + Thu — $10 margs, beer + wine.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=100w">
+<style>html,body{margin:0;padding:0;background:#fff}body{overflow-x:hidden}
+.v5-flag{position:fixed;left:10px;bottom:10px;z-index:9999;font:600 10px/1 'Jost',Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;background:#241B12;color:#fff;padding:9px 13px;border-radius:999px;opacity:.72;pointer-events:none}</style>
+</head><body>
 <!-- ============================================================
-  JORDY'S CASUARINA — HOMEPAGE v4 · SECTION 1: HERO
-  Layout reference: robertaspizza.com hero (burger left, logo
-  centre, primary CTA top-right, CTA row pinned to the bottom on
-  desktop / stacked column on mobile). Skin: Jordy's brand guide
-  (white #ffffff + terracotta #c2724c, Fraunces/Jost stand-ins).
+  JORDY'S CASUARINA — HOMEPAGE v5 · "THE MINIMAL BUILD-AROUND"
+
+  v4 kept intact (hero · ticker · signup · footer).
+  TWO new sections inserted between the ticker and the signup, plus
+  one trust line. Six blocks total, not ten.
+
+    01  HERO              (v4, unchanged)
+    02  TICKER            REBUILT — Happy Nights ONLY, terracotta band,
+                          day-aware, and the whole band books a table
+    03  FOOD              ★NEW  full-bleed pizza, menu CTA
+    04  THE NIGHT + WHERE ★NEW  people + address merged, directions CTA
+    05  TRUST LINE        ★NEW  4.7 / 349 — one line, not a section
+    06  SIGNUP            (v4 — underlay swapped, billi.PNG moved to §03)
+    07  FOOTER            (v4, unchanged)
+
+  There is no Happy Nights section. The offer lives entirely in the
+  §02 band — which is therefore the only place on the page the deal
+  is stated, and is built to carry that on its own.
 
   Paste this entire block into ONE Squarespace Code Block.
-  Pairs with the existing homepage Custom CSS (unchanged) that
-  hides the native Squarespace header/footer on the homepage.
-
-  Built section by section — later sections append below the
-  ★NEXT-SECTION marker at the bottom of this file.
+  Pairs with the existing homepage Custom CSS (unchanged).
 
   EDITABLE MARKERS:
-    ★LINKS       the three CTA destinations
-    ★HERO-IMG    the two hero crops (landscape = desktop,
-                 portrait = mobile). If they ever render
-                 swapped, exchange the two srcset urls.
+    ★LINKS       CTA destinations
+    ★HERO-IMG    the two hero crops
+    ★FOOD-IMG    the pizza hero — the money shot
+    ★NIGHT-IMG   ⚠ PLACEHOLDER — swap for the dusk/festoon/families shot
+    ★REVIEW      optional single Google review, currently off
+    ★SIGNUP      Talkbox form action
+    ★HOURS ★HAPPY  facts that repeat
+
+  VERIFIED FACTS (20 Aug 2026) — do not drift:
+    Sourdough ✓  ·  NOT wood-fired ✗  ·  Wed–Sun 5–9pm ✓
+    Happy Nights Wed + Thu, $10 margs/beer/wine ✓
+    Billinudgel $32 — pepperoni, 'nduja, napoli, ricotta, red onion,
+      bourbon jalapeños, honey & thyme ✓
+    4.7 from 349 Google reviews ✓  ·  Instagram only, no Facebook ✓
 ============================================================= -->
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,340..900,0..100,0..1;1,9..144,340..900,0..100,0..1&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-<div id="jordys4">
+<div id="jordys5">
 <style>
   /* ================= TOKENS ================= */
-  #jordys4{
-    --paper:#FFFFFF;              /* brand white */
-    --ink:#241B12;                /* espresso ink — text only */
+  #jordys5{
+    --paper:#FFFFFF;
+    --ink:#241B12;
     --ink70:rgba(36,27,18,.72);
-    --terra:#C2724C;              /* Jordy's terracotta */
-    --terraD:#A2532F;             /* deep terracotta — AA on white text */
+    --ink45:rgba(36,27,18,.45);
+    --terra:#C2724C;
+    --terraD:#A2532F;
     --terraDD:#8A431F;
-    --disp:'Fraunces',Georgia,serif;                    /* Windsor D role */
-    --grot:'Jost','Clarika Geometric',Arial,sans-serif; /* Clarika role */
+    --disp:'Fraunces',Georgia,serif;
+    --grot:'Jost','Clarika Geometric',Arial,sans-serif;
     --ease:cubic-bezier(.22,.9,.3,1);
     font-family:var(--grot);
     color:var(--ink);
@@ -53,17 +74,36 @@
     display:block;
     position:relative;
   }
-  #jordys4 *,#jordys4 *::before,#jordys4 *::after{box-sizing:border-box;margin:0;padding:0}
-  #jordys4 img{display:block;max-width:100%;height:auto}
-  #jordys4 a{color:inherit;text-decoration:none}
-  #jordys4 a:focus-visible,#jordys4 button:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:4px}
-  #jordys4 .j4-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  #jordys5 *,#jordys5 *::before,#jordys5 *::after{box-sizing:border-box;margin:0;padding:0}
+  #jordys5 img{display:block;max-width:100%;height:auto}
+  #jordys5 a{color:inherit;text-decoration:none}
+  #jordys5 a:focus-visible,#jordys5 button:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:4px}
+  #jordys5 .j5-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
-  /* ================= BUTTONS — Roberta's geometry, Jordy's skin =================
-     Rectangular, slight radius, chunky wide-tracked caps; hover = Jordy's
-     upward ink fill + arrowless (Roberta's buttons carry no arrows). */
-  #jordys4 .j4-btn{
-    position:relative;display:inline-flex;align-items:center;justify-content:center;
+  /* poster display type — Windsor D role, caps, tight */
+  #jordys5 .j5-disp{
+    font-family:var(--disp);font-weight:680;
+    font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;line-height:.86;letter-spacing:-.015em;
+  }
+  #jordys5 .j5-lab{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;
+    letter-spacing:.26em;font-size:11.5px;line-height:1.7;
+  }
+
+  /* reveals */
+  #jordys5 .rv{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  #jordys5 .rv.in{opacity:1;transform:none}
+  #jordys5 .rv-d1.in{transition-delay:.08s}
+  #jordys5 .rv-d2.in{transition-delay:.16s}
+  #jordys5 .rv-d3.in{transition-delay:.24s}
+  @media (prefers-reduced-motion:reduce){
+    #jordys5 .rv{opacity:1;transform:none;transition:none}
+  }
+
+  /* ================= BUTTONS ================= */
+  #jordys5 .j5-btn{
+    position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;
     font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.14em;
     font-size:13.5px;padding:17px 30px;border-radius:6px;border:0;
     min-height:54px;white-space:nowrap;cursor:pointer;
@@ -71,148 +111,149 @@
     transition:color .22s var(--ease),transform .18s var(--ease),box-shadow .25s var(--ease);
     box-shadow:0 8px 24px rgba(36,27,18,.18);
   }
-  #jordys4 .j4-btn::before{ /* fill sweeps up on hover */
+  #jordys5 .j5-btn::before{
     content:"";position:absolute;inset:0;background:var(--ink);border-radius:inherit;
     transform:translateY(101%);transition:transform .28s var(--ease);z-index:-1;
   }
-  #jordys4 .j4-btn:hover{color:var(--paper)}
-  #jordys4 .j4-btn:hover::before{transform:none}
-  #jordys4 .j4-btn:active{transform:scale(.97)}
-  #jordys4 .j4-btn--terra{background:var(--terraD);color:#fff}
-  #jordys4 .j4-btn--paper{background:rgba(255,255,255,.92);color:var(--ink)}
-  #jordys4 .j4-btn--ink{background:rgba(36,27,18,.88);color:#fff}
-  #jordys4 .j4-btn--ink::before{background:var(--terraD)}
+  #jordys5 .j5-btn:hover{color:var(--paper)}
+  #jordys5 .j5-btn:hover::before{transform:none}
+  #jordys5 .j5-btn:active{transform:scale(.97)}
+  #jordys5 .j5-btn .j5-arr{display:inline-block;transition:transform .22s var(--ease)}
+  #jordys5 .j5-btn:hover .j5-arr{transform:translateX(5px)}
+  #jordys5 .j5-btn--terra{background:var(--terraD);color:#fff}
+  #jordys5 .j5-btn--paper{background:rgba(255,255,255,.92);color:var(--ink)}
+  #jordys5 .j5-btn--paper::before{background:var(--terraD)}
+  #jordys5 .j5-btn--paper:hover{color:#fff}
+  #jordys5 .j5-btn--ink{background:rgba(36,27,18,.88);color:#fff}
+  #jordys5 .j5-btn--ink::before{background:var(--terraD)}
+  #jordys5 .j5-btn--white{background:#fff;color:var(--terraDD)}
+  #jordys5 .j5-btn--white::before{background:var(--ink)}
+  #jordys5 .j5-btn--white:hover{color:#fff}
   @media (prefers-reduced-motion:reduce){
-    #jordys4 .j4-btn,#jordys4 .j4-btn::before{transition:none}
+    #jordys5 .j5-btn,#jordys5 .j5-btn::before{transition:none}
   }
 
-  /* ================= HEADER — burger · logo centre · order right ================= */
-  #jordys4 .j4-head{
+  /* ================= HEADER ================= */
+  #jordys5 .j5-head{
     position:fixed;top:0;left:0;right:0;z-index:1500;
     display:flex;align-items:center;justify-content:space-between;
     padding:16px clamp(16px,2.6vw,36px);
     transition:background .3s ease,box-shadow .3s ease,padding .3s ease;
   }
-  #jordys4 .j4-head.scrolled{background:var(--paper);box-shadow:0 1px 0 rgba(36,27,18,.14);padding-block:10px}
-  /* burger — white rounded chip, like the reference */
-  #jordys4 .j4-burger{
+  #jordys5 .j5-head.scrolled{background:var(--paper);box-shadow:0 1px 0 rgba(36,27,18,.14);padding-block:10px}
+  #jordys5 .j5-burger{
     display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;
     width:54px;height:54px;border:0;border-radius:10px;background:var(--paper);cursor:pointer;
     box-shadow:0 8px 24px rgba(36,27,18,.18);
     transition:transform .2s var(--ease);
   }
-  #jordys4 .j4-burger:hover{transform:scale(1.06)}
-  #jordys4 .j4-burger span{display:block;height:2.5px;width:26px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease)}
-  #jordys4 .j4-burger:hover span:first-child{transform:translateY(-2px)}
-  #jordys4 .j4-burger:hover span:last-child{transform:translateY(2px)}
-  /* logo — dead centre, hanging from the top of the hero */
-  #jordys4 .j4-logo{position:absolute;left:50%;top:16px;transform:translateX(-50%)}
-  #jordys4 .j4-logo img{height:clamp(84px,22vw,120px);width:auto;filter:drop-shadow(0 4px 14px rgba(36,27,18,.25));transition:transform .25s var(--ease),height .3s var(--ease)}
-  #jordys4 .j4-logo:hover img{transform:rotate(-4deg) scale(1.05)}
-  #jordys4 .j4-head.scrolled .j4-logo img{height:52px}
-  /* primary CTA top-right — desktop only (joins the stack on mobile) */
-  #jordys4 .j4-head-cta{display:none}
+  #jordys5 .j5-burger:hover{transform:scale(1.06)}
+  #jordys5 .j5-burger span{display:block;height:2.5px;width:26px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease)}
+  #jordys5 .j5-burger:hover span:first-child{transform:translateY(-2px)}
+  #jordys5 .j5-burger:hover span:last-child{transform:translateY(2px)}
+  #jordys5 .j5-logo{position:absolute;left:50%;top:16px;transform:translateX(-50%)}
+  #jordys5 .j5-logo img{height:clamp(84px,22vw,120px);width:auto;filter:drop-shadow(0 4px 14px rgba(36,27,18,.25));transition:transform .25s var(--ease),height .3s var(--ease)}
+  #jordys5 .j5-logo:hover img{transform:rotate(-4deg) scale(1.05)}
+  #jordys5 .j5-head.scrolled .j5-logo img{height:52px}
+  #jordys5 .j5-head-cta{display:none}
 
   /* ================= HERO ================= */
-  #jordys4 .j4-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:clip;background:var(--ink)}
-  #jordys4 .j4-hero-media{position:absolute;inset:0;z-index:0}
-  #jordys4 .j4-hero-media img{
-    width:100%;height:100%;object-fit:cover;object-position:50% 50%; /* mobile: keep the pack + sky headroom centred */
+  #jordys5 .j5-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:clip;background:var(--ink)}
+  #jordys5 .j5-hero-media{position:absolute;inset:0;z-index:0}
+  #jordys5 .j5-hero-media img{
+    width:100%;height:100%;object-fit:cover;object-position:50% 50%;
     transform:scale(1.06);transition:transform 1.6s var(--ease);
   }
   @media (min-width:700px){
-    #jordys4 .j4-hero-media img{object-position:60% 40%}
+    #jordys5 .j5-hero-media img{object-position:60% 40%}
   }
-  #jordys4 .j4-hero.loaded .j4-hero-media img{transform:scale(1)}
-  /* quiet scrim — just enough for the buttons and logo to sit on */
-  #jordys4 .j4-hero-media::after{
+  #jordys5 .j5-hero.loaded .j5-hero-media img{transform:scale(1)}
+  #jordys5 .j5-hero-media::after{
     content:"";position:absolute;inset:0;
     background:linear-gradient(180deg,rgba(36,27,18,.20),rgba(36,27,18,0) 30%,rgba(36,27,18,0) 62%,rgba(36,27,18,.34));
   }
-  /* CTA zone — bottom-centred row on desktop, stacked column on mobile */
-  #jordys4 .j4-hero-ctas{
+  #jordys5 .j5-hero-ctas{
     position:relative;z-index:1;margin-top:auto;
     display:flex;flex-direction:column;align-items:center;gap:14px;
     padding:0 20px clamp(56px,10svh,96px);
     opacity:0;transform:translateY(18px);
     transition:opacity .6s var(--ease) .15s,transform .6s var(--ease) .15s;
   }
-  #jordys4 .j4-hero.loaded .j4-hero-ctas{opacity:1;transform:none}
-  #jordys4 .j4-hero-ctas .j4-btn{width:min(250px,78vw)}
+  #jordys5 .j5-hero.loaded .j5-hero-ctas{opacity:1;transform:none}
+  #jordys5 .j5-hero-ctas .j5-btn{width:min(250px,78vw)}
   @media (prefers-reduced-motion:reduce){
-    #jordys4 .j4-hero-media img{transform:none;transition:none}
-    #jordys4 .j4-hero-ctas{opacity:1;transform:none;transition:none}
+    #jordys5 .j5-hero-media img{transform:none;transition:none}
+    #jordys5 .j5-hero-ctas{opacity:1;transform:none;transition:none}
   }
 
-  /* ================= MOBILE OVERLAY — terracotta, logo colourway ================= */
-  #jordys4 .j4-ovl{position:fixed;inset:0;background:var(--terra);color:#fff;z-index:3000;display:flex;flex-direction:column;padding:24px;transform:translateY(-103%);transition:transform .38s var(--ease);overflow:auto}
-  #jordys4 .j4-ovl.open{transform:none}
-  #jordys4 .j4-ovl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6vh}
-  #jordys4 .j4-ovl-top img{height:44px;width:auto;filter:brightness(0) invert(1)}
-  #jordys4 .j4-ovl-close{background:none;border:0;color:#fff;font-family:var(--grot);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px;cursor:pointer;padding:12px}
-  #jordys4 .j4-ovl-nav{display:flex;flex-direction:column}
-  #jordys4 .j4-ovl-nav a{font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;text-transform:uppercase;font-size:clamp(42px,10vw,72px);line-height:1.14;letter-spacing:-.01em;display:flex;align-items:baseline;gap:14px}
-  #jordys4 .j4-ovl-nav a i{font-style:normal;font-family:var(--grot);font-weight:500;font-size:11px;letter-spacing:.24em;opacity:.75}
-  #jordys4 .j4-ovl-sub{margin-top:auto;padding-top:5vh;display:flex;flex-direction:column;gap:12px}
-  #jordys4 .j4-ovl-sub a{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:rgba(255,255,255,.85)}
-  @media (prefers-reduced-motion:reduce){#jordys4 .j4-ovl{transition:none}}
+  /* ================= MOBILE OVERLAY ================= */
+  #jordys5 .j5-ovl{position:fixed;inset:0;background:var(--terra);color:#fff;z-index:3000;display:flex;flex-direction:column;padding:24px;transform:translateY(-103%);transition:transform .38s var(--ease);overflow:auto}
+  #jordys5 .j5-ovl.open{transform:none}
+  #jordys5 .j5-ovl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6vh}
+  #jordys5 .j5-ovl-top img{height:44px;width:auto;filter:brightness(0) invert(1)}
+  #jordys5 .j5-ovl-close{background:none;border:0;color:#fff;font-family:var(--grot);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px;cursor:pointer;padding:12px}
+  #jordys5 .j5-ovl-nav{display:flex;flex-direction:column}
+  #jordys5 .j5-ovl-nav a{font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;text-transform:uppercase;font-size:clamp(38px,9vw,66px);line-height:1.16;letter-spacing:-.01em;display:flex;align-items:baseline;gap:14px}
+  #jordys5 .j5-ovl-nav a i{font-style:normal;font-family:var(--grot);font-weight:500;font-size:11px;letter-spacing:.24em;opacity:.75}
+  #jordys5 .j5-ovl-sub{margin-top:auto;padding-top:5vh;display:flex;flex-direction:column;gap:12px}
+  #jordys5 .j5-ovl-sub a{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:rgba(255,255,255,.85)}
+  @media (prefers-reduced-motion:reduce){#jordys5 .j5-ovl{transition:none}}
 
-  /* ================= DESKTOP ≥700 ================= */
+  /* ================= DESKTOP ≥700 — hero/header ================= */
   @media (min-width:700px){
-    #jordys4 .j4-head-cta{display:inline-flex}      /* Order Now moves to the top-right */
-    /* big centred logo over the hero — shrinks back once the header goes paper */
-    #jordys4 .j4-logo:hover img{transform:rotate(-2deg) scale(1.03)}
-    #jordys4 .j4-logo img{height:clamp(132px,13.4vw,192px)}
-    #jordys4 .j4-head.scrolled .j4-logo img{height:64px}
-    #jordys4 .j4-hero-ctas{flex-direction:row;justify-content:center;gap:16px;padding-bottom:clamp(30px,5svh,52px)}
-    #jordys4 .j4-hero-ctas .j4-btn{width:auto;min-width:220px}
-    /* all three CTAs stay in the bottom row on desktop; Order Now also sits top-right */
+    #jordys5 .j5-head-cta{display:inline-flex}
+    #jordys5 .j5-logo:hover img{transform:rotate(-2deg) scale(1.03)}
+    #jordys5 .j5-logo img{height:clamp(132px,13.4vw,192px)}
+    #jordys5 .j5-head.scrolled .j5-logo img{height:64px}
+    #jordys5 .j5-hero-ctas{flex-direction:row;justify-content:center;gap:16px;padding-bottom:clamp(30px,5svh,52px)}
+    #jordys5 .j5-hero-ctas .j5-btn{width:auto;min-width:220px}
   }
 </style>
 
 <!-- ================= HEADER ================= -->
-<header class="j4-head" id="j4-head">
-  <button class="j4-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="j4-ovl">
+<header class="j5-head" id="j5-head">
+  <button class="j5-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="j5-ovl">
     <span></span><span></span><span></span>
   </button>
-  <a class="j4-logo" href="https://jordyscasuarina.com/" aria-label="Jordy's Casuarina — home">
+  <a class="j5-logo" href="https://jordyscasuarina.com/" aria-label="Jordy's Casuarina — home">
     <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=750w" alt="Jordy's" width="750" height="530">
   </a>
   <!-- ★LINKS primary -->
-  <a class="j4-btn j4-btn--terra j4-head-cta" href="https://www.meandu.app/jordys/pickup">Order now</a>
+  <a class="j5-btn j5-btn--terra j5-head-cta" href="https://www.meandu.app/jordys/pickup">Order now</a>
 </header>
 
 <!-- ================= MOBILE OVERLAY MENU ================= -->
-<div class="j4-ovl" id="j4-ovl" role="dialog" aria-modal="true" aria-label="Menu">
-  <div class="j4-ovl-top">
+<div class="j5-ovl" id="j5-ovl" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="j5-ovl-top">
     <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's">
-    <button class="j4-ovl-close" type="button">Close ✕</button>
+    <button class="j5-ovl-close" type="button">Close ✕</button>
   </div>
-  <nav class="j4-ovl-nav" aria-label="Site">
+  <nav class="j5-ovl-nav" aria-label="Site">
     <a href="menu.html">Menu <i>01</i></a>
     <a href="https://www.meandu.app/jordys/pickup">Order <i>02</i></a>
     <a href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Book <i>03</i></a>
-    <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">Instagram <i>04</i></a>
+    <a href="#j5-where" data-close>Find us <i>04</i></a>
+    <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">Instagram <i>05</i></a>
   </nav>
-  <div class="j4-ovl-sub">
+  <div class="j5-ovl-sub">
     <a href="https://jordyscasuarina.com/jordys-merch">Jordy's merch ↗</a>
     <a href="https://app.gift-it.com.au/buy/jordyspizza">Gift cards ↗</a>
     <a href="mailto:relax@jordyscasuarina.com">relax@jordyscasuarina.com</a>
   </div>
 </div>
 
-<!-- ================= HERO ================= -->
-<section class="j4-hero" id="j4-hero">
-  <h1 class="j4-sr">Jordy's Casuarina — sourdough pizza, Casuarina NSW</h1>
-  <div class="j4-hero-media">
+<!-- ================= 01 · HERO ================= -->
+<section class="j5-hero" id="j5-hero">
+  <h1 class="j5-sr">Jordy's Casuarina — sourdough pizza, Casuarina NSW</h1>
+  <div class="j5-hero-media">
     <picture>
-      <!-- ★HERO-IMG mobile (portrait crop, sky headroom for the logo) -->
+      <!-- ★HERO-IMG mobile (portrait crop) -->
       <source media="(max-width:699px)"
         srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4c745de5-4f41-4041-b20f-416c226ddcef/6eff5dbb-fe4b-4c0e-b0ac-18e140dc6667.png?format=1000w 1000w,
                 https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4c745de5-4f41-4041-b20f-416c226ddcef/6eff5dbb-fe4b-4c0e-b0ac-18e140dc6667.png?format=1500w 1500w"
         sizes="100vw">
       <!-- ★HERO-IMG desktop (landscape crop) -->
-      <img fetchpriority="high" decoding="async" id="j4-hero-img"
+      <img fetchpriority="high" decoding="async" id="j5-hero-img"
         src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=2500w"
         srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=1500w 1500w,
                 https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=2500w 2000w"
@@ -221,51 +262,66 @@
     </picture>
   </div>
   <!-- ★LINKS ctas -->
-  <div class="j4-hero-ctas">
-    <a class="j4-btn j4-btn--terra" href="https://www.meandu.app/jordys/pickup">Order now</a>
-    <a class="j4-btn j4-btn--paper" href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Make a booking</a>
-    <a class="j4-btn j4-btn--ink" href="menu.html">View the menu</a>
+  <div class="j5-hero-ctas">
+    <a class="j5-btn j5-btn--terra" href="https://www.meandu.app/jordys/pickup">Order now</a>
+    <a class="j5-btn j5-btn--paper" href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Make a booking</a>
+    <a class="j5-btn j5-btn--ink" href="menu.html">View the menu</a>
   </div>
 </section>
 
-<!-- ================= SECTION 2 — HOURS + SOCIALS ================= -->
+<!-- ================= 02 · HAPPY NIGHTS BAND =================
+  The ticker is now about ONE thing. No hours, no sourdough, no
+  address — those all have proper homes further down (§04, footer,
+  JSON-LD), so nothing is lost by taking them out of here.
+
+  Three changes that follow from it being the only Happy Nights
+  moment on the page:
+
+  · Solid terracotta, white type. It was terracotta-on-white when it
+    was a neutral facts strip; now it's an offer, so it gets to be a
+    block. It's also the page's only colour break between the dark
+    photo sections, which is the one thing the deleted section did
+    for the layout.
+  · The whole band is a booking link. If this is where the deal
+    lives, this is where the deal converts. Hover deepens it.
+  · It knows what day it is — "WED + THU" becomes "ON TONIGHT"
+    (and "ON NOW" after 5pm) on Wednesdays and Thursdays, via the
+    script at the foot of this block.
+
+  ★HAPPY — the deal is stated here and nowhere else. Edit carefully.
+============================================================= -->
 <style>
-  #jordys4 .j4-info{background:var(--paper);text-align:center;padding:clamp(16px,2vw,26px) 0}
-  /* scrolling hours/location tickers — Halfday-style tight band, Jordy's skin */
-  #jordys4 .j4-tick{overflow:hidden;user-select:none}
-  #jordys4 .j4-tick + .j4-tick{margin-top:clamp(6px,.9vw,12px)}
-  #jordys4 .j4-tick-track{display:flex;width:max-content;animation:j4-tk 95s linear infinite}
-  #jordys4 .j4-tick--rev .j4-tick-track{animation-direction:reverse;animation-duration:110s}
-  #jordys4 .j4-tick-seq{display:flex;align-items:center;flex:none}
-  #jordys4 .j4-tick-seq span{
-    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.22em;
-    font-size:clamp(18px,2.6vw,34px);white-space:nowrap;color:var(--terraD);padding-inline:clamp(18px,2.4vw,34px);
+  #jordys5 .j5-info{
+    display:block;background:var(--terra);color:#fff;
+    transition:background .25s var(--ease);
   }
-  #jordys4 .j4-ti{display:inline-flex;color:var(--terra);flex:none}
-  #jordys4 .j4-ti svg{width:clamp(22px,2.6vw,34px);height:clamp(22px,2.6vw,34px)}
-  @keyframes j4-tk{to{transform:translate3d(-50%,0,0)}}
+  #jordys5 a.j5-info:hover{background:var(--terraD)}
+  #jordys5 .j5-tick{overflow:hidden;user-select:none;padding-block:clamp(14px,1.9vw,24px)}
+  #jordys5 .j5-tick-track{display:flex;width:max-content;animation:j5-tk 78s linear infinite}
+  #jordys5 a.j5-info:hover .j5-tick-track{animation-play-state:paused}
+  #jordys5 .j5-tick-seq{display:flex;align-items:center;flex:none}
+  #jordys5 .j5-tick-seq span{
+    font-family:var(--grot);font-weight:700;text-transform:uppercase;letter-spacing:.2em;
+    font-size:clamp(17px,2.4vw,31px);white-space:nowrap;color:#fff;
+    padding-inline:clamp(16px,2.2vw,30px);
+  }
+  /* the deal itself, called out inside the loop */
+  #jordys5 .j5-tick-seq span.hi{color:#fff}
+  #jordys5 .j5-ti{display:inline-flex;color:rgba(255,255,255,.78);flex:none}
+  #jordys5 .j5-ti svg{width:clamp(21px,2.4vw,30px);height:clamp(21px,2.4vw,30px)}
+  @keyframes j5-tk{to{transform:translate3d(-50%,0,0)}}
   @media (prefers-reduced-motion:reduce){
-    #jordys4 .j4-tick-track{animation:none;width:100%;justify-content:center}
-    #jordys4 .j4-tick-seq[aria-hidden]{display:none}
-    #jordys4 .j4-tick-seq{flex-wrap:wrap;justify-content:center}
+    #jordys5 .j5-tick-track{animation:none;width:100%;justify-content:center}
+    #jordys5 .j5-tick-seq[aria-hidden]{display:none}
+    #jordys5 .j5-tick-seq{flex-wrap:wrap;justify-content:center}
   }
-  #jordys4 .j4-soc{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 16px;margin-top:22px;padding-inline:24px}
-  #jordys4 .j4-soc a{
-    display:inline-flex;align-items:center;gap:10px;
-    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:13px;
-    padding:15px 26px;min-height:52px;border:2px solid var(--ink);border-radius:6px;color:var(--ink);
-    transition:background .22s var(--ease),color .22s var(--ease),border-color .22s var(--ease);
-  }
-  #jordys4 .j4-soc a:hover{background:var(--terraD);border-color:var(--terraD);color:#fff}
-  #jordys4 .j4-soc svg{width:18px;height:18px;flex:none}
 </style>
 
-<section class="j4-info" id="j4-info">
-  <!-- ★HOURS ★HAPPY -->
-  <p class="j4-sr">Open Wed&ndash;Sun, 5pm till 9pm. Happy Nights Wed + Thu &mdash; $10 margs, beer and wine. 480 Casuarina Way, at The Commons, Casuarina NSW.</p>
-  <!-- brand ticker icons: spritz glass + pizza wedge -->
+<!-- ★LINKS — the band is the CTA -->
+<a class="j5-info" id="j5-info" href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00"
+   aria-label="Happy Nights, every Wednesday and Thursday — $10 margaritas, beer and wine with any pizza, 5pm till 9pm. Book a table.">
   <svg style="display:none" aria-hidden="true">
-    <symbol id="j4-ic-drink" viewBox="0 0 32 32">
+    <symbol id="j5-ic-drink" viewBox="0 0 32 32">
       <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6 8.5 8.6 26a3 3 0 0 0 3 2.5h8.8a3 3 0 0 0 3-2.5L26 8.5"/>
         <path d="M6.4 11 24 7"/>
@@ -278,131 +334,351 @@
         <path d="M24 6.5 22.3 8.2 M26.6 5.2 24.6 7.4"/>
       </g>
     </symbol>
-    <symbol id="j4-ic-slice" viewBox="0 0 32 32">
+    <symbol id="j5-ic-slice" viewBox="0 0 32 32">
       <path fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
         d="M6.5 26.5 10 9.5 A17.5 17.5 0 0 1 25.5 20.5 Z"/>
     </symbol>
   </svg>
-  <div class="j4-tick" aria-hidden="true">
-    <div class="j4-tick-track">
-      <div class="j4-tick-seq">
-        <span>Wed&ndash;Sun &middot; 5&ndash;9pm</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Happy Nights Wed + Thu</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>$10 margs, beer + wine</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Wed&ndash;Sun &middot; 5&ndash;9pm</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>Sourdough pizza</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i>
+  <div class="j5-tick" aria-hidden="true">
+    <div class="j5-tick-track">
+      <div class="j5-tick-seq">
+        <span>Happy Nights</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span class="j5-tick-when">Wed + Thu</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span class="hi">$10 margs</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>Beer + wine too</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span>With any pizza</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>5&ndash;9pm</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i>
       </div>
-      <div class="j4-tick-seq" aria-hidden="true">
-        <span>Wed&ndash;Sun &middot; 5&ndash;9pm</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Happy Nights Wed + Thu</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>$10 margs, beer + wine</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Wed&ndash;Sun &middot; 5&ndash;9pm</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>Sourdough pizza</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i>
+      <div class="j5-tick-seq" aria-hidden="true">
+        <span>Happy Nights</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span class="j5-tick-when">Wed + Thu</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span class="hi">$10 margs</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>Beer + wine too</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span>With any pizza</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>5&ndash;9pm</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i>
       </div>
     </div>
   </div>
-  <div class="j4-tick j4-tick--rev" aria-hidden="true">
-    <div class="j4-tick-track">
-      <div class="j4-tick-seq">
-        <span>480 Casuarina Way</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>At The Commons</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Casuarina NSW</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>480 Casuarina Way</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>At The Commons</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>Beside the playground</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i>
-      </div>
-      <div class="j4-tick-seq" aria-hidden="true">
-        <span>480 Casuarina Way</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>At The Commons</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>Casuarina NSW</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>480 Casuarina Way</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i><span>At The Commons</span><i class="j4-ti"><svg><use href="#j4-ic-slice"/></svg></i><span>Beside the playground</span><i class="j4-ti"><svg><use href="#j4-ic-drink"/></svg></i>
-      </div>
+</a>
+
+<!-- ================= 03 · FOOD ★NEW =================
+  The gap v4 had: not one image of a pizza on the homepage.
+  Photography does the selling; copy gets out of the way.
+
+  ★FOOD-IMG is billi.PNG (930×1350 portrait, honey drizzle).
+  Because it's portrait and this section is a wide band, the crop
+  matters. Two CSS variables in the block below tune it:
+    food-pos    mobile crop     (default 50% 46%)
+    food-pos-d  desktop crop    (default 50% 52%)
+============================================================= -->
+<style>
+  #jordys5 .j5-food{
+    position:relative;overflow:clip;background:var(--ink);
+    min-height:clamp(560px,88svh,900px);
+    display:flex;align-items:flex-end;
+  }
+  #jordys5 .j5-food-media{position:absolute;inset:0;z-index:0}
+  #jordys5 .j5-food-media img{
+    width:100%;height:100%;object-fit:cover;
+    object-position:var(--food-pos,50% 46%);
+  }
+  #jordys5 .j5-food-media::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(36,27,18,.42) 0%,rgba(36,27,18,.06) 26%,rgba(36,27,18,.30) 58%,rgba(36,27,18,.88) 100%);
+  }
+  #jordys5 .j5-food-in{
+    position:relative;z-index:1;width:100%;color:#fff;
+    padding:clamp(48px,7vw,92px) clamp(20px,4.5vw,72px) clamp(40px,5.5vw,76px);
+    max-width:1560px;margin-inline:auto;
+  }
+  #jordys5 .j5-food .j5-lab{color:rgba(255,255,255,.85)}
+  #jordys5 .j5-food h2{
+    font-size:clamp(64px,15vw,208px);color:#fff;margin-top:clamp(12px,1.4vw,20px);
+  }
+  #jordys5 .j5-food h2 .l2{display:block;color:var(--terra)}
+  /* the one named pizza — a fact, not a slogan */
+  #jordys5 .j5-food-item{
+    margin-top:clamp(24px,3vw,38px);padding-top:clamp(20px,2.4vw,30px);
+    border-top:2px solid rgba(255,255,255,.34);
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;max-width:760px;
+  }
+  #jordys5 .j5-food-item .n{
+    font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 90,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;font-size:clamp(24px,2.8vw,38px);line-height:1;letter-spacing:-.01em;
+  }
+  #jordys5 .j5-food-item .p{font-family:var(--grot);font-weight:700;font-size:clamp(18px,1.8vw,24px);color:var(--terra)}
+  #jordys5 .j5-food-item .d{
+    flex:1 1 100%;font-family:var(--grot);font-weight:500;font-size:clamp(13.5px,1.2vw,16px);
+    letter-spacing:.03em;color:rgba(255,255,255,.86);line-height:1.55;
+  }
+  #jordys5 .j5-food-ctas{display:flex;flex-wrap:wrap;gap:14px 16px;margin-top:clamp(26px,3.2vw,40px)}
+  @media (min-width:700px){
+    #jordys5 .j5-food-media img{object-position:var(--food-pos-d,50% 52%)}
+  }
+</style>
+
+<section class="j5-food" id="j5-food">
+  <div class="j5-food-media" aria-hidden="true">
+    <!-- ★FOOD-IMG -->
+    <img loading="lazy" decoding="async"
+      src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/de2e8781-5380-403e-80b3-ba3e7872b856/billi.PNG?format=2500w"
+      srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/de2e8781-5380-403e-80b3-ba3e7872b856/billi.PNG?format=1000w 1000w,
+              https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/de2e8781-5380-403e-80b3-ba3e7872b856/billi.PNG?format=1500w 1500w,
+              https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/de2e8781-5380-403e-80b3-ba3e7872b856/billi.PNG?format=2500w 2000w"
+      sizes="100vw"
+      alt="" width="930" height="1350">
+  </div>
+  <div class="j5-food-in">
+    <span class="j5-lab rv">Sourdough &middot; named after the neighbourhood</span>
+    <h2 class="j5-disp rv rv-d1">Pizza,<span class="l2">mostly.</span></h2>
+    <div class="j5-food-item rv rv-d2">
+      <span class="n">The Billinudgel</span>
+      <span class="p">$32</span>
+      <span class="d">Pepperoni, &lsquo;nduja, napoli, ricotta, red onion, bourbon jalape&ntilde;os, honey &amp; thyme.</span>
+    </div>
+    <div class="j5-food-ctas rv rv-d3">
+      <!-- ★LINKS -->
+      <a class="j5-btn j5-btn--white" href="menu.html">See all ten <span class="j5-arr">&rarr;</span></a>
+      <a class="j5-btn j5-btn--ink" href="https://www.meandu.app/jordys/pickup">Order now</a>
     </div>
   </div>
 </section>
 
-<!-- ================= SECTION 3 — EMAIL SIGNUP (image underlay) ================= -->
+<!-- ================= 04 · THE NIGHT + WHERE ★NEW =================
+  Merged on purpose. The venue photograph IS the location proof,
+  so atmosphere and address share one image instead of two sections.
+
+  ⚠ ★NIGHT-IMG IS A PLACEHOLDER.
+  Currently the black-and-white front-of-house shot. It's the best
+  people photo in the library, but it is NOT the shot this section
+  is designed for. Replace with: dusk, festoon lights on, outdoor
+  tables, families, pizzas landing, kids mid-run. That single frame
+  is the highest-value image on the whole page — it communicates
+  casual / family-friendly / outside / playground / drinks without
+  a word of copy.
+============================================================= -->
 <style>
-  #jordys4 .j4-sign{position:relative;overflow:clip;min-height:clamp(480px,64vh,640px);display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(70px,9vw,120px) 24px}
-  #jordys4 .j4-sign-media{position:absolute;inset:0;z-index:0}
-  /* billi.PNG is portrait (930×1350): mobile shows nearly the full frame;
-     desktop gets a taller band + crop anchored on the honey drizzle */
-  #jordys4 .j4-sign-media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
-  #jordys4 .j4-sign-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,27,18,.50),rgba(36,27,18,.58))}
-  @media (min-width:700px){
-    #jordys4 .j4-sign{min-height:clamp(620px,88vh,820px)}
-    #jordys4 .j4-sign-media img{object-position:50% 64%}
+  #jordys5 .j5-where{
+    position:relative;overflow:clip;background:var(--ink);
+    min-height:clamp(600px,92svh,940px);display:flex;align-items:flex-end;
   }
-  #jordys4 .j4-sign-in{position:relative;z-index:1;max-width:620px;margin-inline:auto;color:#fff}
-  #jordys4 .j4-sign .j4-kick2{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.28em;font-size:12px;color:#fff;opacity:.85;display:block}
-  #jordys4 .j4-sign h2{
+  #jordys5 .j5-where-media{position:absolute;inset:0;z-index:0}
+  #jordys5 .j5-where-media img{
+    width:100%;height:100%;object-fit:cover;object-position:var(--night-pos,50% 38%);
+  }
+  #jordys5 .j5-where-media::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(36,27,18,.46) 0%,rgba(36,27,18,.12) 24%,rgba(36,27,18,.44) 56%,rgba(36,27,18,.92) 100%);
+  }
+  #jordys5 .j5-where-in{
+    position:relative;z-index:1;width:100%;color:#fff;
+    padding:clamp(56px,7vw,100px) clamp(20px,4.5vw,72px) clamp(40px,5.5vw,76px);
+    max-width:1560px;margin-inline:auto;
+  }
+  #jordys5 .j5-where h2{
+    font-family:var(--disp);font-weight:620;font-variation-settings:'opsz' 144,'SOFT' 90,'WONK' 1;
+    font-size:clamp(38px,6.4vw,92px);line-height:1.0;letter-spacing:-.02em;color:#fff;max-width:23ch;
+  }
+  #jordys5 .j5-where h2 em{font-style:normal;color:var(--terra)}
+  #jordys5 .j5-where-sub{
+    font-family:var(--grot);font-weight:500;font-size:clamp(15px,1.35vw,18px);line-height:1.6;
+    color:rgba(255,255,255,.88);margin-top:clamp(16px,1.8vw,24px);max-width:44ch;
+  }
+  /* the address block — playground line gets the emphasis */
+  #jordys5 .j5-where-addr{
+    margin-top:clamp(30px,3.6vw,48px);padding-top:clamp(22px,2.6vw,32px);
+    border-top:2px solid rgba(255,255,255,.34);
+    display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 40px;
+  }
+  #jordys5 .j5-where-addr .lines{display:flex;flex-direction:column;gap:6px}
+  #jordys5 .j5-where-addr .big{
+    font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 90,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;font-size:clamp(26px,3.4vw,46px);line-height:1.02;letter-spacing:-.012em;
+  }
+  #jordys5 .j5-where-addr .play{
+    font-family:var(--grot);font-weight:700;text-transform:uppercase;letter-spacing:.18em;
+    font-size:clamp(12px,1.15vw,14.5px);color:var(--terra);
+  }
+  #jordys5 .j5-where-addr .meta{
+    font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.18em;
+    font-size:11px;color:rgba(255,255,255,.78);
+  }
+</style>
+
+<section class="j5-where" id="j5-where">
+  <div class="j5-where-media" aria-hidden="true">
+    <!-- ★NIGHT-IMG ⚠ placeholder — see the note above -->
+    <img loading="lazy" decoding="async"
+      src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/22c0a147-ed82-4c02-b16f-593705341455/Screenshot+2026-03-19+at+07.41.51.png?format=1500w"
+      alt="" width="626" height="781">
+  </div>
+  <div class="j5-where-in">
+    <h2 class="rv">Come for pizza.<br><em>Stay for another round.</em></h2>
+    <p class="j5-where-sub rv rv-d1">Outdoor tables, a playground right there, and nobody minding if the kids are loud. You're not cooking tonight.</p>
+    <div class="j5-where-addr rv rv-d2">
+      <div class="lines">
+        <!-- ★HOURS -->
+        <span class="play">Beside the playground</span>
+        <span class="big">480 Casuarina Way</span>
+        <span class="meta">The Commons, Casuarina NSW &middot; Wed&ndash;Sun 5&ndash;9pm</span>
+      </div>
+      <a class="j5-btn j5-btn--white" href="https://maps.google.com/?q=480+Casuarina+Way,+Casuarina+NSW+2487" target="_blank" rel="noopener">Get directions <span class="j5-arr">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 · TRUST LINE ★NEW =================
+  One line, not a section. 4.7 / 349 verified on Google 20 Aug 2026.
+  Say the number — "349" is more credible than "300+".
+
+  ★REVIEW — to add one real review, uncomment the blockquote below and
+  paste it verbatim from Google with the reviewer's first name.
+  Do not write one. A fabricated review is the fastest way to
+  lose the trust this whole section exists to build.
+============================================================= -->
+<style>
+  #jordys5 .j5-trust{
+    background:var(--paper);text-align:center;
+    padding:clamp(46px,6vw,84px) clamp(20px,4vw,48px);
+  }
+  #jordys5 .j5-trust-stars{color:var(--terra);font-size:clamp(19px,2.2vw,26px);letter-spacing:.22em;line-height:1}
+  #jordys5 .j5-trust a{
+    display:inline-block;margin-top:14px;
+    font-family:var(--disp);font-weight:640;font-variation-settings:'opsz' 90,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;font-size:clamp(21px,2.8vw,36px);line-height:1.1;letter-spacing:-.01em;
+    color:var(--ink);border-bottom:2px solid var(--terra);padding-bottom:5px;
+    transition:color .2s var(--ease);
+  }
+  #jordys5 .j5-trust a:hover{color:var(--terraD)}
+  #jordys5 .j5-trust .src{
+    display:block;margin-top:14px;
+    font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.22em;
+    font-size:10.5px;color:var(--ink45);
+  }
+  #jordys5 .j5-trust blockquote{
+    max-width:52ch;margin:clamp(22px,2.6vw,32px) auto 0;
+    font-family:var(--disp);font-style:italic;font-weight:480;
+    font-variation-settings:'opsz' 60,'SOFT' 90,'WONK' 1;
+    font-size:clamp(17px,1.8vw,22px);line-height:1.5;color:var(--ink70);
+  }
+</style>
+
+<section class="j5-trust">
+  <div class="j5-trust-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <!-- ★REVIEWS — 4.7 / 349 verified on Google Maps 20 Aug 2026 -->
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=Jordy%27s+Pizza+Casuarina+Shop+2%2F480+Casuarina+Way+Casuarina+NSW" target="_blank" rel="noopener">
+    4.7 from 349 locals
+  </a>
+  <span class="src">On Google</span>
+  <!-- ★REVIEW — paste one real review here, then delete this comment
+  <blockquote>&ldquo;Real review text, copied exactly from Google.&rdquo; &mdash; First name</blockquote>
+  -->
+</section>
+
+<!-- ================= 06 · SIGNUP =================
+  v4 section, one change: the underlay moved from billi.PNG to the
+  house-pours shelf shot, because billi.PNG now carries §03 and
+  running the same photograph twice on one page reads as thin.
+============================================================= -->
+<style>
+  #jordys5 .j5-sign{position:relative;overflow:clip;min-height:clamp(480px,64vh,640px);display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(70px,9vw,120px) 24px}
+  #jordys5 .j5-sign-media{position:absolute;inset:0;z-index:0}
+  #jordys5 .j5-sign-media img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
+  #jordys5 .j5-sign-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,27,18,.62),rgba(36,27,18,.70))}
+  @media (min-width:700px){
+    #jordys5 .j5-sign{min-height:clamp(560px,78vh,720px)}
+    #jordys5 .j5-sign-media img{object-position:50% 50%}
+  }
+  #jordys5 .j5-sign-in{position:relative;z-index:1;max-width:620px;margin-inline:auto;color:#fff}
+  #jordys5 .j5-sign .j5-kick2{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.28em;font-size:12px;color:#fff;opacity:.85;display:block}
+  #jordys5 .j5-sign h2{
     font-family:var(--disp);font-weight:640;font-variation-settings:'opsz' 120,'SOFT' 88,'WONK' 1;
     font-size:clamp(34px,5.6vw,64px);line-height:1.04;letter-spacing:-.015em;text-transform:none;
     margin-top:14px;
   }
-  #jordys4 .j4-sign p{font-family:var(--grot);font-weight:500;font-size:15px;letter-spacing:.04em;margin-top:14px;color:rgba(255,255,255,.9)}
+  #jordys5 .j5-sign p{font-family:var(--grot);font-weight:500;font-size:15px;letter-spacing:.04em;margin-top:14px;color:rgba(255,255,255,.9)}
   /* ★SIGNUP — point this form's action at the Talkbox signup form once created.
      Until then it shows a local thank-you and stores nothing. */
-  #jordys4 .j4-sign form{display:flex;gap:10px;margin-top:clamp(24px,3vw,36px)}
-  #jordys4 .j4-sign input[type=email]{
+  #jordys5 .j5-sign form{display:flex;gap:10px;margin-top:clamp(24px,3vw,36px)}
+  #jordys5 .j5-sign input[type=email]{
     flex:1;min-width:0;min-height:56px;padding:0 20px;border:0;border-radius:6px;
     font-family:var(--grot);font-size:16px;color:var(--ink);background:#fff;
   }
-  #jordys4 .j4-sign input[type=email]::placeholder{color:rgba(36,27,18,.5)}
-  #jordys4 .j4-sign input[type=email]:focus-visible{outline:3px solid var(--terra);outline-offset:2px}
-  #jordys4 .j4-sign .j4-btn{flex:none}
-  #jordys4 .j4-sign .j4-fine{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:rgba(255,255,255,.75);margin-top:16px;display:block}
-  #jordys4 .j4-sign .j4-done{display:none;font-family:var(--disp);font-style:italic;font-weight:520;font-variation-settings:'opsz' 60,'SOFT' 90,'WONK' 1;font-size:clamp(20px,2.4vw,28px);margin-top:clamp(24px,3vw,36px)}
-  #jordys4 .j4-sign.done form,#jordys4 .j4-sign.done .j4-fine{display:none}
-  #jordys4 .j4-sign.done .j4-done{display:block}
+  #jordys5 .j5-sign input[type=email]::placeholder{color:rgba(36,27,18,.5)}
+  #jordys5 .j5-sign input[type=email]:focus-visible{outline:3px solid var(--terra);outline-offset:2px}
+  #jordys5 .j5-sign .j5-btn{flex:none}
+  #jordys5 .j5-sign .j5-fine{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:rgba(255,255,255,.75);margin-top:16px;display:block}
+  #jordys5 .j5-sign .j5-done{display:none;font-family:var(--disp);font-style:italic;font-weight:520;font-variation-settings:'opsz' 60,'SOFT' 90,'WONK' 1;font-size:clamp(20px,2.4vw,28px);margin-top:clamp(24px,3vw,36px)}
+  #jordys5 .j5-sign.done form,#jordys5 .j5-sign.done .j5-fine{display:none}
+  #jordys5 .j5-sign.done .j5-done{display:block}
   @media (max-width:559px){
-    #jordys4 .j4-sign form{flex-direction:column}
-    #jordys4 .j4-sign .j4-btn{width:100%}
+    #jordys5 .j5-sign form{flex-direction:column}
+    #jordys5 .j5-sign .j5-btn{width:100%}
   }
-  /* socials live under the signup form — white on the image */
-  #jordys4 .j4-sign .j4-soc{margin-top:clamp(28px,3.5vw,40px);padding-inline:0}
-  #jordys4 .j4-sign .j4-soc a{border-color:rgba(255,255,255,.9);color:#fff}
-  #jordys4 .j4-sign .j4-soc a:hover{background:#fff;border-color:#fff;color:var(--terraDD)}
+  #jordys5 .j5-soc{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 16px;margin-top:clamp(28px,3.5vw,40px)}
+  #jordys5 .j5-soc a{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:13px;
+    padding:15px 26px;min-height:52px;border:2px solid rgba(255,255,255,.9);border-radius:6px;color:#fff;
+    transition:background .22s var(--ease),color .22s var(--ease),border-color .22s var(--ease);
+  }
+  #jordys5 .j5-soc a:hover{background:#fff;border-color:#fff;color:var(--terraDD)}
+  #jordys5 .j5-soc svg{width:18px;height:18px;flex:none}
 </style>
 
-<section class="j4-sign" id="j4-sign">
-  <div class="j4-sign-media" aria-hidden="true">
+<section class="j5-sign" id="j5-sign">
+  <div class="j5-sign-media" aria-hidden="true">
     <!-- ★SIGNUP-IMG -->
-    <img loading="lazy" decoding="async" src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/de2e8781-5380-403e-80b3-ba3e7872b856/billi.PNG?format=1500w" alt="">
+    <img loading="lazy" decoding="async" src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/5b30d610-5cdc-42d8-ad42-d2cde3488844/Screenshot+2026-03-19+at+07.41.40.png?format=1500w" alt="" width="545" height="730">
   </div>
-  <div class="j4-sign-in">
-    <span class="j4-kick2">The mailing list</span>
+  <div class="j5-sign-in">
+    <span class="j5-kick2">The mailing list</span>
     <h2>Never miss a happy night.</h2>
     <p>Specials, events and $10 marg nights &mdash; straight to your inbox, every so often.</p>
-    <form id="j4-sign-form" novalidate>
+    <form id="j5-sign-form" novalidate>
       <input type="email" name="email" placeholder="Your email" aria-label="Your email address" autocomplete="email" required>
-      <button class="j4-btn j4-btn--terra" type="submit">Sign me up</button>
+      <button class="j5-btn j5-btn--terra" type="submit">Sign me up</button>
     </form>
-    <span class="j4-fine">No spam. Unsubscribe any time.</span>
-    <p class="j4-done">You're in. See you Wednesday. &mdash; Jordy</p>
-    <div class="j4-soc">
+    <span class="j5-fine">No spam. Unsubscribe any time.</span>
+    <p class="j5-done">You're in. See you Wednesday. &mdash; Jordy</p>
+    <div class="j5-soc">
       <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg>
         @jordys.casuarina
-      </a>
-      <!-- ★REVIEWS — 4.7 / 349 reviews verified on Google Maps 20 Aug 2026 -->
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Jordy%27s+Pizza+Casuarina+Shop+2%2F480+Casuarina+Way+Casuarina+NSW" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-        4.7 on Google &middot; 300+ reviews
       </a>
     </div>
   </div>
 </section>
 
-<!-- ================= FOOTER — small print ================= -->
+<!-- ================= 07 · FOOTER ================= -->
 <style>
-  #jordys4 .j4-foot{background:var(--paper);padding:clamp(36px,4.5vw,60px) clamp(20px,4vw,64px) clamp(28px,3.5vw,44px)}
-  #jordys4 .j4-foot-in{max-width:1560px;margin-inline:auto}
-  #jordys4 .j4-foot-logo img{height:44px;width:auto}
-  #jordys4 .j4-foot-rule{border:0;border-top:1px solid rgba(36,27,18,.18);margin:clamp(18px,2.2vw,28px) 0}
-  #jordys4 .j4-foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 32px}
-  #jordys4 .j4-foot-row p,#jordys4 .j4-foot-row a{
+  #jordys5 .j5-foot{background:var(--paper);padding:clamp(36px,4.5vw,60px) clamp(20px,4vw,64px) clamp(28px,3.5vw,44px)}
+  #jordys5 .j5-foot-in{max-width:1560px;margin-inline:auto}
+  #jordys5 .j5-foot-logo img{height:44px;width:auto}
+  #jordys5 .j5-foot-rule{border:0;border-top:1px solid rgba(36,27,18,.18);margin:clamp(18px,2.2vw,28px) 0}
+  #jordys5 .j5-foot-links{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:clamp(16px,2vw,24px)}
+  #jordys5 .j5-foot-links a{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;
+    font-size:11px;color:var(--ink);
+  }
+  #jordys5 .j5-foot-links a:hover{color:var(--terraD)}
+  #jordys5 .j5-foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 32px}
+  #jordys5 .j5-foot-row p,#jordys5 .j5-foot-row a{
     font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.16em;
     font-size:10.5px;line-height:1.9;color:var(--ink70);
   }
-  #jordys4 .j4-foot-row a:hover{color:var(--terraD)}
-  #jordys4 .j4-foot-sign{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--terraD)}
+  #jordys5 .j5-foot-row a:hover{color:var(--terraD)}
+  #jordys5 .j5-foot-sign{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--terraD)}
 </style>
 
-<footer class="j4-foot">
-  <div class="j4-foot-in">
-    <a class="j4-foot-logo" href="https://jordyscasuarina.com/" aria-label="Jordy's Casuarina — home">
+<footer class="j5-foot">
+  <div class="j5-foot-in">
+    <a class="j5-foot-logo" href="https://jordyscasuarina.com/" aria-label="Jordy's Casuarina — home">
       <img loading="lazy" decoding="async" src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's" width="120" height="85">
     </a>
-    <hr class="j4-foot-rule">
-    <div class="j4-foot-row">
+    <hr class="j5-foot-rule">
+    <div class="j5-foot-links">
+      <a href="menu.html">Menu</a>
+      <a href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Book</a>
+      <a href="https://www.meandu.app/jordys/pickup">Order</a>
+      <a href="https://jordyscasuarina.com/jordys-merch">Merch</a>
+      <a href="https://app.gift-it.com.au/buy/jordyspizza">Gift cards</a>
+      <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">Instagram &#8599;</a>
+    </div>
+    <div class="j5-foot-row">
       <!-- ★HOURS -->
       <p>480 Casuarina Way, at The Commons, Casuarina NSW &middot; Wed&ndash;Sun 5&ndash;9pm &middot; <a href="mailto:relax@jordyscasuarina.com">relax@jordyscasuarina.com</a></p>
-      <p class="j4-foot-sign">Eat your crust. &mdash; Jordy &middot; &copy; 2026 Jordy's Casuarina</p>
+      <p class="j5-foot-sign">Eat your crust. &mdash; Jordy &middot; &copy; 2026 Jordy's Casuarina</p>
     </div>
   </div>
 </footer>
@@ -420,24 +696,24 @@
   "acceptsReservations":"https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00",
   "address":{"@type":"PostalAddress","streetAddress":"Shop 2/480 Casuarina Way","addressLocality":"Casuarina","addressRegion":"NSW","postalCode":"2487","addressCountry":"AU"},
   "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"17:00","closes":"21:00"}],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"349"},
   "sameAs":["https://www.instagram.com/jordys.casuarina/"]
 }
 </script>
 
-<!-- ★NEXT-SECTION -->
-
 <script>
 (function(){
-  var root=document.getElementById('jordys4');
+  var root=document.getElementById('jordys5');
   if(!root) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* hero load-in */
-  var hero=document.getElementById('j4-hero'),img=document.getElementById('j4-hero-img');
+  var hero=document.getElementById('j5-hero'),img=document.getElementById('j5-hero-img');
   function armed(){requestAnimationFrame(function(){hero.classList.add('loaded')})}
   if(img&&img.complete){armed()}else if(img){img.addEventListener('load',armed);setTimeout(armed,1800)}
 
   /* burger overlay */
-  var burger=root.querySelector('.j4-burger'),ovl=document.getElementById('j4-ovl'),closeBtn=root.querySelector('.j4-ovl-close');
+  var burger=root.querySelector('.j5-burger'),ovl=document.getElementById('j5-ovl'),closeBtn=root.querySelector('.j5-ovl-close');
   function setMenu(open){
     if(!ovl)return;
     ovl.classList.toggle('open',open);
@@ -451,11 +727,43 @@
     document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
   }
 
+  /* scroll reveals — big top rootMargin so anchor jumps still reveal */
+  var rvEls=root.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){
+    rvEls.forEach(function(el){el.classList.add('in')});
+  }else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
+    },{threshold:.08,rootMargin:'1600px 0px -6% 0px'});
+    rvEls.forEach(function(el){io.observe(el)});
+  }
+
+  /* ★HAPPY live state — the ticker is the only Happy Nights moment on the
+     page, so it's the thing that gets to know what day it is. Both marquee
+     sequences are identical and both are updated, so the -50% loop stays
+     seamless when the label length changes. Australia/Sydney (Casuarina is NSW).
+     Silently leaves the HTML default in place if Intl/timeZone is unsupported. */
+  try{
+    var hf=new Intl.DateTimeFormat('en-AU',{timeZone:'Australia/Sydney',weekday:'short',hour:'numeric',hour12:false});
+    var hday='',hhour=0;
+    hf.formatToParts(new Date()).forEach(function(pt){
+      if(pt.type==='weekday')hday=pt.value;
+      if(pt.type==='hour')hhour=parseInt(pt.value,10);
+    });
+    if((hday==='Wed'||hday==='Thu')&&hhour<21){
+      var label=(hhour>=17)?'On now':'On tonight';
+      root.querySelectorAll('.j5-tick-when').forEach(function(el){el.textContent=label});
+      var band=document.getElementById('j5-info');
+      if(band)band.setAttribute('aria-label',
+        (hhour>=17?'Happy Nights is on now, till 9pm':'Happy Nights is on tonight, from 5pm')
+        +' — $10 margaritas, beer and wine with any pizza. Book a table.');
+    }
+  }catch(e){}
+
   /* ★SIGNUP — mockup behaviour: validate + show thanks locally.
      For production, remove this block and set the form's action to the
-     Talkbox signup form endpoint (or replace the section's form with the
-     Talkbox/Squarespace newsletter embed). */
-  var signForm=document.getElementById('j4-sign-form'),signSec=document.getElementById('j4-sign');
+     Talkbox signup form endpoint. */
+  var signForm=document.getElementById('j5-sign-form'),signSec=document.getElementById('j5-sign');
   if(signForm&&signSec){
     signForm.addEventListener('submit',function(e){
       e.preventDefault();
@@ -465,8 +773,8 @@
     });
   }
 
-  /* header turns paper once past the hero (ready for the sections below) */
-  var head=document.getElementById('j4-head');
+  /* header turns paper once past the hero */
+  var head=document.getElementById('j5-head');
   if(head){
     window.addEventListener('scroll',function(){
       head.classList.toggle('scrolled',(window.scrollY||window.pageYOffset)>40);
@@ -476,8 +784,8 @@
 </script>
 </div>
 <!-- ============================================================
-  END JORDY'S v4 CODE BLOCK (hero)
+  END JORDY'S v5 CODE BLOCK
 ============================================================= -->
 
-</body>
-</html>
+<div class="v5-flag">v5 mockup</div>
+</body></html>
