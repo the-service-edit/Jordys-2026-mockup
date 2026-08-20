@@ -105,10 +105,11 @@
   #jordys4 .j4-burger span{display:block;height:2.5px;width:26px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease)}
   #jordys4 .j4-burger:hover span:first-child{transform:translateY(-2px)}
   #jordys4 .j4-burger:hover span:last-child{transform:translateY(2px)}
-  /* logo — dead centre regardless of the sides */
-  #jordys4 .j4-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
-  #jordys4 .j4-logo img{height:clamp(44px,4.6vw,64px);width:auto;filter:drop-shadow(0 4px 14px rgba(36,27,18,.25));transition:transform .25s var(--ease),height .3s var(--ease)}
+  /* logo — dead centre, hanging from the top of the hero */
+  #jordys4 .j4-logo{position:absolute;left:50%;top:16px;transform:translateX(-50%)}
+  #jordys4 .j4-logo img{height:clamp(84px,22vw,120px);width:auto;filter:drop-shadow(0 4px 14px rgba(36,27,18,.25));transition:transform .25s var(--ease),height .3s var(--ease)}
   #jordys4 .j4-logo:hover img{transform:rotate(-4deg) scale(1.05)}
+  #jordys4 .j4-head.scrolled .j4-logo img{height:52px}
   /* primary CTA top-right — desktop only (joins the stack on mobile) */
   #jordys4 .j4-head-cta{display:none}
 
@@ -157,13 +158,12 @@
   @media (min-width:700px){
     #jordys4 .j4-head-cta{display:inline-flex}      /* Order Now moves to the top-right */
     /* big centred logo over the hero — shrinks back once the header goes paper */
-    #jordys4 .j4-logo{top:16px;transform:translateX(-50%)}
     #jordys4 .j4-logo:hover img{transform:rotate(-2deg) scale(1.03)}
     #jordys4 .j4-logo img{height:clamp(132px,13.4vw,192px)}
     #jordys4 .j4-head.scrolled .j4-logo img{height:64px}
     #jordys4 .j4-hero-ctas{flex-direction:row;justify-content:center;gap:16px;padding-bottom:clamp(30px,5svh,52px)}
     #jordys4 .j4-hero-ctas .j4-btn{width:auto;min-width:220px}
-    #jordys4 .j4-hero-ctas .j4-btn--terra{display:none} /* primary lives in the header on desktop */
+    /* all three CTAs stay in the bottom row on desktop; Order Now also sits top-right */
   }
 </style>
 
