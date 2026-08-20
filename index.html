@@ -16,16 +16,18 @@
   one trust line. Six blocks total, not ten.
 
     01  HERO              (v4, unchanged)
-    02  TICKER            REBUILT — Happy Nights ONLY, terracotta band,
-                          day-aware, and the whole band books a table
-    03  FOOD              ★NEW  full-bleed pizza, menu CTA
+    02  FOOD              ★NEW  full-bleed pizza, menu CTA
+    03  TICKER            REBUILT — Happy Nights ONLY, terracotta band,
+                          day-aware, and the whole band books a table.
+                          Sits AFTER the food so appetite lands before
+                          the discount does.
     04  THE NIGHT + WHERE ★NEW  people + address merged, directions CTA
     05  TRUST LINE        ★NEW  4.7 / 349 — one line, not a section
-    06  SIGNUP            (v4 — underlay swapped, billi.PNG moved to §03)
+    06  SIGNUP            (v4 — underlay swapped, billi.PNG moved to §02)
     07  FOOTER            (v4, unchanged)
 
   There is no Happy Nights section. The offer lives entirely in the
-  §02 band — which is therefore the only place on the page the deal
+  §03 band — which is therefore the only place on the page the deal
   is stated, and is built to carry that on its own.
 
   Paste this entire block into ONE Squarespace Code Block.
@@ -269,89 +271,7 @@
   </div>
 </section>
 
-<!-- ================= 02 · HAPPY NIGHTS BAND =================
-  The ticker is now about ONE thing. No hours, no sourdough, no
-  address — those all have proper homes further down (§04, footer,
-  JSON-LD), so nothing is lost by taking them out of here.
-
-  Three changes that follow from it being the only Happy Nights
-  moment on the page:
-
-  · Solid terracotta, white type. It was terracotta-on-white when it
-    was a neutral facts strip; now it's an offer, so it gets to be a
-    block. It's also the page's only colour break between the dark
-    photo sections, which is the one thing the deleted section did
-    for the layout.
-  · The whole band is a booking link. If this is where the deal
-    lives, this is where the deal converts. Hover deepens it.
-  · It knows what day it is — "WED + THU" becomes "ON TONIGHT"
-    (and "ON NOW" after 5pm) on Wednesdays and Thursdays, via the
-    script at the foot of this block.
-
-  ★HAPPY — the deal is stated here and nowhere else. Edit carefully.
-============================================================= -->
-<style>
-  #jordys5 .j5-info{
-    display:block;background:var(--terra);color:#fff;
-    transition:background .25s var(--ease);
-  }
-  #jordys5 a.j5-info:hover{background:var(--terraD)}
-  #jordys5 .j5-tick{overflow:hidden;user-select:none;padding-block:clamp(14px,1.9vw,24px)}
-  #jordys5 .j5-tick-track{display:flex;width:max-content;animation:j5-tk 78s linear infinite}
-  #jordys5 a.j5-info:hover .j5-tick-track{animation-play-state:paused}
-  #jordys5 .j5-tick-seq{display:flex;align-items:center;flex:none}
-  #jordys5 .j5-tick-seq span{
-    font-family:var(--grot);font-weight:700;text-transform:uppercase;letter-spacing:.2em;
-    font-size:clamp(17px,2.4vw,31px);white-space:nowrap;color:#fff;
-    padding-inline:clamp(16px,2.2vw,30px);
-  }
-  /* the deal itself, called out inside the loop */
-  #jordys5 .j5-tick-seq span.hi{color:#fff}
-  #jordys5 .j5-ti{display:inline-flex;color:rgba(255,255,255,.78);flex:none}
-  #jordys5 .j5-ti svg{width:clamp(21px,2.4vw,30px);height:clamp(21px,2.4vw,30px)}
-  @keyframes j5-tk{to{transform:translate3d(-50%,0,0)}}
-  @media (prefers-reduced-motion:reduce){
-    #jordys5 .j5-tick-track{animation:none;width:100%;justify-content:center}
-    #jordys5 .j5-tick-seq[aria-hidden]{display:none}
-    #jordys5 .j5-tick-seq{flex-wrap:wrap;justify-content:center}
-  }
-</style>
-
-<!-- ★LINKS — the band is the CTA -->
-<a class="j5-info" id="j5-info" href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00"
-   aria-label="Happy Nights, every Wednesday and Thursday — $10 margaritas, beer and wine with any pizza, 5pm till 9pm. Book a table.">
-  <svg style="display:none" aria-hidden="true">
-    <symbol id="j5-ic-drink" viewBox="0 0 32 32">
-      <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 8.5 8.6 26a3 3 0 0 0 3 2.5h8.8a3 3 0 0 0 3-2.5L26 8.5"/>
-        <path d="M6.4 11 24 7"/>
-        <circle cx="13" cy="16.5" r="2.6"/>
-        <circle cx="17.5" cy="22" r="2.3"/>
-      </g>
-      <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
-        <path d="M20.5 9.5 A6.4 6.4 0 0 1 29.5 6.8 L25.3 2.4 A6.4 6.4 0 0 0 20.5 9.5 Z" fill="currentColor" stroke="none" opacity=".25"/>
-        <path d="M20.7 9.3 A6.2 6.2 0 0 1 29.2 6.9 L25.2 2.7 A6.2 6.2 0 0 0 20.7 9.3 Z"/>
-        <path d="M24 6.5 22.3 8.2 M26.6 5.2 24.6 7.4"/>
-      </g>
-    </symbol>
-    <symbol id="j5-ic-slice" viewBox="0 0 32 32">
-      <path fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
-        d="M6.5 26.5 10 9.5 A17.5 17.5 0 0 1 25.5 20.5 Z"/>
-    </symbol>
-  </svg>
-  <div class="j5-tick" aria-hidden="true">
-    <div class="j5-tick-track">
-      <div class="j5-tick-seq">
-        <span>Happy Nights</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span class="j5-tick-when">Wed + Thu</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span class="hi">$10 margs</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>Beer + wine too</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span>With any pizza</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>5&ndash;9pm</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i>
-      </div>
-      <div class="j5-tick-seq" aria-hidden="true">
-        <span>Happy Nights</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span class="j5-tick-when">Wed + Thu</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span class="hi">$10 margs</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>Beer + wine too</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span>With any pizza</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>5&ndash;9pm</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i>
-      </div>
-    </div>
-  </div>
-</a>
-
-<!-- ================= 03 · FOOD ★NEW =================
+<!-- ================= 02 · FOOD ★NEW =================
   The gap v4 had: not one image of a pizza on the homepage.
   Photography does the selling; copy gets out of the way.
 
@@ -447,6 +367,95 @@
     </div>
   </div>
 </section>
+
+<!-- ================= 03 · HAPPY NIGHTS BAND =================
+  The ticker is now about ONE thing. No hours, no sourdough, no
+  address — those all have proper homes further down (§04, footer,
+  JSON-LD), so nothing is lost by taking them out of here.
+
+  It sits AFTER the food section, not under the hero. Two reasons:
+  appetite at full price should land before any discount does (a
+  pattern of deal-led messaging teaches people to wait for the deal),
+  and putting the one colour block between §02 and §04 breaks up what
+  would otherwise be an unbroken run of dark photo sections. Scrolling
+  past the hero now rewards you with pizza, not a price.
+
+  Three changes that follow from it being the only Happy Nights
+  moment on the page:
+
+  · Solid terracotta, white type. It was terracotta-on-white when it
+    was a neutral facts strip; now it's an offer, so it gets to be a
+    block. It's also the page's only colour break between the dark
+    photo sections, which is the one thing the deleted section did
+    for the layout.
+  · The whole band is a booking link. If this is where the deal
+    lives, this is where the deal converts. Hover deepens it.
+  · It knows what day it is — "WED + THU" becomes "ON TONIGHT"
+    (and "ON NOW" after 5pm) on Wednesdays and Thursdays, via the
+    script at the foot of this block.
+
+  ★HAPPY — the deal is stated here and nowhere else. Edit carefully.
+============================================================= -->
+<style>
+  #jordys5 .j5-info{
+    display:block;background:var(--terra);color:#fff;
+    transition:background .25s var(--ease);
+  }
+  #jordys5 a.j5-info:hover{background:var(--terraD)}
+  #jordys5 .j5-tick{overflow:hidden;user-select:none;padding-block:clamp(14px,1.9vw,24px)}
+  #jordys5 .j5-tick-track{display:flex;width:max-content;animation:j5-tk 78s linear infinite}
+  #jordys5 a.j5-info:hover .j5-tick-track{animation-play-state:paused}
+  #jordys5 .j5-tick-seq{display:flex;align-items:center;flex:none}
+  #jordys5 .j5-tick-seq span{
+    font-family:var(--grot);font-weight:700;text-transform:uppercase;letter-spacing:.2em;
+    font-size:clamp(17px,2.4vw,31px);white-space:nowrap;color:#fff;
+    padding-inline:clamp(16px,2.2vw,30px);
+  }
+  /* the deal itself, called out inside the loop */
+  #jordys5 .j5-tick-seq span.hi{color:#fff}
+  #jordys5 .j5-ti{display:inline-flex;color:rgba(255,255,255,.78);flex:none}
+  #jordys5 .j5-ti svg{width:clamp(21px,2.4vw,30px);height:clamp(21px,2.4vw,30px)}
+  @keyframes j5-tk{to{transform:translate3d(-50%,0,0)}}
+  @media (prefers-reduced-motion:reduce){
+    #jordys5 .j5-tick-track{animation:none;width:100%;justify-content:center}
+    #jordys5 .j5-tick-seq[aria-hidden]{display:none}
+    #jordys5 .j5-tick-seq{flex-wrap:wrap;justify-content:center}
+  }
+</style>
+
+<!-- ★LINKS — the band is the CTA -->
+<a class="j5-info" id="j5-info" href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00"
+   aria-label="Happy Nights, every Wednesday and Thursday — $10 margaritas, beer and wine with any pizza, 5pm till 9pm. Book a table.">
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="j5-ic-drink" viewBox="0 0 32 32">
+      <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 8.5 8.6 26a3 3 0 0 0 3 2.5h8.8a3 3 0 0 0 3-2.5L26 8.5"/>
+        <path d="M6.4 11 24 7"/>
+        <circle cx="13" cy="16.5" r="2.6"/>
+        <circle cx="17.5" cy="22" r="2.3"/>
+      </g>
+      <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M20.5 9.5 A6.4 6.4 0 0 1 29.5 6.8 L25.3 2.4 A6.4 6.4 0 0 0 20.5 9.5 Z" fill="currentColor" stroke="none" opacity=".25"/>
+        <path d="M20.7 9.3 A6.2 6.2 0 0 1 29.2 6.9 L25.2 2.7 A6.2 6.2 0 0 0 20.7 9.3 Z"/>
+        <path d="M24 6.5 22.3 8.2 M26.6 5.2 24.6 7.4"/>
+      </g>
+    </symbol>
+    <symbol id="j5-ic-slice" viewBox="0 0 32 32">
+      <path fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round"
+        d="M6.5 26.5 10 9.5 A17.5 17.5 0 0 1 25.5 20.5 Z"/>
+    </symbol>
+  </svg>
+  <div class="j5-tick" aria-hidden="true">
+    <div class="j5-tick-track">
+      <div class="j5-tick-seq">
+        <span>Happy Nights</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span class="j5-tick-when">Wed + Thu</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span class="hi">$10 margs</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>Beer + wine too</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span>With any pizza</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>5&ndash;9pm</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i>
+      </div>
+      <div class="j5-tick-seq" aria-hidden="true">
+        <span>Happy Nights</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span class="j5-tick-when">Wed + Thu</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span class="hi">$10 margs</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>Beer + wine too</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i><span>With any pizza</span><i class="j5-ti"><svg><use href="#j5-ic-drink"/></svg></i><span>5&ndash;9pm</span><i class="j5-ti"><svg><use href="#j5-ic-slice"/></svg></i>
+      </div>
+    </div>
+  </div>
+</a>
 
 <!-- ================= 04 · THE NIGHT + WHERE ★NEW =================
   Merged on purpose. The venue photograph IS the location proof,
