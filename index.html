@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jordy's v4 — hero preview</title>
+<style>html,body{margin:0;padding:0;background:#fff}</style>
+</head>
+<body>
+<!-- ============================================================
+  JORDY'S CASUARINA — HOMEPAGE v4 · SECTION 1: HERO
+  Layout reference: robertaspizza.com hero (burger left, logo
+  centre, primary CTA top-right, CTA row pinned to the bottom on
+  desktop / stacked column on mobile). Skin: Jordy's brand guide
+  (white #ffffff + terracotta #c2724c, Fraunces/Jost stand-ins).
+
+  Paste this entire block into ONE Squarespace Code Block.
+  Pairs with the existing homepage Custom CSS (unchanged) that
+  hides the native Squarespace header/footer on the homepage.
+
+  Built section by section — later sections append below the
+  ★NEXT-SECTION marker at the bottom of this file.
+
+  EDITABLE MARKERS:
+    ★LINKS       the three CTA destinations
+    ★HERO-IMG    the two hero crops (landscape = desktop,
+                 portrait = mobile). If they ever render
+                 swapped, exchange the two srcset urls.
+============================================================= -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,340..900,0..100,0..1;1,9..144,340..900,0..100,0..1&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<div id="jordys4">
+<style>
+  /* ================= TOKENS ================= */
+  #jordys4{
+    --paper:#FFFFFF;              /* brand white */
+    --ink:#241B12;                /* espresso ink — text only */
+    --ink70:rgba(36,27,18,.72);
+    --terra:#C2724C;              /* Jordy's terracotta */
+    --terraD:#A2532F;             /* deep terracotta — AA on white text */
+    --terraDD:#8A431F;
+    --disp:'Fraunces',Georgia,serif;                    /* Windsor D role */
+    --grot:'Jost','Clarika Geometric',Arial,sans-serif; /* Clarika role */
+    --ease:cubic-bezier(.22,.9,.3,1);
+    font-family:var(--grot);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.5;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:clip;
+    display:block;
+    position:relative;
+  }
+  #jordys4 *,#jordys4 *::before,#jordys4 *::after{box-sizing:border-box;margin:0;padding:0}
+  #jordys4 img{display:block;max-width:100%;height:auto}
+  #jordys4 a{color:inherit;text-decoration:none}
+  #jordys4 a:focus-visible,#jordys4 button:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:4px}
+  #jordys4 .j4-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* ================= BUTTONS — Roberta's geometry, Jordy's skin =================
+     Rectangular, slight radius, chunky wide-tracked caps; hover = Jordy's
+     upward ink fill + arrowless (Roberta's buttons carry no arrows). */
+  #jordys4 .j4-btn{
+    position:relative;display:inline-flex;align-items:center;justify-content:center;
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.14em;
+    font-size:13.5px;padding:17px 30px;border-radius:6px;border:0;
+    min-height:54px;white-space:nowrap;cursor:pointer;
+    overflow:hidden;isolation:isolate;
+    transition:color .22s var(--ease),transform .18s var(--ease),box-shadow .25s var(--ease);
+    box-shadow:0 8px 24px rgba(36,27,18,.18);
+  }
+  #jordys4 .j4-btn::before{ /* fill sweeps up on hover */
+    content:"";position:absolute;inset:0;background:var(--ink);border-radius:inherit;
+    transform:translateY(101%);transition:transform .28s var(--ease);z-index:-1;
+  }
+  #jordys4 .j4-btn:hover{color:var(--paper)}
+  #jordys4 .j4-btn:hover::before{transform:none}
+  #jordys4 .j4-btn:active{transform:scale(.97)}
+  #jordys4 .j4-btn--terra{background:var(--terraD);color:#fff}
+  #jordys4 .j4-btn--paper{background:rgba(255,255,255,.92);color:var(--ink)}
+  #jordys4 .j4-btn--ink{background:rgba(36,27,18,.88);color:#fff}
+  #jordys4 .j4-btn--ink::before{background:var(--terraD)}
+  @media (prefers-reduced-motion:reduce){
+    #jordys4 .j4-btn,#jordys4 .j4-btn::before{transition:none}
+  }
+
+  /* ================= HEADER — burger · logo centre · order right ================= */
+  #jordys4 .j4-head{
+    position:fixed;top:0;left:0;right:0;z-index:1500;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px clamp(16px,2.6vw,36px);
+    transition:background .3s ease,box-shadow .3s ease,padding .3s ease;
+  }
+  #jordys4 .j4-head.scrolled{background:var(--paper);box-shadow:0 1px 0 rgba(36,27,18,.14);padding-block:10px}
+  /* burger — white rounded chip, like the reference */
+  #jordys4 .j4-burger{
+    display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;
+    width:54px;height:54px;border:0;border-radius:10px;background:var(--paper);cursor:pointer;
+    box-shadow:0 8px 24px rgba(36,27,18,.18);
+    transition:transform .2s var(--ease);
+  }
+  #jordys4 .j4-burger:hover{transform:scale(1.06)}
+  #jordys4 .j4-burger span{display:block;height:2.5px;width:26px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease)}
+  #jordys4 .j4-burger:hover span:first-child{transform:translateY(-2px)}
+  #jordys4 .j4-burger:hover span:last-child{transform:translateY(2px)}
+  /* logo — dead centre regardless of the sides */
+  #jordys4 .j4-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+  #jordys4 .j4-logo img{height:clamp(44px,4.6vw,64px);width:auto;filter:drop-shadow(0 4px 14px rgba(36,27,18,.25));transition:transform .25s var(--ease),height .3s var(--ease)}
+  #jordys4 .j4-logo:hover img{transform:rotate(-4deg) scale(1.05)}
+  /* primary CTA top-right — desktop only (joins the stack on mobile) */
+  #jordys4 .j4-head-cta{display:none}
+
+  /* ================= HERO ================= */
+  #jordys4 .j4-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:clip;background:var(--ink)}
+  #jordys4 .j4-hero-media{position:absolute;inset:0;z-index:0}
+  #jordys4 .j4-hero-media img{
+    width:100%;height:100%;object-fit:cover;object-position:60% 40%;
+    transform:scale(1.06);transition:transform 1.6s var(--ease);
+  }
+  #jordys4 .j4-hero.loaded .j4-hero-media img{transform:scale(1)}
+  /* quiet scrim — just enough for the buttons and logo to sit on */
+  #jordys4 .j4-hero-media::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(36,27,18,.20),rgba(36,27,18,0) 30%,rgba(36,27,18,0) 62%,rgba(36,27,18,.34));
+  }
+  /* CTA zone — bottom-centred row on desktop, stacked column on mobile */
+  #jordys4 .j4-hero-ctas{
+    position:relative;z-index:1;margin-top:auto;
+    display:flex;flex-direction:column;align-items:center;gap:14px;
+    padding:0 20px clamp(56px,10svh,96px);
+    opacity:0;transform:translateY(18px);
+    transition:opacity .6s var(--ease) .15s,transform .6s var(--ease) .15s;
+  }
+  #jordys4 .j4-hero.loaded .j4-hero-ctas{opacity:1;transform:none}
+  #jordys4 .j4-hero-ctas .j4-btn{width:min(250px,78vw)}
+  @media (prefers-reduced-motion:reduce){
+    #jordys4 .j4-hero-media img{transform:none;transition:none}
+    #jordys4 .j4-hero-ctas{opacity:1;transform:none;transition:none}
+  }
+
+  /* ================= MOBILE OVERLAY — terracotta, logo colourway ================= */
+  #jordys4 .j4-ovl{position:fixed;inset:0;background:var(--terra);color:#fff;z-index:3000;display:flex;flex-direction:column;padding:24px;transform:translateY(-103%);transition:transform .38s var(--ease);overflow:auto}
+  #jordys4 .j4-ovl.open{transform:none}
+  #jordys4 .j4-ovl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6vh}
+  #jordys4 .j4-ovl-top img{height:44px;width:auto;filter:brightness(0) invert(1)}
+  #jordys4 .j4-ovl-close{background:none;border:0;color:#fff;font-family:var(--grot);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px;cursor:pointer;padding:12px}
+  #jordys4 .j4-ovl-nav{display:flex;flex-direction:column}
+  #jordys4 .j4-ovl-nav a{font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;text-transform:uppercase;font-size:clamp(42px,10vw,72px);line-height:1.14;letter-spacing:-.01em;display:flex;align-items:baseline;gap:14px}
+  #jordys4 .j4-ovl-nav a i{font-style:normal;font-family:var(--grot);font-weight:500;font-size:11px;letter-spacing:.24em;opacity:.75}
+  #jordys4 .j4-ovl-sub{margin-top:auto;padding-top:5vh;display:flex;flex-direction:column;gap:12px}
+  #jordys4 .j4-ovl-sub a{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:rgba(255,255,255,.85)}
+  @media (prefers-reduced-motion:reduce){#jordys4 .j4-ovl{transition:none}}
+
+  /* ================= DESKTOP ≥700 ================= */
+  @media (min-width:700px){
+    #jordys4 .j4-head-cta{display:inline-flex}      /* Order Now moves to the top-right */
+    /* big centred logo over the hero — shrinks back once the header goes paper */
+    #jordys4 .j4-logo{top:16px;transform:translateX(-50%)}
+    #jordys4 .j4-logo:hover img{transform:rotate(-2deg) scale(1.03)}
+    #jordys4 .j4-logo img{height:clamp(132px,13.4vw,192px)}
+    #jordys4 .j4-head.scrolled .j4-logo img{height:64px}
+    #jordys4 .j4-hero-ctas{flex-direction:row;justify-content:center;gap:16px;padding-bottom:clamp(30px,5svh,52px)}
+    #jordys4 .j4-hero-ctas .j4-btn{width:auto;min-width:220px}
+    #jordys4 .j4-hero-ctas .j4-btn--terra{display:none} /* primary lives in the header on desktop */
+  }
+</style>
+
+<!-- ================= HEADER ================= -->
+<header class="j4-head" id="j4-head">
+  <button class="j4-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="j4-ovl">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="j4-logo" href="https://jordyscasuarina.com/" aria-label="Jordy's Casuarina — home">
+    <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=750w" alt="Jordy's" width="750" height="530">
+  </a>
+  <!-- ★LINKS primary -->
+  <a class="j4-btn j4-btn--terra j4-head-cta" href="https://www.meandu.app/jordys/pickup">Order now</a>
+</header>
+
+<!-- ================= MOBILE OVERLAY MENU ================= -->
+<div class="j4-ovl" id="j4-ovl" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="j4-ovl-top">
+    <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's">
+    <button class="j4-ovl-close" type="button">Close ✕</button>
+  </div>
+  <nav class="j4-ovl-nav" aria-label="Site">
+    <a href="https://jordyscasuarina.com/menu">Menu <i>01</i></a>
+    <a href="https://www.meandu.app/jordys/pickup">Order <i>02</i></a>
+    <a href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Book <i>03</i></a>
+    <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">Instagram <i>04</i></a>
+  </nav>
+  <div class="j4-ovl-sub">
+    <a href="https://jordyscasuarina.com/jordys-merch">Jordy's merch ↗</a>
+    <a href="https://app.gift-it.com.au/buy/jordyspizza">Gift cards ↗</a>
+    <a href="mailto:relax@jordyscasuarina.com">relax@jordyscasuarina.com</a>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="j4-hero" id="j4-hero">
+  <h1 class="j4-sr">Jordy's Casuarina — wood-fired sourdough pizza, Casuarina NSW</h1>
+  <div class="j4-hero-media">
+    <picture>
+      <!-- ★HERO-IMG mobile (portrait crop) -->
+      <source media="(max-width:699px)"
+        srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/f6b100d2-eb00-47dc-a18b-451fe44c3c82/b381edf0-9617-48ea-9af3-812f87e889ee.png?format=1000w 1000w,
+                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/f6b100d2-eb00-47dc-a18b-451fe44c3c82/b381edf0-9617-48ea-9af3-812f87e889ee.png?format=1500w 1500w"
+        sizes="100vw">
+      <!-- ★HERO-IMG desktop (landscape crop) -->
+      <img fetchpriority="high" decoding="async" id="j4-hero-img"
+        src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/1bb277dc-985f-4bc5-8867-fb41cda3aa77/ChatGPT+Image+Aug+20%2C+2026%2C+01_18_01+PM.png?format=2500w"
+        srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/1bb277dc-985f-4bc5-8867-fb41cda3aa77/ChatGPT+Image+Aug+20%2C+2026%2C+01_18_01+PM.png?format=1500w 1500w,
+                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/1bb277dc-985f-4bc5-8867-fb41cda3aa77/ChatGPT+Image+Aug+20%2C+2026%2C+01_18_01+PM.png?format=2500w 2000w"
+        sizes="100vw"
+        alt="Jordy's waiters in white jackets sprinting down a gravel drive with stacks of pizza boxes" width="2560" height="1440">
+    </picture>
+  </div>
+  <!-- ★LINKS ctas -->
+  <div class="j4-hero-ctas">
+    <a class="j4-btn j4-btn--terra" href="https://www.meandu.app/jordys/pickup">Order now</a>
+    <a class="j4-btn j4-btn--paper" href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Make a booking</a>
+    <a class="j4-btn j4-btn--ink" href="https://jordyscasuarina.com/menu">View the menu</a>
+  </div>
+</section>
+
+<!-- ★NEXT-SECTION — sections 2+ get appended here -->
+
+<script>
+(function(){
+  var root=document.getElementById('jordys4');
+  if(!root) return;
+
+  /* hero load-in */
+  var hero=document.getElementById('j4-hero'),img=document.getElementById('j4-hero-img');
+  function armed(){requestAnimationFrame(function(){hero.classList.add('loaded')})}
+  if(img&&img.complete){armed()}else if(img){img.addEventListener('load',armed);setTimeout(armed,1800)}
+
+  /* burger overlay */
+  var burger=root.querySelector('.j4-burger'),ovl=document.getElementById('j4-ovl'),closeBtn=root.querySelector('.j4-ovl-close');
+  function setMenu(open){
+    if(!ovl)return;
+    ovl.classList.toggle('open',open);
+    if(burger)burger.setAttribute('aria-expanded',open?'true':'false');
+    document.documentElement.style.overflow=open?'hidden':'';
+  }
+  if(burger&&ovl){
+    burger.addEventListener('click',function(){setMenu(true)});
+    if(closeBtn)closeBtn.addEventListener('click',function(){setMenu(false)});
+    ovl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+  }
+
+  /* header turns paper once past the hero (ready for the sections below) */
+  var head=document.getElementById('j4-head');
+  if(head){
+    window.addEventListener('scroll',function(){
+      head.classList.toggle('scrolled',(window.scrollY||window.pageYOffset)>40);
+    },{passive:true});
+  }
+})();
+</script>
+</div>
+<!-- ============================================================
+  END JORDY'S v4 CODE BLOCK (hero)
+============================================================= -->
+
+<div style="height:60vh;display:flex;align-items:center;justify-content:center;font:600 12px/1 Jost,Arial,sans-serif;letter-spacing:.25em;color:#A2532F;text-transform:uppercase">NEXT SECTION GOES HERE</div>
+</body>
+</html>
