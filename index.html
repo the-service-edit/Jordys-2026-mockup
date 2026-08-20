@@ -16,18 +16,23 @@
   one trust line. Six blocks total, not ten.
 
     01  HERO              (v4, unchanged)
-    02  FOOD              ★NEW  full-bleed pizza, menu CTA
-    03  TICKER            REBUILT — Happy Nights ONLY, terracotta band,
+    02  INFO BAR          ★NEW  static, live open/closed status
+    03  FOOD              ★NEW  full-bleed pizza, menu CTA
+    04  TICKER            REBUILT — Happy Nights ONLY, terracotta band,
                           day-aware, and the whole band books a table.
                           Sits AFTER the food so appetite lands before
                           the discount does.
-    04  THE NIGHT + WHERE ★NEW  people + address merged, directions CTA
-    05  TRUST LINE        ★NEW  4.7 / 349 — one line, not a section
-    06  SIGNUP            (v4 — underlay swapped, billi.PNG moved to §02)
-    07  FOOTER            (v4, unchanged)
+    05  THE NIGHT + WHERE ★NEW  people + address merged, directions CTA
+    06  TRUST LINE        ★NEW  4.7 / 349 — one line, not a section
+    07  SIGNUP            (v4 — underlay swapped, billi.PNG moved to §03)
+    08  FOOTER            (v4, unchanged)
+
+  Two strips, and they are deliberately different animals: §02 is
+  static / paper / ink and carries facts; §04 moves / terracotta and
+  carries the offer. Don't make them rhyme.
 
   There is no Happy Nights section. The offer lives entirely in the
-  §03 band — which is therefore the only place on the page the deal
+  §04 band — which is therefore the only place on the page the deal
   is stated, and is built to carry that on its own.
 
   Paste this entire block into ONE Squarespace Code Block.
@@ -271,7 +276,81 @@
   </div>
 </section>
 
-<!-- ================= 02 · FOOD ★NEW =================
+<!-- ================= 02 · INFO BAR ★NEW =================
+  Deliberately NOT a second marquee. Two scrolling bars on a page this
+  short becomes a mannerism, and the Happy Nights band (§04) draws its
+  force from being the only one. So: static, no motion, paper ground,
+  ink type — reads as "facts", leaves terracotta + motion to mean
+  "offer". It also gives the hero a clean full stop between two
+  full-bleed photo sections.
+
+  It exists because stripping the old ticker down to Happy Nights took
+  the "Jordy's in 5 seconds" job with it and never rehoused it. Before
+  this bar, a first-time visitor learned neither when Jordy's is open
+  nor where it is until §05 — two-thirds down the page.
+
+  Three items, and each earns the slot:
+   1  LIVE STATUS  — the one thing a hungry local wants at 6:40pm.
+                     Rewritten by the script at the foot of this block,
+                     Australia/Sydney. HTML default is the weekly
+                     pattern, so it degrades correctly with JS off.
+   2  BESIDE THE PLAYGROUND — the strongest parent hook on the whole
+                     site, otherwise buried in §05.
+   3  ADDRESS      — links straight to directions.
+
+  ★HOURS — the open/close rule lives in the script, not just this markup.
+============================================================= -->
+<style>
+  #jordys5 .j5-bar{
+    background:var(--paper);
+    border-bottom:1px solid rgba(36,27,18,.14);
+    padding:clamp(11px,1.4vw,15px) clamp(12px,3vw,40px);
+  }
+  #jordys5 .j5-bar-in{
+    max-width:1560px;margin-inline:auto;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;row-gap:8px;
+  }
+  #jordys5 .j5-bar-item{
+    display:inline-flex;align-items:center;gap:9px;
+    padding-inline:clamp(9px,1.5vw,22px);
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;
+    letter-spacing:.2em;font-size:clamp(9.5px,1vw,11.5px);line-height:1.6;
+    color:var(--ink70);white-space:nowrap;
+  }
+  #jordys5 a.j5-bar-item{color:var(--ink);transition:color .2s var(--ease)}
+  #jordys5 a.j5-bar-item:hover{color:var(--terraD)}
+  #jordys5 .j5-bar-sep{width:1px;height:12px;background:rgba(36,27,18,.22);flex:none}
+  #jordys5 .j5-bar .dot{width:7px;height:7px;border-radius:50%;background:var(--ink45);flex:none}
+  /* open right now — the only green on the site, so it means something */
+  #jordys5 .j5-bar-item.is-open{color:var(--ink);font-weight:700}
+  #jordys5 .j5-bar-item.is-open .dot{background:#4F9D45;animation:j5-pulse 2.6s ease-in-out infinite}
+  @keyframes j5-pulse{0%,100%{opacity:1}50%{opacity:.32}}
+  @media (prefers-reduced-motion:reduce){
+    #jordys5 .j5-bar-item.is-open .dot{animation:none}
+  }
+  /* under ~620px the three items stack two-up; the rules would sit orphaned */
+  @media (max-width:620px){
+    #jordys5 .j5-bar-sep{display:none}
+    #jordys5 .j5-bar-item{padding-inline:10px}
+  }
+</style>
+
+<div class="j5-bar">
+  <div class="j5-bar-in">
+    <!-- ★HOURS default = weekly pattern; the script swaps in the live state -->
+    <span class="j5-bar-item" id="j5-status">
+      <span class="dot" aria-hidden="true"></span><span id="j5-status-t">Wed&ndash;Sun &middot; 5&ndash;9pm</span>
+    </span>
+    <i class="j5-bar-sep" aria-hidden="true"></i>
+    <span class="j5-bar-item">Beside the playground</span>
+    <i class="j5-bar-sep" aria-hidden="true"></i>
+    <a class="j5-bar-item" href="https://maps.google.com/?q=480+Casuarina+Way,+Casuarina+NSW+2487" target="_blank" rel="noopener">
+      480 Casuarina Way <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</div>
+
+<!-- ================= 03 · FOOD ★NEW =================
   The gap v4 had: not one image of a pizza on the homepage.
   Photography does the selling; copy gets out of the way.
 
@@ -368,15 +447,15 @@
   </div>
 </section>
 
-<!-- ================= 03 · HAPPY NIGHTS BAND =================
+<!-- ================= 04 · HAPPY NIGHTS BAND =================
   The ticker is now about ONE thing. No hours, no sourdough, no
-  address — those all have proper homes further down (§04, footer,
+  address — those all have proper homes further down (§02, §05, footer,
   JSON-LD), so nothing is lost by taking them out of here.
 
   It sits AFTER the food section, not under the hero. Two reasons:
   appetite at full price should land before any discount does (a
   pattern of deal-led messaging teaches people to wait for the deal),
-  and putting the one colour block between §02 and §04 breaks up what
+  and putting the one colour block between §03 and §05 breaks up what
   would otherwise be an unbroken run of dark photo sections. Scrolling
   past the hero now rewards you with pizza, not a price.
 
@@ -457,7 +536,7 @@
   </div>
 </a>
 
-<!-- ================= 04 · THE NIGHT + WHERE ★NEW =================
+<!-- ================= 05 · THE NIGHT + WHERE ★NEW =================
   Merged on purpose. The venue photograph IS the location proof,
   so atmosphere and address share one image instead of two sections.
 
@@ -550,7 +629,7 @@
   </div>
 </section>
 
-<!-- ================= 05 · TRUST LINE ★NEW =================
+<!-- ================= 06 · TRUST LINE ★NEW =================
   One line, not a section. 4.7 / 349 verified on Google 20 Aug 2026.
   Say the number — "349" is more credible than "300+".
 
@@ -598,7 +677,7 @@
   -->
 </section>
 
-<!-- ================= 06 · SIGNUP =================
+<!-- ================= 07 · SIGNUP =================
   v4 section, one change: the underlay moved from billi.PNG to the
   house-pours shelf shot, because billi.PNG now carries §03 and
   running the same photograph twice on one page reads as thin.
@@ -673,7 +752,7 @@
   </div>
 </section>
 
-<!-- ================= 07 · FOOTER ================= -->
+<!-- ================= 08 · FOOTER ================= -->
 <style>
   #jordys5 .j5-foot{background:var(--paper);padding:clamp(36px,4.5vw,60px) clamp(20px,4vw,64px) clamp(28px,3.5vw,44px)}
   #jordys5 .j5-foot-in{max-width:1560px;margin-inline:auto}
@@ -770,6 +849,43 @@
     },{threshold:.08,rootMargin:'1600px 0px -6% 0px'});
     rvEls.forEach(function(el){io.observe(el)});
   }
+
+  /* ★HOURS live status for the §02 bar — Wed–Sun 17:00–21:00, Australia/Sydney.
+     Every branch is covered so the bar is never wrong:
+       open day, 17–21   -> "Open now · till 9pm"     (green dot, pulsing)
+       open day, < 17    -> "Opens 5pm tonight"
+       Wed–Sat, >= 21    -> "Open again tomorrow · 5pm"
+       Sun,     >= 21    -> "Back Wednesday · 5pm"    (closed Mon + Tue)
+       Mon               -> "Back Wednesday · 5pm"
+       Tue               -> "Open tomorrow · 5pm"
+     If Intl/timeZone is unavailable the HTML default ("Wed–Sun · 5–9pm")
+     stands, which is true on every day of the week. */
+  try{
+    var sf=new Intl.DateTimeFormat('en-AU',{timeZone:'Australia/Sydney',weekday:'short',hour:'numeric',hour12:false});
+    var sday='',shour=0;
+    sf.formatToParts(new Date()).forEach(function(pt){
+      if(pt.type==='weekday')sday=pt.value;
+      if(pt.type==='hour')shour=parseInt(pt.value,10);
+    });
+    var open=['Wed','Thu','Fri','Sat','Sun'].indexOf(sday)>-1;
+    var wrap=document.getElementById('j5-status'), txt=document.getElementById('j5-status-t'), msg='';
+    if(txt){
+      if(open&&shour>=17&&shour<21){
+        msg='Open now · till 9pm';
+        if(wrap)wrap.classList.add('is-open');
+      }else if(open&&shour<17){
+        msg='Opens 5pm tonight';
+      }else if(open){                       /* after 9pm on a trading night */
+        msg=(sday==='Sun')?'Back Wednesday · 5pm':'Open again tomorrow · 5pm';
+      }else if(sday==='Tue'){
+        msg='Open tomorrow · 5pm';
+      }else{                                /* Monday */
+        msg='Back Wednesday · 5pm';
+      }
+      txt.textContent=msg;
+      if(wrap)wrap.setAttribute('aria-label','Jordy\'s is '+msg.replace(' · ',', ')+'. Open Wednesday to Sunday, 5pm till 9pm.');
+    }
+  }catch(e){}
 
   /* ★HAPPY live state — the ticker is the only Happy Nights moment on the
      page, so it's the thing that gets to know what day it is. Both marquee
