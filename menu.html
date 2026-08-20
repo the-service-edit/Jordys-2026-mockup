@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menu — Jordy's Casuarina</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,340..900,0..100,0..1;1,9..144,340..900,0..100,0..1&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;--ink:#241B12;--ink70:rgba(36,27,18,.72);--ink45:rgba(36,27,18,.45);
+    --terra:#C2724C;--terraD:#A2532F;--terraDD:#8A431F;
+    --disp:'Fraunces',Georgia,serif;--grot:'Jost',Arial,sans-serif;
+    --ease:cubic-bezier(.22,.9,.3,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--grot);color:var(--ink);background:var(--paper);line-height:1.5;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:4px}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* ============ shared buttons ============ */
+  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:13.5px;padding:17px 30px;border-radius:6px;border:0;min-height:54px;white-space:nowrap;cursor:pointer;overflow:hidden;isolation:isolate;transition:color .22s var(--ease),transform .18s var(--ease);box-shadow:0 8px 24px rgba(36,27,18,.18)}
+  .btn::before{content:"";position:absolute;inset:0;background:var(--ink);border-radius:inherit;transform:translateY(101%);transition:transform .28s var(--ease);z-index:-1}
+  .btn:hover{color:var(--paper)}
+  .btn:hover::before{transform:none}
+  .btn--terra{background:var(--terraD);color:#fff}
+  .btn--ink{background:rgba(36,27,18,.88);color:#fff}
+  @media (prefers-reduced-motion:reduce){.btn,.btn::before{transition:none}}
+
+  /* ============ header (same as homepage) ============ */
+  .head{position:fixed;top:0;left:0;right:0;z-index:1500;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(16px,2.6vw,36px);transition:background .3s ease,box-shadow .3s ease,padding .3s ease}
+  .head.scrolled{background:var(--paper);box-shadow:0 1px 0 rgba(36,27,18,.14);padding-block:10px}
+  .burger{display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:54px;height:54px;border:0;border-radius:10px;background:var(--paper);cursor:pointer;box-shadow:0 8px 24px rgba(36,27,18,.18);transition:transform .2s var(--ease)}
+  .burger:hover{transform:scale(1.06)}
+  .burger span{display:block;height:2.5px;width:26px;background:var(--ink);border-radius:2px}
+  .logo{position:absolute;left:50%;top:16px;transform:translateX(-50%)}
+  .logo img{height:clamp(64px,14vw,96px);width:auto;filter:drop-shadow(0 4px 14px rgba(36,27,18,.25));transition:height .3s var(--ease)}
+  .head.scrolled .logo img{height:52px}
+  .head-cta{display:none}
+  @media (min-width:700px){.head-cta{display:inline-flex}}
+
+  /* mobile overlay */
+  .ovl{position:fixed;inset:0;background:var(--terra);color:#fff;z-index:3000;display:flex;flex-direction:column;padding:24px;transform:translateY(-103%);transition:transform .38s var(--ease);overflow:auto}
+  .ovl.open{transform:none}
+  .ovl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6vh}
+  .ovl-top img{height:44px;width:auto;filter:brightness(0) invert(1)}
+  .ovl-close{background:none;border:0;color:#fff;font-family:var(--grot);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px;cursor:pointer;padding:12px}
+  .ovl-nav{display:flex;flex-direction:column}
+  .ovl-nav a{font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;text-transform:uppercase;font-size:clamp(42px,10vw,72px);line-height:1.14;display:flex;align-items:baseline;gap:14px}
+  .ovl-nav a i{font-style:normal;font-family:var(--grot);font-weight:500;font-size:11px;letter-spacing:.24em;opacity:.75}
+  .ovl-sub{margin-top:auto;padding-top:5vh;display:flex;flex-direction:column;gap:12px}
+  .ovl-sub a{font-weight:500;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:rgba(255,255,255,.85)}
+
+  /* ============ hero ============ */
+  .hero{position:relative;min-height:clamp(420px,62vh,600px);display:flex;align-items:flex-end;overflow:clip;background:var(--ink)}
+  .hero-media{position:absolute;inset:0}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,27,18,.34),rgba(36,27,18,.18) 40%,rgba(36,27,18,.62))}
+  .hero-in{position:relative;z-index:1;color:#fff;padding:0 clamp(20px,4vw,64px) clamp(36px,5vw,64px);max-width:1560px;margin-inline:auto;width:100%}
+  .kick{font-weight:600;text-transform:uppercase;letter-spacing:.28em;font-size:12px;display:block}
+  .hero h1{font-family:var(--disp);font-weight:640;font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;text-transform:none;font-size:clamp(56px,10vw,140px);line-height:.95;letter-spacing:-.02em;margin-top:10px}
+  .hero p{font-weight:500;text-transform:uppercase;letter-spacing:.18em;font-size:12.5px;margin-top:18px;color:rgba(255,255,255,.92)}
+
+  /* anchor row */
+  .anchors{display:flex;flex-wrap:wrap;gap:6px 26px;justify-content:center;padding:18px 20px;border-bottom:1px solid rgba(36,27,18,.14);background:var(--paper)}
+  .anchors a{font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:11.5px;color:var(--ink70);padding:6px 2px;position:relative}
+  .anchors a:hover{color:var(--terraD)}
+
+  /* ============ menu body ============ */
+  .menu{max-width:900px;margin-inline:auto;padding:clamp(50px,7vw,100px) clamp(20px,4vw,40px) clamp(60px,8vw,110px)}
+  .m-sec{padding-top:clamp(34px,4vw,54px)}
+  .m-sec + .m-sec{margin-top:clamp(40px,5vw,70px)}
+  .m-sec h2{
+    font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;font-size:clamp(34px,5.4vw,62px);line-height:1;letter-spacing:-.01em;color:var(--terraD);
+  }
+  .m-note{font-weight:500;text-transform:uppercase;letter-spacing:.2em;font-size:11.5px;color:var(--ink70);margin-top:14px;line-height:2}
+  .m-note b{color:var(--terraD);font-weight:600}
+  .m-items{margin-top:clamp(26px,3.4vw,40px);display:flex;flex-direction:column;gap:clamp(22px,2.8vw,30px)}
+  .m-item{max-width:760px}
+  .m-row{display:flex;align-items:baseline;gap:14px}
+  .m-name{font-family:var(--disp);font-weight:620;font-variation-settings:'opsz' 100,'SOFT' 88,'WONK' 1;font-size:clamp(21px,2.4vw,27px);line-height:1.1;letter-spacing:-.005em}
+  .m-tag{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:10px;color:var(--terra);flex:none;transform:translateY(-2px)}
+  .m-dots{flex:1;border-bottom:1.5px dotted rgba(36,27,18,.28);transform:translateY(-4px);min-width:24px}
+  .m-price{font-weight:700;font-size:clamp(16px,1.7vw,19px);color:var(--terraD);flex:none;letter-spacing:.02em}
+  .m-desc{font-weight:400;font-size:15px;line-height:1.55;color:var(--ink70);margin-top:6px;max-width:56ch}
+  .m-sub{font-weight:600;text-transform:uppercase;letter-spacing:.26em;font-size:12.5px;color:var(--ink);margin-top:clamp(30px,3.6vw,44px)}
+  .m-sub::after{content:"";display:block;width:34px;height:2px;background:var(--terra);margin-top:8px}
+
+  /* happy nights strip */
+  .m-happy{background:var(--terra);color:#fff;border-radius:8px;padding:18px 22px;margin-top:clamp(26px,3vw,36px);display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+  .m-happy b{font-family:var(--disp);font-weight:640;font-variation-settings:'opsz' 100,'SOFT' 88,'WONK' 1;font-size:clamp(19px,2vw,24px);letter-spacing:0}
+  .m-happy span{font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:11.5px;color:rgba(255,255,255,.92)}
+
+  /* final CTA */
+  .m-cta{display:flex;flex-wrap:wrap;gap:14px 18px;justify-content:center;padding:clamp(40px,5vw,60px) 20px clamp(60px,7vw,90px);border-top:1px solid rgba(36,27,18,.14)}
+
+  /* footer (same as homepage) */
+  .foot{background:var(--paper);padding:clamp(36px,4.5vw,60px) clamp(20px,4vw,64px) clamp(28px,3.5vw,44px);border-top:1px solid rgba(36,27,18,.08)}
+  .foot-in{max-width:1560px;margin-inline:auto}
+  .foot-logo img{height:44px;width:auto}
+  .foot-rule{border:0;border-top:1px solid rgba(36,27,18,.18);margin:clamp(18px,2.2vw,28px) 0}
+  .foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 32px}
+  .foot-row p,.foot-row a{font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;line-height:1.9;color:var(--ink70)}
+  .foot-row a:hover{color:var(--terraD)}
+  .foot-sign{font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--terraD)}
+</style>
+</head>
+<body>
+
+<header class="head" id="head">
+  <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="ovl">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="logo" href="index.html" aria-label="Jordy's Casuarina — home">
+    <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=750w" alt="Jordy's" width="750" height="530" style="filter:brightness(0) invert(1) drop-shadow(0 4px 14px rgba(36,27,18,.35))">
+  </a>
+  <a class="btn btn--terra head-cta" href="https://www.meandu.app/jordys/pickup">Order now</a>
+</header>
+
+<div class="ovl" id="ovl" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="ovl-top">
+    <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's">
+    <button class="ovl-close" type="button">Close ✕</button>
+  </div>
+  <nav class="ovl-nav" aria-label="Site">
+    <a href="index.html">Home <i>01</i></a>
+    <a href="https://www.meandu.app/jordys/pickup">Order <i>02</i></a>
+    <a href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Book <i>03</i></a>
+    <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">Instagram <i>04</i></a>
+  </nav>
+  <div class="ovl-sub">
+    <a href="https://jordyscasuarina.com/jordys-merch">Jordy's merch ↗</a>
+    <a href="https://app.gift-it.com.au/buy/jordyspizza">Gift cards ↗</a>
+    <a href="mailto:relax@jordyscasuarina.com">relax@jordyscasuarina.com</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <img fetchpriority="high" src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/77d5dadd-90d9-43b7-a522-bd7849b4ee56/Screenshot+2026-03-19+at+07.41.37.png?format=1500w" alt="" width="590" height="776">
+  </div>
+  <div class="hero-in">
+    <span class="kick">Eat in &middot; Takeaway &middot; Wed&ndash;Sun 5&ndash;9pm</span>
+    <h1>the menu.</h1>
+    <p>Dip your crust &mdash; Napoli &middot; Ranch &middot; Hot Honey &middot; Buffalo Blue &middot; Chilli Oil &mdash; $4</p>
+  </div>
+</section>
+
+<nav class="anchors" aria-label="Menu sections">
+  <a href="#pizzas">Pizzas</a>
+  <a href="#notpizza">Not Pizza</a>
+  <a href="#salads">Salads</a>
+  <a href="#groms">Groms</a>
+  <a href="#calzones">Calzones</a>
+  <a href="#sweet">Sweet</a>
+  <a href="#drinks">Drinks</a>
+</nav>
+
+<main class="menu">
+
+  <!-- ================= PIZZAS ================= -->
+  <section class="m-sec" id="pizzas">
+    <h2>Pizzas &mdash; Pizzas &mdash; Pizzas</h2>
+    <p class="m-note">Naturally leavened sourdough &middot; named after the neighbourhood &middot; <b>GF base +$4 on any pizza</b></p>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">New Italy</span><span class="m-tag">Veg</span><span class="m-dots"></span><span class="m-price">$27</span></div><p class="m-desc">Fior di latte, Napoli &amp; basil</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Casuarina</span><span class="m-dots"></span><span class="m-price">$30</span></div><p class="m-desc">Wagyu beef, red cheddar, Napoli, dill gherkins, white onion, sesame seeds &amp; American mustard</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Fingal Head</span><span class="m-tag">Veg</span><span class="m-dots"></span><span class="m-price">$29</span></div><p class="m-desc">Fior di latte, gorgonzola, mascarpone bianco, Napoli, pecorino &amp; chives</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Billinudgel</span><span class="m-dots"></span><span class="m-price">$32</span></div><p class="m-desc">Pepperoni, 'nduja, Napoli, ricotta, red onion, bourbon jalape&ntilde;os, fior di latte, honey &amp; thyme</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Cabarita</span><span class="m-dots"></span><span class="m-price">$29</span></div><p class="m-desc">Chicken, market greens, mascarpone bianco, fior di latte, parmesan</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Burringbah</span><span class="m-dots"></span><span class="m-price">$32</span></div><p class="m-desc">Fennel pork sausage, sweet &amp; spicy peppers, caramelised onion, Napoli, provolone</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Mullumbimby</span><span class="m-tag">Vegan</span><span class="m-dots"></span><span class="m-price">$30</span></div><p class="m-desc">Pickled veggies, market greens, Napoli, vegan 'mozzarella', olives, hemp parm</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Pottsville</span><span class="m-dots"></span><span class="m-price">$32</span></div><p class="m-desc">Pepperoni, market greens, Napoli, red onion, leg ham, pineapple, olives, fior di latte</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Stokers Siding</span><span class="m-tag">Veg</span><span class="m-dots"></span><span class="m-price">$29</span></div><p class="m-desc">Mixed mushrooms, thyme, garlic, mascarpone bianco, pecorino, chives</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Brunswick</span><span class="m-dots"></span><span class="m-price">$34</span></div><p class="m-desc">Australian tiger prawns, clams, mascarpone bianco, cherry tomatoes, 'nduja, capers &amp; herbs</p></div>
+    </div>
+    <p class="m-note" style="margin-top:clamp(26px,3vw,36px)"><b>Add to any pizza:</b> anchovies +$3 &middot; artichokes +$3 &middot; extra mozzarella +$3 &middot; olives +$3 &middot; bourbon jalape&ntilde;os +$3 &middot; mushrooms +$4 &middot; pepperoni +$4 &middot; ham +$4</p>
+    <p class="m-note">Psst &mdash; rotating specials live on our <a href="https://www.meandu.app/jordys/pickup" style="color:var(--terraD);text-decoration:underline">online ordering</a>. Go have a look.</p>
+  </section>
+
+  <!-- ================= NOT PIZZA ================= -->
+  <section class="m-sec" id="notpizza">
+    <h2>Not Pizza &mdash; Not Pizza</h2>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Mediterranean Martini</span><span class="m-tag">Vegan &middot; GF</span><span class="m-dots"></span><span class="m-price">$12</span></div><p class="m-desc">House marinated olives</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Daily Dough</span><span class="m-tag">Vegan</span><span class="m-dots"></span><span class="m-price">$12</span></div><p class="m-desc">Warm focaccia, organic olive oil, balsamic</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Burrata McRome</span><span class="m-tag">Veg &middot; GF</span><span class="m-dots"></span><span class="m-price">$21</span></div><p class="m-desc">Byron Bay burrata, macadamia romesco, organic olive oil</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Stuffed Scallop Shell</span><span class="m-dots"></span><span class="m-price">$24</span></div><p class="m-desc">Local spanner crab &amp; tiger prawns, coconut, tomato, peppers &amp; parmesan &mdash; stuffed &amp; baked on the half shell</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Neighbourhood Gnocchi</span><span class="m-tag">Veg</span><span class="m-dots"></span><span class="m-price">$34</span></div><p class="m-desc">Cudgen sweet potato gnocchi, mascarpone bianco, mixed mushrooms, cherry tomato, pistachio, truffle oil, parmesan</p></div>
+    </div>
+  </section>
+
+  <!-- ================= SALADS ================= -->
+  <section class="m-sec" id="salads">
+    <h2>Salads &mdash; Salads &mdash; Salads</h2>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Tuscan Slaw</span><span class="m-tag">Vegan</span><span class="m-dots"></span><span class="m-price">$17</span></div><p class="m-desc">Mixed cabbage, fennel, target beets, spring onion, pickled shallots, capers, pecans, house vinaigrette</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Water Baby</span><span class="m-tag">Veg</span><span class="m-dots"></span><span class="m-price">$17</span></div><p class="m-desc">Rocket, baby cos, pickled shallots, pear, capers, herbs, parmesan, Sicilian vinaigrette</p></div>
+    </div>
+  </section>
+
+  <!-- ================= GROMS ================= -->
+  <section class="m-sec" id="groms">
+    <h2>Groms &mdash; Groms &mdash; Groms</h2>
+    <p class="m-note">For the kids &middot; small / large</p>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Froggy Beach</span><span class="m-tag">Veg</span><span class="m-dots"></span><span class="m-price">$17 / $27</span></div><p class="m-desc">Napoli &amp; mozzarella</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Little Mali</span><span class="m-dots"></span><span class="m-price">$19 / $29</span></div><p class="m-desc">Napoli, ham, pineapple &amp; mozzarella</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Bangalow</span><span class="m-dots"></span><span class="m-price">$19 / $29</span></div><p class="m-desc">Napoli, ham &amp; mozzarella</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Main Beach</span><span class="m-dots"></span><span class="m-price">$19 / $29</span></div><p class="m-desc">Napoli, pepperoni, mozzarella</p></div>
+    </div>
+  </section>
+
+  <!-- ================= CALZONES ================= -->
+  <section class="m-sec" id="calzones">
+    <h2>Calzones &mdash; Calzones</h2>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Kingy Calzone</span><span class="m-tag">Veg</span><span class="m-dots"></span><span class="m-price">$21</span></div><p class="m-desc">Garlic, herbs, ricotta, fior di latte, Napoli &mdash; it could get better, see adds</p></div>
+    </div>
+  </section>
+
+  <!-- ================= SWEET ================= -->
+  <section class="m-sec" id="sweet">
+    <h2>Sweet &mdash; Sweet &mdash; Sweet</h2>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Tiramisu</span><span class="m-dots"></span><span class="m-price">$15</span></div></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Torta Caprese</span><span class="m-dots"></span><span class="m-price">$15</span></div></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Gelato</span><span class="m-dots"></span><span class="m-price">$7</span></div><p class="m-desc">Ask your server for today's flavours</p></div>
+    </div>
+  </section>
+
+  <!-- ================= DRINKS ================= -->
+  <section class="m-sec" id="drinks">
+    <h2>Drinks &mdash; Drinks &mdash; Drinks</h2>
+    <!-- ★HAPPY -->
+    <div class="m-happy"><b>Happy Nights &mdash; Wed &amp; Thu</b><span>$10 beer, wine &amp; margaritas with any pizza purchase</span></div>
+
+    <p class="m-sub">Classics &amp; Cocktails</p>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Aperol Spritz</span><span class="m-dots"></span><span class="m-price">$18</span></div><p class="m-desc">Aperol, prosecco &amp; soda</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Margherita of Savoy</span><span class="m-dots"></span><span class="m-price">$22</span></div><p class="m-desc">Los Sundays blanco, Cointreau, lime &mdash; regs / coconut / spicy</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">007 Martini</span><span class="m-dots"></span><span class="m-price">$22</span></div><p class="m-desc">Vodka, dry vermouth rinse, olives</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Native Negroni</span><span class="m-dots"></span><span class="m-price">$22</span></div><p class="m-desc">Gin, Okar island bitter, vermouth rossa</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Old Fashioned</span><span class="m-dots"></span><span class="m-price">$22</span></div><p class="m-desc">Buffalo Trace bourbon, bitters &amp; orange</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Amaretto Sour</span><span class="m-dots"></span><span class="m-price">$23</span></div><p class="m-desc">Disaronno, Buffalo Trace bourbon, lemon, aquafaba</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Ship 'Wrecked' Martini</span><span class="m-dots"></span><span class="m-price">$23</span></div><p class="m-desc">Kraken spiced rum, liqueur de poire, cinnamon, lime</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Sex in the City</span><span class="m-dots"></span><span class="m-price">$22</span></div><p class="m-desc">Vodka, Cointreau, pomegranate, lime</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Tom W. Collins</span><span class="m-dots"></span><span class="m-price">$23</span></div><p class="m-desc">Gin, limoncello, watermelon, soda</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Spirit &amp; Soda</span><span class="m-dots"></span><span class="m-price">$16</span></div><p class="m-desc">If we've got it, we'll pour it</p></div>
+    </div>
+
+    <p class="m-sub">Fizz</p>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Rivani Prosecco Extra Dry</span><span class="m-dots"></span><span class="m-price">$14 / $58</span></div><p class="m-desc">Veneto, Italy</p></div>
+    </div>
+
+    <p class="m-sub">White</p>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">MDI Pinot Grigio 2023</span><span class="m-dots"></span><span class="m-price">$14 / $54</span></div><p class="m-desc">Murray Darling, VIC</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Emmalene Sauvignon Blanc 2024</span><span class="m-dots"></span><span class="m-price">$14 / $56</span></div><p class="m-desc">Adelaide Hills, SA</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Alkina Kin Semillon 2023</span><span class="m-dots"></span><span class="m-price">$17 / $72</span></div><p class="m-desc">Barossa Valley, SA</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Denton Shed Chardonnay 2023</span><span class="m-dots"></span><span class="m-price">$15 / $58</span></div><p class="m-desc">Yarra Valley, VIC</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">XO Wine Co. 'Games Night' Riesling 2021</span><span class="m-dots"></span><span class="m-price">$14 / $56</span></div><p class="m-desc">Adelaide Hills, SA</p></div>
+    </div>
+
+    <p class="m-sub">A Bit of Skin &mdash; Ros&eacute; &amp; Orange</p>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Unico Zelo 'Origami' Ros&eacute; 2023</span><span class="m-dots"></span><span class="m-price">$14 / $54</span></div><p class="m-desc">Adelaide Hills, SA</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Sven Joschke 'L'Ambre' 2022</span><span class="m-tag">Orange</span><span class="m-dots"></span><span class="m-price">$17 / $68</span></div><p class="m-desc">Barossa Valley, SA</p></div>
+    </div>
+
+    <p class="m-sub">Red</p>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">First Drop 'Mothers Milk' Shiraz 2022</span><span class="m-dots"></span><span class="m-price">$14 / $56</span></div><p class="m-desc">Barossa Valley, SA</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Babo Chianti DOCG 2021</span><span class="m-dots"></span><span class="m-price">$16 / $64</span></div><p class="m-desc">Tuscany, Italy</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Two Tonne Pinot Noir 2022</span><span class="m-dots"></span><span class="m-price">$17 / $75</span></div><p class="m-desc">Tamar Valley, TAS</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Tashini Red Blend 2022</span><span class="m-tag">Chilled</span><span class="m-dots"></span><span class="m-price">$16 / $65</span></div><p class="m-desc">Limestone Coast, SA</p></div>
+    </div>
+
+    <p class="m-sub">Tap &amp; Tinnies</p>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Balter 'Captain Sensible'</span><span class="m-dots"></span><span class="m-price">3.5%</span></div><p class="m-desc">Currumbin, QLD</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Earth Beer Co. Brown Ale</span><span class="m-dots"></span><span class="m-price">4.2%</span></div><p class="m-desc">Cudgen, NSW</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Young Henrys Premium Lager</span><span class="m-dots"></span><span class="m-price">4.2%</span></div><p class="m-desc">Newtown, NSW</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Mountain Culture 'Status Quo' Pale Ale</span><span class="m-dots"></span><span class="m-price">5.2%</span></div><p class="m-desc">Katoomba, NSW</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Balter 'Hazy IPA'</span><span class="m-dots"></span><span class="m-price">6%</span></div><p class="m-desc">Currumbin, QLD</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Seven Mile 'West Coast IPA'</span><span class="m-dots"></span><span class="m-price">7.5%</span></div><p class="m-desc">Ballina, NSW</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Common People Co. 'Moonless Midnight' Stout</span><span class="m-dots"></span><span class="m-price">5.9%</span></div><p class="m-desc">Bangalow, NSW</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Little Dragon Ginger Beer</span><span class="m-dots"></span><span class="m-price">4%</span></div><p class="m-desc">Byron Bay, NSW</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Hiatus Beers Pacific Ale</span><span class="m-tag">Non-alc</span><span class="m-dots"></span><span class="m-price">0.5%</span></div><p class="m-desc">Gold Coast, QLD</p></div>
+    </div>
+
+    <p class="m-sub">Softies</p>
+    <div class="m-items">
+      <div class="m-item"><div class="m-row"><span class="m-name">Coke / Coke Zero / Sprite</span><span class="m-dots"></span><span class="m-price">$5</span></div></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Bundaberg Ginger Beer</span><span class="m-dots"></span><span class="m-price">$5</span></div></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">S.Pellegrino Sodas</span><span class="m-dots"></span><span class="m-price">$5</span></div><p class="m-desc">Lemon / orange / grapefruit</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">Fruit Juice</span><span class="m-dots"></span><span class="m-price">$5</span></div><p class="m-desc">Apple or tropical</p></div>
+      <div class="m-item"><div class="m-row"><span class="m-name">S.Pellegrino Sparkling Water 500ml</span><span class="m-dots"></span><span class="m-price">$8</span></div></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="m-cta">
+  <a class="btn btn--terra" href="https://www.meandu.app/jordys/pickup">Order now</a>
+  <a class="btn btn--ink" href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Make a booking</a>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <a class="foot-logo" href="index.html" aria-label="Jordy's Casuarina — home">
+      <img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's" width="120" height="85">
+    </a>
+    <hr class="foot-rule">
+    <div class="foot-row">
+      <p>480 Casuarina Way, at The Commons, Casuarina NSW &middot; Wed&ndash;Sun 5&ndash;9pm &middot; <a href="mailto:relax@jordyscasuarina.com">relax@jordyscasuarina.com</a></p>
+      <p class="foot-sign">Eat your crust. &mdash; Jordy &middot; &copy; 2026 Jordy's Casuarina</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger=document.querySelector('.burger'),ovl=document.getElementById('ovl'),closeBtn=document.querySelector('.ovl-close');
+  function setMenu(open){
+    ovl.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    document.documentElement.style.overflow=open?'hidden':'';
+  }
+  burger.addEventListener('click',function(){setMenu(true)});
+  closeBtn.addEventListener('click',function(){setMenu(false)});
+  ovl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+  var head=document.getElementById('head');
+  window.addEventListener('scroll',function(){
+    head.classList.toggle('scrolled',(window.scrollY||window.pageYOffset)>40);
+  },{passive:true});
+  /* logo returns to orange once the header goes paper */
+  var logoImg=document.querySelector('.logo img');
+  window.addEventListener('scroll',function(){
+    logoImg.style.filter=head.classList.contains('scrolled')?'none':'brightness(0) invert(1) drop-shadow(0 4px 14px rgba(36,27,18,.35))';
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
