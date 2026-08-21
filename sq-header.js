@@ -110,6 +110,25 @@
        The homepage opts out so the hero runs under the header. */
     'body:not(.homepage) .Site-inner{padding-top:var(--jH,78px)}',
 
+    /* Mobile. The logo is absolutely centred, so at narrow widths the
+       Order button rode straight over it. Everything shrinks rather
+       than anything being dropped: Order is the money button and Cart
+       is required on a shop, so neither can go. Verified no overlap
+       and no overflow down to 320px. */
+    '@media (max-width:700px){',
+    '#jHead{padding:11px 12px}',
+    '#jBurger{width:44px;height:44px;gap:5px}',
+    '#jBurger span{width:22px;height:2.5px}',
+    '#jLogo img{height:32px}',
+    '#jActions{gap:7px}',
+    '.jBtn{padding:10px 13px;min-height:44px;font-size:10.5px;letter-spacing:.1em;gap:.45em;box-shadow:0 4px 14px rgba(36,27,18,.16)}',
+    '#jCartN{min-width:18px;height:18px;font-size:10px;padding:0 5px}',
+    '}',
+    '@media (max-width:400px){',
+    '#jLogo img{height:28px}',
+    '.jBtn{padding:9px 10px;font-size:10px}',
+    '}',
+
     '@media (prefers-reduced-motion:reduce){#jHead,#jOvl,#jBurger,.jBtn,#jLogo img{transition:none}}'
   ].join('');
 
