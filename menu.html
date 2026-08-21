@@ -57,7 +57,14 @@
   .hero{position:relative;min-height:clamp(420px,62vh,600px);display:flex;align-items:flex-end;overflow:clip;background:var(--ink)}
   .hero-media{position:absolute;inset:0}
   .hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,27,18,.34),rgba(36,27,18,.18) 40%,rgba(36,27,18,.62))}
+  .hero-media::after{content:"";position:absolute;inset:0;background:
+      linear-gradient(to right, rgba(36,27,18,.86) 0%, rgba(36,27,18,.68) 28%, rgba(36,27,18,.38) 52%, rgba(36,27,18,.10) 76%, rgba(36,27,18,0) 92%),
+      linear-gradient(to top,   rgba(36,27,18,.76) 0%, rgba(36,27,18,.38) 32%, rgba(36,27,18,.06) 66%, rgba(36,27,18,0) 88%),
+      linear-gradient(rgba(36,27,18,.12), rgba(36,27,18,.12))}
+  /* Bright landscape hero sits right under the headline. Scrim is
+     left-weighted (type is bottom-left) so the right-hand pizza stays
+     fully exposed; the shadow is what lets the scrim stay this light. */
+  .hero-in > *{text-shadow:0 2px 26px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.42)}
   .hero-in{position:relative;z-index:1;color:#fff;padding:0 clamp(20px,4vw,64px) clamp(36px,5vw,64px);max-width:1560px;margin-inline:auto;width:100%}
   .kick{font-weight:600;text-transform:uppercase;letter-spacing:.28em;font-size:12px;display:block}
   .hero h1{font-family:var(--disp);font-weight:640;font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;text-transform:none;font-size:clamp(56px,10vw,140px);line-height:.95;letter-spacing:-.02em;margin-top:10px}
@@ -141,10 +148,10 @@
 <section class="hero">
   <div class="hero-media" aria-hidden="true">
     <img fetchpriority="high" decoding="async"
-        src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4197e8f3-5967-42cb-8094-e48c1635c3b3/PIZZA+MENU.png?format=1500w"
-        srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4197e8f3-5967-42cb-8094-e48c1635c3b3/PIZZA+MENU.png?format=1000w 1000w,
-                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4197e8f3-5967-42cb-8094-e48c1635c3b3/PIZZA+MENU.png?format=1500w 1500w,
-                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4197e8f3-5967-42cb-8094-e48c1635c3b3/PIZZA+MENU.png?format=2500w 1536w"
+        src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/57ba54fe-ddf0-4122-87b2-d47e1690abd8/ChatGPT+Image+Aug+21%2C+2026%2C+08_14_18+AM.png?format=1500w"
+        srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/57ba54fe-ddf0-4122-87b2-d47e1690abd8/ChatGPT+Image+Aug+21%2C+2026%2C+08_14_18+AM.png?format=1000w 1000w,
+                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/57ba54fe-ddf0-4122-87b2-d47e1690abd8/ChatGPT+Image+Aug+21%2C+2026%2C+08_14_18+AM.png?format=1500w 1500w,
+                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/57ba54fe-ddf0-4122-87b2-d47e1690abd8/ChatGPT+Image+Aug+21%2C+2026%2C+08_14_18+AM.png?format=2500w 1536w"
         sizes="100vw"
         alt="" width="1536" height="1024">
   </div>
