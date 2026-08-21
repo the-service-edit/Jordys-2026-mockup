@@ -218,10 +218,16 @@
     max-width:38ch;margin-top:clamp(20px,2.4vw,30px);
   }
   #jordysM .m-hero-ctas{display:flex;flex-wrap:wrap;gap:12px 14px;margin-top:clamp(24px,3vw,36px)}
+  /* Desktop. The tee shots are 2500x3750, a 2:3 portrait. Left
+     unconstrained, a 50vw column on a wide screen builds a 1600px tall
+     hero that never fits a viewport. Two constraints fix it: cap the
+     content width, and square the crop. Squaring also helps the
+     picture, because the print on the chest becomes the subject
+     instead of a figure lost in a tall frame. */
   @media (min-width:860px){
-    #jordysM .m-hero{grid-template-columns:1fr 1fr;align-items:stretch}
+    #jordysM .m-hero{grid-template-columns:1fr 1fr;align-items:stretch;max-width:1560px;margin-inline:auto;border-bottom:0}
     #jordysM .m-hero-media{order:0}
-    #jordysM .m-hero-media img{aspect-ratio:auto;min-height:100%}
+    #jordysM .m-hero-media img{aspect-ratio:1/1;height:auto;min-height:0;object-position:50% 26%}
   }
 </style>
 
