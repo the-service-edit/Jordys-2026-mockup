@@ -23,9 +23,12 @@
                           Sits AFTER the food so appetite lands before
                           the discount does.
     05  THE NIGHT + WHERE ★NEW  people + address merged, directions CTA
-    06  TRUST LINE        ★NEW  4.7 / 349 — one line, not a section
-    07  SIGNUP            (v4 — underlay swapped, billi.PNG moved to §03)
-    08  FOOTER            (v4, unchanged)
+    06  SIGNUP            (v4 — underlay swapped, billi.PNG moved to §03)
+                          Carries the 4.7 / 349 rating beside the
+                          Instagram link, as v4 did. There is no separate
+                          trust section: it would have stated the same
+                          number twice.
+    07  FOOTER            (v4, unchanged)
 
   Two strips, and they are deliberately different animals: §02 is
   static / paper / ink and carries facts; §04 moves / terracotta and
@@ -43,7 +46,7 @@
     ★HERO-IMG    the two hero crops
     ★FOOD-IMG    the pizza hero — the money shot
     ★NIGHT-IMG   ⚠ PLACEHOLDER — swap for the dusk/festoon/families shot
-    ★REVIEW      optional single Google review, currently off
+    ★REVIEWS     the 4.7 / 349 rating pill, in §06
     ★SIGNUP      Talkbox form action
     ★HOURS ★HAPPY  facts that repeat
 
@@ -629,55 +632,7 @@
   </div>
 </section>
 
-<!-- ================= 06 · TRUST LINE ★NEW =================
-  One line, not a section. 4.7 / 349 verified on Google 20 Aug 2026.
-  Say the number — "349" is more credible than "300+".
-
-  ★REVIEW — to add one real review, uncomment the blockquote below and
-  paste it verbatim from Google with the reviewer's first name.
-  Do not write one. A fabricated review is the fastest way to
-  lose the trust this whole section exists to build.
-============================================================= -->
-<style>
-  #jordys5 .j5-trust{
-    background:var(--paper);text-align:center;
-    padding:clamp(46px,6vw,84px) clamp(20px,4vw,48px);
-  }
-  #jordys5 .j5-trust-stars{color:var(--terra);font-size:clamp(19px,2.2vw,26px);letter-spacing:.22em;line-height:1}
-  #jordys5 .j5-trust a{
-    display:inline-block;margin-top:14px;
-    font-family:var(--disp);font-weight:640;font-variation-settings:'opsz' 90,'SOFT' 88,'WONK' 1;
-    text-transform:uppercase;font-size:clamp(21px,2.8vw,36px);line-height:1.1;letter-spacing:-.01em;
-    color:var(--ink);border-bottom:2px solid var(--terra);padding-bottom:5px;
-    transition:color .2s var(--ease);
-  }
-  #jordys5 .j5-trust a:hover{color:var(--terraD)}
-  #jordys5 .j5-trust .src{
-    display:block;margin-top:14px;
-    font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.22em;
-    font-size:10.5px;color:var(--ink45);
-  }
-  #jordys5 .j5-trust blockquote{
-    max-width:52ch;margin:clamp(22px,2.6vw,32px) auto 0;
-    font-family:var(--disp);font-style:italic;font-weight:480;
-    font-variation-settings:'opsz' 60,'SOFT' 90,'WONK' 1;
-    font-size:clamp(17px,1.8vw,22px);line-height:1.5;color:var(--ink70);
-  }
-</style>
-
-<section class="j5-trust">
-  <div class="j5-trust-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-  <!-- ★REVIEWS — 4.7 / 349 verified on Google Maps 20 Aug 2026 -->
-  <a href="https://www.google.com/maps/search/?api=1&amp;query=Jordy%27s+Pizza+Casuarina+Shop+2%2F480+Casuarina+Way+Casuarina+NSW" target="_blank" rel="noopener">
-    4.7 from 349 locals
-  </a>
-  <span class="src">On Google</span>
-  <!-- ★REVIEW — paste one real review here, then delete this comment
-  <blockquote>&ldquo;Real review text, copied exactly from Google.&rdquo; &mdash; First name</blockquote>
-  -->
-</section>
-
-<!-- ================= 07 · SIGNUP =================
+<!-- ================= 06 · SIGNUP =================
   v4 section, one change: the underlay moved from billi.PNG to the
   house-pours shelf shot, because billi.PNG now carries §03 and
   running the same photograph twice on one page reads as thin.
@@ -726,6 +681,16 @@
   }
   #jordys5 .j5-soc a:hover{background:#fff;border-color:#fff;color:var(--terraDD)}
   #jordys5 .j5-soc svg{width:18px;height:18px;flex:none}
+  /* the rating pill sits level with the Instagram one; stars carry the
+     terracotta so the pair doesn't read as two identical buttons */
+  #jordys5 .j5-soc .j5-stars{
+    color:var(--terra);letter-spacing:.12em;font-size:13px;line-height:1;flex:none;
+    transition:color .22s var(--ease);
+  }
+  #jordys5 .j5-soc--rating:hover .j5-stars{color:var(--terraDD)}
+  @media (max-width:420px){
+    #jordys5 .j5-soc a{width:100%;justify-content:center}
+  }
 </style>
 
 <section class="j5-sign" id="j5-sign">
@@ -748,11 +713,23 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg>
         @jordys.casuarina
       </a>
+      <!-- ★REVIEWS — 4.7 / 349 verified on Google Maps 20 Aug 2026.
+           Lives here rather than in a section of its own: a standalone
+           trust block would have printed the same number twice, and this
+           puts the proof at the point of the ask instead of before it.
+           NOTE: a pill can't hold a quote. If you ever want one real
+           review in the visitor's own words, it needs its own block. -->
+      <a class="j5-soc--rating" href="https://www.google.com/maps/search/?api=1&amp;query=Jordy%27s+Pizza+Casuarina+Shop+2%2F480+Casuarina+Way+Casuarina+NSW"
+         target="_blank" rel="noopener"
+         aria-label="Rated 4.7 out of 5 from 349 Google reviews. Read them on Google Maps.">
+        <span class="j5-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span>4.7 from 349 &middot; Google</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ================= 08 · FOOTER ================= -->
+<!-- ================= 07 · FOOTER ================= -->
 <style>
   #jordys5 .j5-foot{background:var(--paper);padding:clamp(36px,4.5vw,60px) clamp(20px,4vw,64px) clamp(28px,3.5vw,44px)}
   #jordys5 .j5-foot-in{max-width:1560px;margin-inline:auto}
