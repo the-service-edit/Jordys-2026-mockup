@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merch · Jordy's Casuarina</title>
+<meta name="description" content="Eat Your Crust. Limited edition Jordy's tees, 280 GSM, boxy and oversized. Plus the housemade chilli oil.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=100w">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,340..900,0..100,0..1;1,9..144,340..900,0..100,0..1&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#fff}
+  body{overflow-x:hidden}
+  .v5-flag{
+    position:fixed;left:10px;bottom:10px;z-index:9999;
+    font:600 10px/1 'Jost',Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;
+    background:#241B12;color:#fff;padding:9px 13px;border-radius:999px;opacity:.72;pointer-events:none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+  JORDY'S CASUARINA — MERCH · DESIGN MOCKUP
+
+  ⚠ THIS IS A DESIGN PREVIEW, NOT A SHOP.
+  There is no cart here and there cannot be. The real store is
+  Squarespace Commerce at jordyscasuarina.com/jordys-merch and it
+  already works: live cart, checkout, inventory, size variants,
+  shipping and tax. Nothing in this file should ever replace it.
+
+  Every product tile on this page links straight to the real
+  Squarespace product page, so the buy path stays native.
+
+  WHAT THIS IS FOR: proving the design. Once approved, it ports to
+  Squarespace as TWO things and nothing else —
+    1. the §01 hero + §03 chilli oil band, as Code Blocks on the
+       products page, sitting above the native grid;
+    2. Custom CSS that restyles the Commerce grid and every product
+       page into Fraunces / Jost / terracotta. That CSS half is the
+       higher-leverage piece: it fixes every product page at once and
+       automatically covers products added later.
+
+  WHY THE HERO IS A SPLIT AND NOT A FULL-BLEED BAND:
+  the tee photographs are 2500×3750, a 2:3 portrait. Forcing a
+  portrait source into a wide band is exactly what buried the pizza
+  on the homepage (see the scrim lesson in v5-notes.md). Here the
+  type sits on paper beside the photo instead of on top of it, so
+  the image runs at its natural aspect, needs no scrim at all, and
+  there is no legibility risk to manage.
+
+  PRODUCT DATA verified live 21 Aug 2026:
+    Tee, red           A$45.00   S/M/L/XL/XXL
+    Tee, midnight blue A$45.00   S/M/L/XL/XXL
+    Chilli oil, 100ml  A$14.00   no variants
+    Spec: boxy oversized, dropped shoulders, 280 GSM 26-doubles,
+          100% carded cotton, preshrunk.
+  Colours are separate PRODUCTS in Squarespace; sizes are variants.
+
+  ★NAMES — the tiles use shortened display names ("The Tee. Red.")
+  against the live titles ("'EAT YOUR CRUST' Limited Edition Jordy's
+  Tee in Red"). That is a proposal, not a fact. Renaming the products
+  in Squarespace is a separate decision.
+============================================================= -->
+
+<div id="jordysM">
+<style>
+  /* ================= TOKENS (shared with the homepage build) ================= */
+  #jordysM{
+    --paper:#FFFFFF;
+    --ink:#241B12;
+    --ink70:rgba(36,27,18,.72);
+    --ink45:rgba(36,27,18,.45);
+    --terra:#C2724C;
+    --terraD:#A2532F;
+    --terraDD:#8A431F;
+    --disp:'Fraunces',Georgia,serif;
+    --grot:'Jost','Clarika Geometric',Arial,sans-serif;
+    --ease:cubic-bezier(.22,.9,.3,1);
+    font-family:var(--grot);color:var(--ink);background:var(--paper);
+    line-height:1.5;font-size:17px;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    overflow-x:clip;display:block;position:relative;
+  }
+  #jordysM *,#jordysM *::before,#jordysM *::after{box-sizing:border-box;margin:0;padding:0}
+  #jordysM img{display:block;max-width:100%;height:auto}
+  #jordysM a{color:inherit;text-decoration:none}
+  #jordysM a:focus-visible,#jordysM button:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:4px}
+  #jordysM .m-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  #jordysM .m-disp{
+    font-family:var(--disp);font-weight:680;
+    font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;line-height:.86;letter-spacing:-.015em;
+  }
+  #jordysM .m-lab{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;
+    letter-spacing:.26em;font-size:11.5px;line-height:1.7;
+  }
+
+  #jordysM .rv{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  #jordysM .rv.in{opacity:1;transform:none}
+  #jordysM .rv-d1.in{transition-delay:.08s}
+  #jordysM .rv-d2.in{transition-delay:.16s}
+  #jordysM .rv-d3.in{transition-delay:.24s}
+  @media (prefers-reduced-motion:reduce){ #jordysM .rv{opacity:1;transform:none;transition:none} }
+
+  /* ================= BUTTONS ================= */
+  #jordysM .m-btn{
+    position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.14em;
+    font-size:13.5px;padding:17px 30px;border-radius:6px;border:0;
+    min-height:54px;white-space:nowrap;cursor:pointer;overflow:hidden;isolation:isolate;
+    transition:color .22s var(--ease),transform .18s var(--ease);
+    box-shadow:0 8px 24px rgba(36,27,18,.18);
+  }
+  #jordysM .m-btn::before{
+    content:"";position:absolute;inset:0;background:var(--ink);border-radius:inherit;
+    transform:translateY(101%);transition:transform .28s var(--ease);z-index:-1;
+  }
+  #jordysM .m-btn:hover{color:var(--paper)}
+  #jordysM .m-btn:hover::before{transform:none}
+  #jordysM .m-btn:active{transform:scale(.97)}
+  #jordysM .m-btn .m-arr{display:inline-block;transition:transform .22s var(--ease)}
+  #jordysM .m-btn:hover .m-arr{transform:translateX(5px)}
+  #jordysM .m-btn--terra{background:var(--terraD);color:#fff}
+  #jordysM .m-btn--ink{background:var(--ink);color:#fff}
+  #jordysM .m-btn--ink::before{background:var(--terraD)}
+  #jordysM .m-btn--white{background:#fff;color:var(--terraDD)}
+  #jordysM .m-btn--white::before{background:var(--ink)}
+  #jordysM .m-btn--white:hover{color:#fff}
+  @media (prefers-reduced-motion:reduce){ #jordysM .m-btn,#jordysM .m-btn::before{transition:none} }
+
+  /* ================= HEADER ================= */
+  #jordysM .m-head{
+    position:fixed;top:0;left:0;right:0;z-index:1500;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px clamp(16px,2.6vw,36px);
+    background:var(--paper);box-shadow:0 1px 0 rgba(36,27,18,.14);
+  }
+  #jordysM .m-burger{
+    display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;
+    width:50px;height:50px;border:0;border-radius:10px;background:var(--paper);cursor:pointer;
+    transition:transform .2s var(--ease);
+  }
+  #jordysM .m-burger:hover{transform:scale(1.06)}
+  #jordysM .m-burger span{display:block;height:2.5px;width:26px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease)}
+  #jordysM .m-burger:hover span:first-child{transform:translateY(-2px)}
+  #jordysM .m-burger:hover span:last-child{transform:translateY(2px)}
+  #jordysM .m-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+  #jordysM .m-logo img{height:44px;width:auto;transition:transform .25s var(--ease)}
+  #jordysM .m-logo:hover img{transform:rotate(-4deg) scale(1.05)}
+
+  /* ================= OVERLAY NAV ================= */
+  #jordysM .m-ovl{position:fixed;inset:0;background:var(--terra);color:#fff;z-index:3000;display:flex;flex-direction:column;padding:24px;transform:translateY(-103%);transition:transform .38s var(--ease);overflow:auto}
+  #jordysM .m-ovl.open{transform:none}
+  #jordysM .m-ovl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6vh}
+  #jordysM .m-ovl-top img{height:44px;width:auto;filter:brightness(0) invert(1)}
+  #jordysM .m-ovl-close{background:none;border:0;color:#fff;font-family:var(--grot);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px;cursor:pointer;padding:12px}
+  #jordysM .m-ovl-nav{display:flex;flex-direction:column}
+  #jordysM .m-ovl-nav a{font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;text-transform:uppercase;font-size:clamp(32px,7.4vw,54px);line-height:1.14;letter-spacing:-.01em;display:flex;align-items:baseline;gap:14px}
+  #jordysM .m-ovl-nav a i{font-style:normal;font-family:var(--grot);font-weight:500;font-size:11px;letter-spacing:.24em;opacity:.75}
+  #jordysM .m-ovl-sub{margin-top:auto;padding-top:4vh;display:flex;flex-direction:column;gap:12px}
+  #jordysM .m-ovl-sub a{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:rgba(255,255,255,.85)}
+  @media (prefers-reduced-motion:reduce){#jordysM .m-ovl{transition:none}}
+</style>
+
+<header class="m-head">
+  <button class="m-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="m-ovl">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="m-logo" href="index.html" aria-label="Jordy's Casuarina, home">
+    <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's" width="120" height="85">
+  </a>
+  <a class="m-btn m-btn--terra" href="https://jordyscasuarina.com/jordys-merch" target="_blank" rel="noopener">Shop</a>
+</header>
+
+<div class="m-ovl" id="m-ovl" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="m-ovl-top">
+    <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's">
+    <button class="m-ovl-close" type="button">Close &#10005;</button>
+  </div>
+  <nav class="m-ovl-nav" aria-label="Site">
+    <a href="index.html">Home <i>01</i></a>
+    <a href="menu.html">Menu <i>02</i></a>
+    <a href="https://www.meandu.app/jordys/pickup">Order <i>03</i></a>
+    <a href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Book <i>04</i></a>
+    <a href="index.html#j5-where">Find us <i>05</i></a>
+    <a href="https://app.gift-it.com.au/buy/jordyspizza">Gift cards <i>06</i></a>
+    <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">Instagram <i>07</i></a>
+  </nav>
+  <div class="m-ovl-sub">
+    <a href="mailto:relax@jordyscasuarina.com">relax@jordyscasuarina.com</a>
+  </div>
+</div>
+
+<!-- ================= 01 · HERO (split, no scrim) ================= -->
+<style>
+  #jordysM .m-hero{
+    display:grid;grid-template-columns:1fr;
+    border-bottom:1px solid rgba(36,27,18,.14);
+    padding-top:78px;
+  }
+  #jordysM .m-hero-media{position:relative;overflow:hidden;background:#f3efe9;order:-1}
+  #jordysM .m-hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;aspect-ratio:4/5}
+  #jordysM .m-hero-in{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(40px,7vw,88px) clamp(22px,5vw,72px);
+  }
+  #jordysM .m-hero .m-lab{color:var(--terraD)}
+  #jordysM .m-hero h1{
+    font-size:clamp(52px,11vw,120px);margin-top:clamp(14px,1.8vw,22px);color:var(--ink);
+  }
+  #jordysM .m-hero h1 .l2{display:block;color:var(--terra)}
+  #jordysM .m-hero p{
+    font-family:var(--disp);font-weight:430;font-variation-settings:'opsz' 30,'SOFT' 70,'WONK' 0;
+    font-size:clamp(16.5px,1.5vw,20px);line-height:1.62;color:var(--ink70);
+    max-width:38ch;margin-top:clamp(20px,2.4vw,30px);
+  }
+  #jordysM .m-hero-ctas{display:flex;flex-wrap:wrap;gap:12px 14px;margin-top:clamp(24px,3vw,36px)}
+  @media (min-width:860px){
+    #jordysM .m-hero{grid-template-columns:1fr 1fr;align-items:stretch}
+    #jordysM .m-hero-media{order:0}
+    #jordysM .m-hero-media img{aspect-ratio:auto;min-height:100%}
+  }
+</style>
+
+<section class="m-hero">
+  <div class="m-hero-media">
+    <!-- ★IMG red tee, 2500×3750 -->
+    <img fetchpriority="high" decoding="async"
+      src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1714592707326-JDQVS87GKX9CDQHSGJQ7/IMG_1084.JPG?format=1500w"
+      srcset="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1714592707326-JDQVS87GKX9CDQHSGJQ7/IMG_1084.JPG?format=1000w 1000w,
+              https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1714592707326-JDQVS87GKX9CDQHSGJQ7/IMG_1084.JPG?format=1500w 1500w,
+              https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1714592707326-JDQVS87GKX9CDQHSGJQ7/IMG_1084.JPG?format=2500w 2500w"
+      sizes="(min-width:860px) 50vw, 100vw"
+      alt="Jordy in the red Eat Your Crust tee, pointing at the print on his own chest" width="2500" height="3750">
+  </div>
+  <div class="m-hero-in">
+    <span class="m-lab rv">Limited edition</span>
+    <h1 class="m-disp rv rv-d1">Eat your<span class="l2">crust.</span></h1>
+    <p class="rv rv-d2">The tee Jordy wears, and points at. Heavy 280 GSM, boxy, oversized, dropped shoulders. Red or midnight blue, S to XXL.</p>
+    <div class="m-hero-ctas rv rv-d3">
+      <a class="m-btn m-btn--terra" href="#m-tees">Shop the tees <span class="m-arr">&rarr;</span></a>
+      <a class="m-btn m-btn--ink" href="#m-oil">The chilli oil</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 · THE TEES ================= -->
+<style>
+  #jordysM .m-tees{padding:clamp(56px,8vw,110px) clamp(18px,4vw,56px)}
+  #jordysM .m-tees-in{max-width:1560px;margin-inline:auto}
+  #jordysM .m-tees-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 28px;margin-bottom:clamp(28px,3.4vw,46px)}
+  #jordysM .m-tees-head h2{font-size:clamp(38px,5.6vw,72px)}
+  #jordysM .m-tees-head .m-lab{color:var(--terraD)}
+  #jordysM .m-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,3.4vw,44px)}
+  #jordysM .m-card{display:block;position:relative}
+  #jordysM .m-card-img{overflow:hidden;background:#f3efe9;border-radius:4px}
+  #jordysM .m-card-img img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;transition:transform .5s var(--ease)}
+  #jordysM .m-card:hover .m-card-img img{transform:scale(1.04)}
+  #jordysM .m-card-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-top:clamp(16px,1.8vw,22px)}
+  #jordysM .m-card-name{
+    font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 90,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;font-size:clamp(22px,2.4vw,32px);line-height:1;letter-spacing:-.01em;
+    transition:color .2s var(--ease);
+  }
+  #jordysM .m-card:hover .m-card-name{color:var(--terraD)}
+  #jordysM .m-card-price{font-family:var(--grot);font-weight:700;font-size:clamp(17px,1.7vw,22px);color:var(--terraD);flex:none}
+  #jordysM .m-card-meta{
+    display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.2em;
+    font-size:10.5px;color:var(--ink45);
+  }
+  @media (min-width:760px){ #jordysM .m-grid{grid-template-columns:1fr 1fr} }
+</style>
+
+<section class="m-tees" id="m-tees">
+  <div class="m-tees-in">
+    <div class="m-tees-head">
+      <h2 class="m-disp rv">The tees</h2>
+      <span class="m-lab rv">280 GSM &middot; S to XXL &middot; A$45</span>
+    </div>
+    <div class="m-grid">
+      <!-- ★NAMES display name is shortened from the live Squarespace title -->
+      <a class="m-card rv" href="https://jordyscasuarina.com/jordys-merch/eatyourcrusttee-natural-69f3g" target="_blank" rel="noopener">
+        <span class="m-card-img">
+          <img loading="lazy" decoding="async"
+            src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1714592707326-JDQVS87GKX9CDQHSGJQ7/IMG_1084.JPG?format=1500w"
+            alt="The Eat Your Crust tee in red, worn" width="2500" height="3750">
+        </span>
+        <span class="m-card-row"><span class="m-card-name">The tee. Red.</span><span class="m-card-price">A$45</span></span>
+        <span class="m-card-meta"><span>S / M / L / XL / XXL</span><span>Limited edition</span></span>
+      </a>
+      <a class="m-card rv rv-d1" href="https://jordyscasuarina.com/jordys-merch/eatyourcrusttee-natural-69f3g-sj97h" target="_blank" rel="noopener">
+        <span class="m-card-img">
+          <img loading="lazy" decoding="async"
+            src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1714593388189-X6KV2C7ZAPUFQP9PN2WR/IMG_1043.JPG?format=1500w"
+            alt="The Eat Your Crust tee in midnight blue, back print with the pizza hotline number" width="2500" height="2500">
+        </span>
+        <span class="m-card-row"><span class="m-card-name">The tee. Midnight blue.</span><span class="m-card-price">A$45</span></span>
+        <span class="m-card-meta"><span>S / M / L / XL / XXL</span><span>Limited edition</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 · CHILLI OIL =================
+  Given its own moment rather than a third tile in the grid. It is
+  the lowest-friction thing Jordy's sells: $14, housemade, no size to
+  choose. Buried third in a product grid it converts on nobody; it
+  belongs where someone who already wants the crust can see it.
+============================================================= -->
+<style>
+  #jordysM .m-oil{background:var(--terra);color:#fff;padding:clamp(52px,7vw,96px) clamp(20px,5vw,72px)}
+  #jordysM .m-oil-in{
+    max-width:1560px;margin-inline:auto;
+    display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(30px,4vw,64px);align-items:center;
+  }
+  #jordysM .m-oil-media{max-width:460px;width:100%;margin-inline:auto}
+  #jordysM .m-oil-media img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;box-shadow:0 30px 60px rgba(36,27,18,.30)}
+  #jordysM .m-oil .m-lab{color:rgba(255,255,255,.85)}
+  #jordysM .m-oil h2{font-size:clamp(44px,7vw,104px);color:#fff;margin-top:clamp(12px,1.6vw,20px)}
+  #jordysM .m-oil p{
+    font-family:var(--disp);font-weight:430;font-variation-settings:'opsz' 30,'SOFT' 70,'WONK' 0;
+    font-size:clamp(16.5px,1.5vw,20px);line-height:1.62;color:rgba(255,255,255,.92);
+    max-width:36ch;margin-top:clamp(18px,2.2vw,26px);
+  }
+  #jordysM .m-oil-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px;margin-top:clamp(24px,3vw,34px)}
+  #jordysM .m-oil-price{font-family:var(--grot);font-weight:700;font-size:clamp(22px,2.4vw,30px);color:#fff}
+  @media (min-width:860px){
+    #jordysM .m-oil-in{grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr)}
+    #jordysM .m-oil-media{margin-inline:0}
+  }
+</style>
+
+<section class="m-oil" id="m-oil">
+  <div class="m-oil-in">
+    <figure class="m-oil-media rv">
+      <img loading="lazy" decoding="async"
+        src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1714592333272-ZCKVXL5KNNJMTLT9BL3N/DC365179-87EF-4AB4-A69F-6C7C1109D716.JPG?format=1500w"
+        alt="A bottle of Jordy's housemade chilli oil held up behind the bar" width="2500" height="3126">
+    </figure>
+    <div>
+      <span class="m-lab rv">Made here</span>
+      <h2 class="m-disp rv rv-d1">Chilli oil</h2>
+      <p class="rv rv-d2">100ml of the housemade stuff, in a glass bottle. Goes on everything, including the crust.</p>
+      <div class="m-oil-row rv rv-d3">
+        <span class="m-oil-price">A$14</span>
+        <a class="m-btn m-btn--white" href="https://jordyscasuarina.com/jordys-merch/jordys-chilli-oil" target="_blank" rel="noopener">Add a bottle <span class="m-arr">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 · SPEC STRIP =================
+  Static, paper, ink. Same animal as the homepage info bar: facts,
+  no motion. The tee spec is genuinely good and was buried in an
+  accordion on the live product page.
+============================================================= -->
+<style>
+  #jordysM .m-spec{background:var(--paper);border-bottom:1px solid rgba(36,27,18,.14);padding:clamp(14px,1.8vw,20px) clamp(12px,3vw,40px)}
+  #jordysM .m-spec-in{max-width:1560px;margin-inline:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;row-gap:8px}
+  #jordysM .m-spec-item{
+    display:inline-flex;align-items:center;padding-inline:clamp(9px,1.5vw,22px);
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.2em;
+    font-size:clamp(9.5px,1vw,11.5px);line-height:1.6;color:var(--ink70);white-space:nowrap;
+  }
+  #jordysM .m-spec-sep{width:1px;height:12px;background:rgba(36,27,18,.22);flex:none}
+  @media (max-width:700px){ #jordysM .m-spec-sep{display:none} #jordysM .m-spec-item{padding-inline:10px} }
+</style>
+
+<div class="m-spec">
+  <div class="m-spec-in">
+    <span class="m-spec-item">280 GSM, 26 doubles</span>
+    <i class="m-spec-sep" aria-hidden="true"></i>
+    <span class="m-spec-item">100% carded cotton</span>
+    <i class="m-spec-sep" aria-hidden="true"></i>
+    <span class="m-spec-item">Boxy, oversized, dropped shoulders</span>
+    <i class="m-spec-sep" aria-hidden="true"></i>
+    <span class="m-spec-item">Preshrunk</span>
+  </div>
+</div>
+
+<!-- ================= 05 · FOOTER ================= -->
+<style>
+  #jordysM .m-foot{background:var(--paper);padding:clamp(36px,4.5vw,60px) clamp(20px,4vw,64px) clamp(28px,3.5vw,44px)}
+  #jordysM .m-foot-in{max-width:1560px;margin-inline:auto}
+  #jordysM .m-foot-logo img{height:44px;width:auto}
+  #jordysM .m-foot-rule{border:0;border-top:1px solid rgba(36,27,18,.18);margin:clamp(18px,2.2vw,28px) 0}
+  #jordysM .m-foot-links{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:clamp(16px,2vw,24px)}
+  #jordysM .m-foot-links a{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--ink)}
+  #jordysM .m-foot-links a:hover{color:var(--terraD)}
+  #jordysM .m-foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 32px}
+  #jordysM .m-foot-row p,#jordysM .m-foot-row a{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;line-height:1.9;color:var(--ink70)}
+  #jordysM .m-foot-row a:hover{color:var(--terraD)}
+  #jordysM .m-foot-sign{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--terraD)}
+</style>
+
+<footer class="m-foot">
+  <div class="m-foot-in">
+    <a class="m-foot-logo" href="index.html" aria-label="Jordy's Casuarina, home">
+      <img loading="lazy" decoding="async" src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's" width="120" height="85">
+    </a>
+    <hr class="m-foot-rule">
+    <div class="m-foot-links">
+      <a href="menu.html">Menu</a>
+      <a href="https://bookings.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00">Book</a>
+      <a href="https://www.meandu.app/jordys/pickup">Order</a>
+      <a href="https://jordyscasuarina.com/jordys-merch" target="_blank" rel="noopener">Merch</a>
+      <a href="https://app.gift-it.com.au/buy/jordyspizza">Gift cards</a>
+      <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">Instagram &#8599;</a>
+    </div>
+    <div class="m-foot-row">
+      <p>480 Casuarina Way, at The Commons, Casuarina NSW &middot; Wed&ndash;Sun 5&ndash;9pm &middot; <a href="mailto:relax@jordyscasuarina.com">relax@jordyscasuarina.com</a></p>
+      <p class="m-foot-sign">Eat your crust. Jordy &middot; &copy; 2026 Jordy's Casuarina</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.getElementById('jordysM');
+  if(!root) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var burger=root.querySelector('.m-burger'),ovl=document.getElementById('m-ovl'),closeBtn=root.querySelector('.m-ovl-close');
+  function setMenu(open){
+    if(!ovl)return;
+    ovl.classList.toggle('open',open);
+    if(burger)burger.setAttribute('aria-expanded',open?'true':'false');
+    document.documentElement.style.overflow=open?'hidden':'';
+  }
+  if(burger&&ovl){
+    burger.addEventListener('click',function(){setMenu(true)});
+    if(closeBtn)closeBtn.addEventListener('click',function(){setMenu(false)});
+    ovl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+  }
+
+  var rvEls=root.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){
+    rvEls.forEach(function(el){el.classList.add('in')});
+  }else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
+    },{threshold:.08,rootMargin:'1600px 0px -6% 0px'});
+    rvEls.forEach(function(el){io.observe(el)});
+  }
+})();
+</script>
+</div>
+
+<div class="v5-flag">Merch mockup</div>
+</body>
+</html>
