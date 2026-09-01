@@ -180,7 +180,7 @@
   #jordys5 .j5-hero.loaded .j5-hero-media img{transform:scale(1)}
   #jordys5 .j5-hero-media::after{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(36,27,18,.20),rgba(36,27,18,0) 30%,rgba(36,27,18,0) 62%,rgba(36,27,18,.34));
+    background:linear-gradient(180deg,rgba(36,27,18,.30),rgba(36,27,18,.10) 34%,rgba(36,27,18,.16) 58%,rgba(36,27,18,.62));
   }
   #jordys5 .j5-hero-ctas{
     position:relative;z-index:1;margin-top:auto;
@@ -257,18 +257,16 @@
   <h1 class="j5-sr">Jordy's Casuarina. Sourdough pizza, Casuarina NSW</h1>
   <div class="j5-hero-media">
     <picture>
-      <!-- ★HERO-IMG mobile (portrait crop) -->
-      <source media="(max-width:699px)"
-        srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4c745de5-4f41-4041-b20f-416c226ddcef/6eff5dbb-fe4b-4c0e-b0ac-18e140dc6667.png?format=1000w 1000w,
-                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/4c745de5-4f41-4041-b20f-416c226ddcef/6eff5dbb-fe4b-4c0e-b0ac-18e140dc6667.png?format=1500w 1500w"
-        sizes="100vw">
-      <!-- ★HERO-IMG desktop (landscape crop) -->
+      <!-- ★HERO-IMG 1534x1025, 3:2 landscape. One source for both
+           breakpoints: it is landscape, so the separate mobile portrait
+           crop the old hero needed is no longer required. -->
       <img fetchpriority="high" decoding="async" id="j5-hero-img"
-        src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=2500w"
-        srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=1500w 1500w,
-                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=2500w 2000w"
+        src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/c8f917d6-41ab-40d3-aea1-7be4f432e20c/1.JPG?format=1500w"
+        srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/c8f917d6-41ab-40d3-aea1-7be4f432e20c/1.JPG?format=1000w 1000w,
+                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/c8f917d6-41ab-40d3-aea1-7be4f432e20c/1.JPG?format=1500w 1500w,
+                https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/c8f917d6-41ab-40d3-aea1-7be4f432e20c/1.JPG?format=2500w 1534w"
         sizes="100vw"
-        alt="Jordy's waiters in white jackets sprinting down a gravel drive with stacks of pizza boxes" width="2560" height="1440">
+        alt="" width="1534" height="1025">
     </picture>
   </div>
   <!-- ★LINKS ctas -->
