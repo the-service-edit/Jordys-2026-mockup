@@ -537,70 +537,78 @@
   </div>
 </a>
 
-<!-- ================= 05 · THE NIGHT + WHERE ★NEW =================
-  Merged on purpose. The venue photograph IS the location proof,
-  so atmosphere and address share one image instead of two sections.
+<!-- ================= 05 · THE NIGHT + WHERE =================
+  The image finally exists. Previously this band ran a 626x781
+  screenshot: on a 2133px screen that was a 3.4x upscale showing 32%
+  of the frame, which is why it read as a close-up of a jacket. No
+  CSS crop can fix a source that small.
 
-  ⚠ ★NIGHT-IMG IS A PLACEHOLDER.
-  Currently the black-and-white front-of-house shot. It's the best
-  people photo in the library, but it is NOT the shot this section
-  is designed for. Replace with: dusk, festoon lights on, outdoor
-  tables, families, pizzas landing, kids mid-run. That single frame
-  is the highest-value image on the whole page — it communicates
-  casual / family-friendly / outside / playground / drinks without
-  a word of copy.
+  Now: the real venue at night, 1540x1021, 3:2 landscape. Wide source
+  in a wide band, which is the whole rule.
+
+  DESKTOP (>=900px) full-bleed band, type over photo, left-weighted
+  scrim so the crowd on the right stays visible.
+  MOBILE (<900px) the band would crop to a 50% vertical slice, so the
+  photo stacks above the copy at its native 3:2 and nothing is lost.
 ============================================================= -->
 <style>
-  #jordys5 .j5-where{
-    position:relative;overflow:clip;background:var(--ink);
-    min-height:clamp(600px,92svh,940px);display:flex;align-items:flex-end;
-  }
-  #jordys5 .j5-where-media{position:absolute;inset:0;z-index:0}
-  /* 38% put the crop straight on the subject's face — a giant sunglasses
-     close-up. 62% drops to the jacket, hands and coupe, which reads as a
-     night out rather than a portrait. Re-tune when the real dusk shot
-     lands; a landscape source will need far less of this. */
-  #jordys5 .j5-where-media img{
-    width:100%;height:100%;object-fit:cover;object-position:var(--night-pos,50% 62%);
-  }
+  #jordys5 .j5-where{position:relative;background:var(--ink);color:#fff}
+  #jordys5 .j5-where-media img{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* ---- MOBILE: stacked, photo uncropped ---- */
+  #jordys5 .j5-where-media{position:relative;aspect-ratio:1540/1021;width:100%}
   #jordys5 .j5-where-media::after{
     content:"";position:absolute;inset:0;
-    background:
-      linear-gradient(to right, rgba(36,27,18,.78) 0%, rgba(36,27,18,.60) 28%, rgba(36,27,18,.32) 52%, rgba(36,27,18,.08) 74%, rgba(36,27,18,0) 90%),
-      linear-gradient(to top,   rgba(36,27,18,.88) 0%, rgba(36,27,18,.52) 26%, rgba(36,27,18,.16) 58%, rgba(36,27,18,.04) 84%),
-      linear-gradient(rgba(36,27,18,.16), rgba(36,27,18,.16));
+    background:linear-gradient(to top,rgba(36,27,18,.66) 0%,rgba(36,27,18,.12) 46%,rgba(36,27,18,0) 78%);
   }
+  #jordys5 .j5-where-in{padding:clamp(34px,7vw,52px) clamp(20px,5vw,32px) clamp(48px,9vw,64px)}
+
+  /* ---- DESKTOP: full-bleed band ---- */
+  @media (min-width:900px){
+    #jordys5 .j5-where{
+      overflow:clip;min-height:clamp(620px,86svh,880px);display:flex;align-items:flex-end;
+    }
+    #jordys5 .j5-where-media{position:absolute;inset:0;z-index:0;aspect-ratio:auto}
+    #jordys5 .j5-where-media img{object-position:50% 38%}
+    #jordys5 .j5-where-media::after{
+      background:
+        linear-gradient(to right, rgba(36,27,18,.80) 0%, rgba(36,27,18,.62) 28%, rgba(36,27,18,.34) 52%, rgba(36,27,18,.10) 74%, rgba(36,27,18,0) 92%),
+        linear-gradient(to top,   rgba(36,27,18,.74) 0%, rgba(36,27,18,.34) 30%, rgba(36,27,18,.06) 64%, rgba(36,27,18,0) 88%),
+        linear-gradient(rgba(36,27,18,.12), rgba(36,27,18,.12));
+    }
+    #jordys5 .j5-where-in{
+      position:relative;z-index:1;width:100%;max-width:1560px;margin-inline:auto;
+      padding:clamp(56px,7vw,100px) clamp(20px,4.5vw,72px) clamp(44px,5.5vw,80px);
+    }
+  }
+
   #jordys5 .j5-where h2,
+  #jordys5 .j5-where-kick,
   #jordys5 .j5-where-sub,
   #jordys5 .j5-where-addr{text-shadow:0 2px 26px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.40)}
-  #jordys5 .j5-where-in{
-    position:relative;z-index:1;width:100%;color:#fff;
-    padding:clamp(56px,7vw,100px) clamp(20px,4.5vw,72px) clamp(40px,5.5vw,76px);
-    max-width:1560px;margin-inline:auto;
+  #jordys5 .j5-where-kick{
+    font-family:var(--grot);font-weight:700;text-transform:uppercase;letter-spacing:.22em;
+    font-size:clamp(11px,1.05vw,13px);color:var(--terra);display:block;
   }
   #jordys5 .j5-where h2{
     font-family:var(--disp);font-weight:620;font-variation-settings:'opsz' 144,'SOFT' 90,'WONK' 1;
-    font-size:clamp(38px,6.4vw,92px);line-height:1.0;letter-spacing:-.02em;color:#fff;max-width:23ch;
+    font-size:clamp(38px,6.2vw,88px);line-height:1.0;letter-spacing:-.02em;color:#fff;
+    max-width:16ch;margin-top:clamp(12px,1.5vw,18px);
   }
   #jordys5 .j5-where h2 em{font-style:normal;color:var(--terra)}
   #jordys5 .j5-where-sub{
     font-family:var(--grot);font-weight:500;font-size:clamp(15px,1.35vw,18px);line-height:1.6;
     color:rgba(255,255,255,.88);margin-top:clamp(16px,1.8vw,24px);max-width:44ch;
   }
-  /* the address block — the big address line carries it */
   #jordys5 .j5-where-addr{
-    margin-top:clamp(30px,3.6vw,48px);padding-top:clamp(22px,2.6vw,32px);
+    margin-top:clamp(28px,3.6vw,48px);padding-top:clamp(20px,2.6vw,32px);
     border-top:2px solid rgba(255,255,255,.34);
-    display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 40px;
+    display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px 40px;
   }
-  #jordys5 .j5-where-addr .lines{display:flex;flex-direction:column;gap:6px}
+  #jordys5 .j5-where-addr .lines{display:flex;flex-direction:column;gap:7px}
   #jordys5 .j5-where-addr .big{
     font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 90,'SOFT' 88,'WONK' 1;
     text-transform:uppercase;font-size:clamp(26px,3.4vw,46px);line-height:1.02;letter-spacing:-.012em;
-  }
-  #jordys5 .j5-where-addr .play{
-    font-family:var(--grot);font-weight:700;text-transform:uppercase;letter-spacing:.18em;
-    font-size:clamp(12px,1.15vw,14.5px);color:var(--terra);
   }
   #jordys5 .j5-where-addr .meta{
     font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.18em;
@@ -610,18 +618,18 @@
 
 <section class="j5-where" id="j5-where">
   <div class="j5-where-media" aria-hidden="true">
-    <!-- ★NIGHT-IMG ⚠ placeholder — see the note above -->
+    <!-- NIGHT-IMG · the venue, 1540x1021 -->
     <img loading="lazy" decoding="async"
-      src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/22c0a147-ed82-4c02-b16f-593705341455/Screenshot+2026-03-19+at+07.41.51.png?format=1500w"
-      alt="" width="626" height="781">
+      src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cde633a2-ec1a-4815-8ced-a4099ba658d6/a2344860-08ba-448a-99c5-084b07dfaecc.png?format=2500w"
+      alt="" width="1540" height="1021">
   </div>
   <div class="j5-where-in">
+    <span class="j5-where-kick rv">Eat in or takeaway</span>
     <h2 class="rv">Come for pizza.<br><em>Stay for another round.</em></h2>
-    <p class="j5-where-sub rv rv-d1">Outdoor tables, a drink in hand, and no reason to cook tonight. There&rsquo;s a playground next door if you need one.</p>
+    <p class="j5-where-sub rv rv-d1">Outdoor tables, a drink in hand, and no reason to cook tonight. There's a playground next door if you need one.</p>
     <div class="j5-where-addr rv rv-d2">
       <div class="lines">
-        <!-- ★HOURS -->
-        <span class="play">Eat in or takeaway</span>
+        <!-- HOURS -->
         <span class="big">480 Casuarina Way</span>
         <span class="meta">The Commons, Casuarina NSW &middot; Wed&ndash;Sun 5&ndash;9pm</span>
       </div>
@@ -629,6 +637,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- ================= 06 · THE REVIEW ★NEW =================
   A real Google review, quoted verbatim. Pulled from the live listing
@@ -694,7 +703,7 @@
 <style>
   #jordys5 .j5-sign{position:relative;overflow:clip;min-height:clamp(480px,64vh,640px);display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(70px,9vw,120px) 24px}
   #jordys5 .j5-sign-media{position:absolute;inset:0;z-index:0}
-  #jordys5 .j5-sign-media img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
+  #jordys5 .j5-sign-media img{filter:blur(2px) saturate(.94);transform:scale(1.06);width:100%;height:100%;object-fit:cover;object-position:50% 46%}
   #jordys5 .j5-sign-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,27,18,.62),rgba(36,27,18,.70))}
   @media (min-width:700px){
     #jordys5 .j5-sign{min-height:clamp(560px,78vh,720px)}
