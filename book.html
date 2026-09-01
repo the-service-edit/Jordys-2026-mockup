@@ -843,13 +843,30 @@
   with no explanation and no route onward — a birthday for 22 hits a
   dead end and goes to a competitor. This band is that route.
 
-  ⚠ The underlay is a PORTRAIT source (545×730) in a wide band, which
-  is the exact shape that produced the flat-brown failure on the
-  homepage in August. It is safe here ONLY because the scrim is a
-  uniform flat wash and the type is centred — the same treatment the
-  homepage signup section uses with this same photograph, verified
-  live. Do not swap this for a left-weighted gradient without
-  re-checking it in a real browser on the deployed page.
+  The underlay is a shared table — a whole pizza on the tray, a hand
+  reaching into the middle of it, a second plate, a salad, drinks.
+  Food in the centre and hands coming in from the edges is the
+  group message stated without a word of copy, which is the job.
+  It is also the page's only warm colour image; §02 above it is a
+  dark B&W night frame, so the two read as different registers
+  rather than competing.
+
+  2:1 landscape (1500×750) in a ~2.2:1 band — close to a full-frame
+  crop, so almost nothing is thrown away. Safe in a wide band, unlike
+  the portrait source it replaced.
+
+  ⚠ TWO THINGS TO KNOW ABOUT THIS IMAGE
+  1 It is AI-generated (the filename is a ChatGPT export) and the
+    pizza in it is not the Billinudgel or anything else on Jordy's
+    menu. That is defensible HERE — the section's job is to start an
+    enquiry email, not to show the room — but it sits directly under
+    a real photograph of the real venue, and a real shot of a long
+    table mid-service would beat it outright. Worth adding to the
+    shot list rather than treating as finished.
+  2 The scrim is UNIFORM, not left-weighted, because this section has
+    type in both columns. Do not switch it to the head band's
+    left-weighted treatment without re-checking the address card on
+    the right in a real browser.
 ============================================================= -->
 <style>
   #jordys6 .j6-grp{
@@ -858,10 +875,21 @@
     padding:clamp(64px,8vw,110px) clamp(20px,4.5vw,72px);
   }
   #jordys6 .j6-grp-media{position:absolute;inset:0;z-index:0}
-  #jordys6 .j6-grp-media img{width:100%;height:100%;object-fit:cover;object-position:50% 48%}
+  #jordys6 .j6-grp-media img{width:100%;height:100%;object-fit:cover;object-position:50% 52%}
+  /* 2:1 landscape source in a ~2.2:1 band, so this is close to a full-frame
+     crop — almost nothing is thrown away. The wash is UNIFORM rather than
+     left-weighted because this section has type in BOTH columns (the pitch
+     on the left, the address card on the right), so there is no dark side
+     to hide in. The vertical wash dips in the middle (.66 → .58 → .76) so
+     the two headlines get cover at the top and the tray of pizza across
+     the bottom third still reads as food rather than as a brown floor. It is lighter than the version this replaced (.55/.74 vs
+     .68/.76) because the source is warm colour rather than a dark B&W
+     frame, plus a gentle left pool for the headline. */
   #jordys6 .j6-grp-media::after{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(36,27,18,.68),rgba(36,27,18,.76));
+    background:
+      linear-gradient(to right, rgba(36,27,18,.30) 0%, rgba(36,27,18,.12) 46%, rgba(36,27,18,.06) 100%),
+      linear-gradient(180deg, rgba(36,27,18,.66) 0%, rgba(36,27,18,.58) 42%, rgba(36,27,18,.76) 100%);
   }
   #jordys6 .j6-grp-in{
     position:relative;z-index:1;width:100%;max-width:1240px;margin-inline:auto;color:#fff;
@@ -890,7 +918,7 @@
     border-top:2px solid rgba(255,255,255,.34);padding-top:clamp(20px,2.4vw,28px);
   }
   @media (min-width:900px){
-    #jordys6 .j6-where-card{border-top:0;border-left:2px solid rgba(255,255,255,.28);padding:4px 0 4px clamp(30px,3.5vw,56px)}
+    #jordys6 .j6-where-card{border-top:0;border-left:2px solid rgba(255,255,255,.42);padding:4px 0 4px clamp(30px,3.5vw,56px)}
   }
   #jordys6 .j6-grp .play{
     font-family:var(--grot);font-weight:700;text-transform:uppercase;letter-spacing:.18em;
@@ -912,8 +940,12 @@
 <section class="j6-grp" id="j6-where">
   <div class="j6-grp-media" aria-hidden="true">
     <img loading="lazy" decoding="async"
-      src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/5b30d610-5cdc-42d8-ad42-d2cde3488844/Screenshot+2026-03-19+at+07.41.40.png?format=1500w"
-      alt="" width="545" height="730">
+      src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/bd43f01b-cffb-4514-8a55-cb74f4361cbb/ChatGPT+Image+Jul+21%2C+2026%2C+09_21_27+AM.png?format=2500w"
+      srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/bd43f01b-cffb-4514-8a55-cb74f4361cbb/ChatGPT+Image+Jul+21%2C+2026%2C+09_21_27+AM.png?format=1000w 1000w,
+              https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/bd43f01b-cffb-4514-8a55-cb74f4361cbb/ChatGPT+Image+Jul+21%2C+2026%2C+09_21_27+AM.png?format=1500w 1500w,
+              https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/bd43f01b-cffb-4514-8a55-cb74f4361cbb/ChatGPT+Image+Jul+21%2C+2026%2C+09_21_27+AM.png?format=2500w 2000w"
+      sizes="100vw"
+      alt="" width="1500" height="750">
   </div>
   <div class="j6-grp-in">
     <div>
