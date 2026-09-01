@@ -258,12 +258,26 @@
   This band is ~48svh, which puts the guest/date row of the widget
   within the first scroll on desktop and one short flick on mobile.
 
-  ★HEAD-IMG is the landscape waiters-running frame (2560×1440). It is
-  the ONLY landscape source in the library — every other asset is
-  portrait, and portrait sources in wide bands are exactly what caused
-  the flat-brown scrim failure on the homepage in August. Do not swap
-  this for a portrait shot without re-tuning the scrim and checking it
-  in a real browser on the deployed page.
+  ★HEAD-IMG is the dusk exterior — festoon lights on, people outside
+  with drinks, tables full behind them. This is the frame the August
+  shot list called the highest-value image available ("dusk exterior,
+  lights on, people in it"), and on a booking page it is doing the
+  only job that matters: this is what your Friday night looks like.
+  It beats the waiters-running hero here, which sells the brand rather
+  than the evening.
+
+  Landscape, 1500×994 (~1.5:1). Safe in a wide band — every other
+  asset in the library is portrait, and portrait sources in wide bands
+  are exactly what caused the flat-brown scrim failure on the homepage
+  in August. Do not swap this for a portrait shot without re-tuning the
+  scrim and checking it in a real browser on the deployed page.
+
+  The scrim is LIGHTER than the homepage's because this source is
+  already a dark black-and-white night frame; the August values would
+  crush it to mud. The type sits bottom-left over the shopfront and
+  pavement, which are the darkest part of the composition, so the
+  people, the tree lights and the full tables on the right stay
+  readable and do the selling.
 ============================================================= -->
 <style>
   #jordys6 .j6-top{
@@ -272,16 +286,19 @@
     display:flex;align-items:flex-end;
   }
   #jordys6 .j6-top-media{position:absolute;inset:0;z-index:0}
-  #jordys6 .j6-top-media img{width:100%;height:100%;object-fit:cover;object-position:58% 42%}
+  #jordys6 .j6-top-media img{width:100%;height:100%;object-fit:cover;object-position:46% 44%}
+  @media (min-width:700px){
+    #jordys6 .j6-top-media img{object-position:50% 46%}
+  }
   /* Left-weighted, per the August scrim lesson. The type column is tall
      and sits left; protection runs left→right so the right half of the
      photograph stays legible. Light flat floor, not a heavy wash. */
   #jordys6 .j6-top-media::after{
     content:"";position:absolute;inset:0;
     background:
-      linear-gradient(to right, rgba(36,27,18,.82) 0%, rgba(36,27,18,.66) 28%, rgba(36,27,18,.38) 50%, rgba(36,27,18,.10) 72%, rgba(36,27,18,0) 90%),
-      linear-gradient(to top,   rgba(36,27,18,.78) 0%, rgba(36,27,18,.34) 30%, rgba(36,27,18,.06) 64%, rgba(36,27,18,0) 86%),
-      linear-gradient(rgba(36,27,18,.14), rgba(36,27,18,.14));
+      linear-gradient(to right, rgba(36,27,18,.74) 0%, rgba(36,27,18,.56) 28%, rgba(36,27,18,.30) 50%, rgba(36,27,18,.08) 72%, rgba(36,27,18,0) 90%),
+      linear-gradient(to top,   rgba(36,27,18,.70) 0%, rgba(36,27,18,.28) 30%, rgba(36,27,18,.04) 64%, rgba(36,27,18,0) 86%),
+      linear-gradient(rgba(36,27,18,.10), rgba(36,27,18,.10));
   }
   #jordys6 .j6-top h1,
   #jordys6 .j6-top .j6-lab,
@@ -332,11 +349,11 @@
   <div class="j6-top-media" aria-hidden="true">
     <!-- ★HEAD-IMG -->
     <img fetchpriority="high" decoding="async"
-      src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=2500w"
-      srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=1000w 1000w,
-              https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=1500w 1500w,
-              https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cd5969bd-2a60-46ff-926f-9f84b29448b2/29550772-cfa6-4a9c-af6f-edc271eb6556-1.png?format=2500w 2000w"
-      sizes="100vw" alt="" width="2560" height="1440">
+      src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cde633a2-ec1a-4815-8ced-a4099ba658d6/a2344860-08ba-448a-99c5-084b07dfaecc.png?format=2500w"
+      srcset="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cde633a2-ec1a-4815-8ced-a4099ba658d6/a2344860-08ba-448a-99c5-084b07dfaecc.png?format=1000w 1000w,
+              https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cde633a2-ec1a-4815-8ced-a4099ba658d6/a2344860-08ba-448a-99c5-084b07dfaecc.png?format=1500w 1500w,
+              https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cde633a2-ec1a-4815-8ced-a4099ba658d6/a2344860-08ba-448a-99c5-084b07dfaecc.png?format=2500w 2000w"
+      sizes="100vw" alt="" width="1500" height="994">
   </div>
   <div class="j6-top-in">
     <span class="j6-lab rv">Bookings &middot; Casuarina</span>
@@ -383,20 +400,21 @@
       Measured same-origin at seven frame sizes: the app's document
       height is ALWAYS exactly the iframe height. Its root is
       .widget-fill with flex-1 children, so it stretches to whatever
-      box it is given and distributes the slack INSIDE the content
-      area, above the area cards — not as harmless padding below them.
+      box it is given. Content stays top-aligned and the slack lands
+      BELOW it — so an oversized frame does not clip anything, it just
+      leaves a growing field of dead cream between the widget's own
+      footer and the next section.
 
-      The first deploy of this page set the frame to 880px and the
-      result was ~340px of empty cream above "Where would you like to
-      sit?". Making the frame taller does not buy headroom; it buys a
-      hole. Height is now screen-relative and deliberately tight:
+      The first deploy set the frame to 880px and left ~340px of that.
+      Making the frame taller does not buy headroom; it buys a hole.
+      Height is now screen-relative and deliberately tight:
 
         mobile   max(520px, min(660px, 100svh - 150px))
         ≥660px   max(420px, min(540px, 100svh - 180px))
 
-      Step one needs roughly 390px of visible content at desktop width,
-      so this reads as a framed panel with normal padding, always fits
-      the screen, and the taller guest-details step scrolls inside a
+      Verified on jordyscasuarina.com at 940×540: content occupies
+      ~455px of the 540, leaving ~85px of slack that is invisible
+      against the matching cream. Taller steps scroll inside a
       screen-sized panel exactly as a native booking app would.
       **Bias small.** Too short costs a short internal scroll on one
       step; too tall costs a visible void on every single page load.
@@ -543,6 +561,13 @@
            with no hex field, so #c2724c can only be set here, in the URL.
            Do not "fix" this to match what the admin has saved (#bf360c) —
            that is Material Deep Orange 900 and is not the brand colour. -->
+      <!-- ⚠ NowBookit appears to gate on the PARENT origin. This exact
+           embed renders in full on jordyscasuarina.com and hangs on the
+           loading spinner on the-service-edit.github.io, which is why the
+           mockup site cannot show a working form. Nothing to fix in this
+           file — but if the page is ever hosted anywhere other than
+           jordyscasuarina.com, that domain has to be allowlisted by
+           NowBookit first. -->
       <iframe
         title="Book a table at Jordy's Casuarina"
         src="https://book.nowbookit.com/?accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00&amp;venueid=10578&amp;theme=light&amp;colors=hex%2Cc2724c&amp;font=Lato"
