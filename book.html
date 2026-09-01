@@ -282,23 +282,47 @@
 <style>
   #jordys6 .j6-top{
     position:relative;overflow:clip;background:var(--ink);
-    min-height:clamp(430px,52svh,580px);
+    /* mobile is TALLER in proportion than the desktop band, deliberately.
+       A narrow band takes a narrow vertical slice of a 1.5:1 source, so at
+       470px the photograph was reduced to tree canopy and the whole thing
+       read as murk. 500px+, with the type pushed to the bottom, leaves the
+       Jordy's sign and the festoon lights clear above the headline. */
+    min-height:clamp(500px,62svh,600px);
     display:flex;align-items:flex-end;
   }
   #jordys6 .j6-top-media{position:absolute;inset:0;z-index:0}
-  #jordys6 .j6-top-media img{width:100%;height:100%;object-fit:cover;object-position:46% 44%}
+  /* mobile crops right, into the crowd and the lit tables — the middle of
+     the frame is heaters and dark canopy, which sells nothing */
+  #jordys6 .j6-top-media img{width:100%;height:100%;object-fit:cover;object-position:58% 46%}
   @media (min-width:700px){
+    #jordys6 .j6-top{min-height:clamp(440px,54svh,600px)}
     #jordys6 .j6-top-media img{object-position:50% 46%}
   }
   /* Left-weighted, per the August scrim lesson. The type column is tall
      and sits left; protection runs left→right so the right half of the
      photograph stays legible. Light flat floor, not a heavy wash. */
+  /* MOBILE scrim: bottom-weighted. The type runs full width here, so a
+     left-weighted wash covers the entire narrow frame and kills the photo.
+     Protection is concentrated under the type instead, leaving the top
+     third of the band as clean photograph. */
   #jordys6 .j6-top-media::after{
     content:"";position:absolute;inset:0;
     background:
-      linear-gradient(to right, rgba(36,27,18,.74) 0%, rgba(36,27,18,.56) 28%, rgba(36,27,18,.30) 50%, rgba(36,27,18,.08) 72%, rgba(36,27,18,0) 90%),
-      linear-gradient(to top,   rgba(36,27,18,.70) 0%, rgba(36,27,18,.28) 30%, rgba(36,27,18,.04) 64%, rgba(36,27,18,0) 86%),
-      linear-gradient(rgba(36,27,18,.10), rgba(36,27,18,.10));
+      linear-gradient(to right, rgba(36,27,18,.50) 0%, rgba(36,27,18,.28) 46%, rgba(36,27,18,.08) 78%, rgba(36,27,18,0) 100%),
+      linear-gradient(to top,   rgba(36,27,18,.88) 0%, rgba(36,27,18,.70) 22%, rgba(36,27,18,.34) 46%, rgba(36,27,18,.06) 74%, rgba(36,27,18,0) 92%),
+      linear-gradient(rgba(36,27,18,.08), rgba(36,27,18,.08));
+  }
+  /* DESKTOP scrim: left-weighted, per the August lesson — the type column
+     sits left, so protection runs left→right and the crowd, the tree lights
+     and the full tables on the right stay fully readable. Verified on the
+     real photograph in a real browser, 1 Sept. */
+  @media (min-width:700px){
+    #jordys6 .j6-top-media::after{
+      background:
+        linear-gradient(to right, rgba(36,27,18,.74) 0%, rgba(36,27,18,.56) 28%, rgba(36,27,18,.30) 50%, rgba(36,27,18,.08) 72%, rgba(36,27,18,0) 90%),
+        linear-gradient(to top,   rgba(36,27,18,.70) 0%, rgba(36,27,18,.28) 30%, rgba(36,27,18,.04) 64%, rgba(36,27,18,0) 86%),
+        linear-gradient(rgba(36,27,18,.10), rgba(36,27,18,.10));
+    }
   }
   #jordys6 .j6-top h1,
   #jordys6 .j6-top .j6-lab,
@@ -306,8 +330,11 @@
   #jordys6 .j6-facts{text-shadow:0 2px 26px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.40)}
   #jordys6 .j6-top-in{
     position:relative;z-index:1;width:100%;color:#fff;
-    padding:clamp(120px,15vw,180px) clamp(20px,4.5vw,72px) clamp(30px,4vw,54px);
+    padding:clamp(150px,48vw,240px) clamp(20px,4.5vw,72px) clamp(30px,4vw,54px);
     max-width:1560px;margin-inline:auto;
+  }
+  @media (min-width:700px){
+    #jordys6 .j6-top-in{padding-top:clamp(120px,15vw,180px)}
   }
   #jordys6 .j6-top .j6-lab{color:rgba(255,255,255,.85)}
   #jordys6 .j6-top h1{
