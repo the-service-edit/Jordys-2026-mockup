@@ -2,7 +2,7 @@
 <html lang="en-AU"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jordy's Casuarina · Gift cards · mockup</title>
-<meta name="description" content="A Jordy's gift card. Sourdough pizza, the playground next door, and someone else doing the dishes. Arrives by email in about ten seconds.">
+<meta name="description" content="A Jordy's gift card. Sourdough pizza, the playground next door, and someone else doing the dishes. Arrives by email, straight away.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=100w">
 <style>html,body{margin:0;padding:0;background:#fff}body{overflow-x:hidden}
@@ -358,8 +358,8 @@
       <h1 class="rv">Give them a<br>Friday night<br><em>off.</em></h1>
       <p class="j8-top-sub rv">
         Sourdough, the playground next door, and nobody cooking. Pick what it&rsquo;s
-        worth, write something short, and it lands in their inbox in about ten
-        seconds &mdash; which is faster than anything you could have wrapped.
+        worth, write something short, and it lands in their inbox straight away &mdash; which is faster than
+        anything you could have wrapped.
       </p>
       <div class="j8-top-ctas rv">
         <a class="j8-btn j8-btn--terra" href="#j8-pick" data-track="gift_hero_pick">Choose an amount <span class="j8-arr">&rarr;</span></a>
@@ -614,13 +614,20 @@
       a sliver of the supplier's white header rather than a clipped first
       form field. .j8-mask covers up to 20px of that.
 
-  3 · HEIGHT. Measured document heights, same method:
-          420px wide -> 1581px    760px wide -> 1694px    940px wide -> 1649px
-      Unlike the booking widget, this one does NOT stretch to its frame —
-      it is a static PHP page with its own height, so an undersized frame
-      produces a nested scrollbar and a PAY button the guest has to hunt
-      for. Bias TALL here. The surplus is white on a white ground and
-      therefore invisible; a nested scrollbar is not.
+  3 · HEIGHT. CORRECTED against the live deploy, 1 Sept 2026. The checkout
+      DOES stretch to whatever frame it is given — its document height always
+      equals the iframe height — so total document height tells you nothing.
+      The number that matters is where the PAY button ends:
+
+          frame width      PAY button bottom      crop      needs
+          380px            1462px                 103px     1359px
+          760px            1577px                 103px     1474px
+          980px            1532px                  64px     1468px
+
+      The frame is deliberately taller than those (1560 narrow / 1600 wide),
+      because ticking "send this voucher on a specific date" adds a field and
+      pushes PAY down. Bias TALL: the surplus is white on a white ground and
+      therefore invisible, while a clipped PAY button is the sale gone.
 
   ⚠ WHAT WE STILL CANNOT FIX INSIDE THE BOX (all of it is why the
     Now Book It migration is the real answer, not this page):
@@ -869,7 +876,7 @@
           <span class="n">01</span>
           <div>
             <h3>You pay, they get an email</h3>
-            <!-- ★VERIFY — "about ten seconds" is the observed behaviour of the
+            <!-- ★VERIFY — "straight away" is the observed behaviour of the
                  current checkout ("Your voucher has been emailed"). Confirm the
                  real send time with Jordan before publishing this number. -->
             <p>Straight away, or <b>on a date you pick</b> &mdash; useful if the birthday is
@@ -1133,7 +1140,7 @@
     if(best){
       var when=best.days===0?'Today':best.days===1?'Tomorrow':best.days+' days to go';
       var line=best.days===0
-        ? best.n+' is today. <em>Still fixable</em> — this lands in an inbox in about ten seconds.'
+        ? best.n+' is today. <em>Still fixable</em> — this lands in an inbox, not in the post.'
         : best.n+' is '+(best.days===1?'tomorrow':'in '+best.days+' days')+'. <em>Nothing to wrap, nothing to post.</em>';
       document.getElementById('j8-occ-when').textContent=when;
       document.getElementById('j8-occ-line').innerHTML=line;
