@@ -1,0 +1,1216 @@
+<!doctype html>
+<html lang="en-AU"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jordy's Casuarina · Gift cards · mockup</title>
+<meta name="description" content="A Jordy's gift card. Sourdough pizza, the playground next door, and someone else doing the dishes. Arrives by email in about ten seconds.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=100w">
+<style>html,body{margin:0;padding:0;background:#fff}body{overflow-x:hidden}
+.sqs-stand-in{max-width:1800px;margin-inline:auto}
+.v5-flag{position:fixed;left:10px;bottom:10px;z-index:9999;font:600 10px/1 'Jost',Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;background:#241B12;color:#fff;padding:9px 13px;border-radius:999px;opacity:.72;pointer-events:none}</style>
+</head><body>
+<div class="sqs-stand-in">
+<!-- ============================================================
+  JORDY'S CASUARINA — /GIFT-CARDS  ·  v1 "THE PRESENT PAGE"
+
+  WHY THIS PAGE EXISTS
+  The "Gift cards" link in the nav and the footer currently throws the
+  guest onto app.gift-it.com.au/buy/jordyspizza — a third-party domain
+  carrying Gift-it's logo three times and Jordy's zero times, painted
+  Gift-it blue, with an empty number box where the price should be.
+  Audited 1 Sept 2026: see jordys-homepage/gift-card-page-audit.md.
+
+  THE STRATEGY THIS PAGE IMPLEMENTS
+  Same as /book. We cannot restyle the supplier's form — it is a
+  cross-origin iframe and no CSS reaches inside it. So we own
+  everything AROUND it, we do all the selling before the guest ever
+  reaches it, and we make the box disappear into the page.
+
+  The difference from /book: a booking form asks for a time. A gift
+  form asks "how much?" — and an empty number box is the single worst
+  question you can ask a person buying a present, because the honest
+  answer is "I have no idea what things cost there." §03 answers it.
+
+  STRUCTURE — 6 sections + 1 strip.
+
+    01  HEADER          v5, unchanged
+    02  GIFT HEAD       the card itself, rendered. Live preview that
+                        updates with the amount chosen in §03.
+    03  ★ CHOOSE        three named amounts + custom. The money section.
+    04  OCCASION STRIP  day-aware. Father's Day / Christmas / etc.       (strip)
+    05  ★ THE FORM      the supplier's checkout, cropped and de-seamed
+    06  HOW IT WORKS    three steps + the terms stated UP FRONT
+    07  FAQ             including the one term that costs reviews
+    08  FOOTER          v5, unchanged
+
+  EDITABLE MARKERS
+    ★GIFT       the checkout URL and its crop
+    ★GIFT-CROP  the one number to retune if the supplier changes
+    ★PRICES     the three named amounts — arithmetic shown, check it
+    ★VERIFY     copy Jordan must confirm before this goes live
+    ★DECISION   a commercial call Mel/Jordan need to make, not a bug
+    ★LINKS ★HOURS  facts that repeat
+
+  VERIFIED 1 Sept 2026 — do not drift:
+    Wed-Sun 5-9pm ✓ · sourdough ✓ · NOT wood-fired ✗
+    Happy Nights Wed + Thu, $10 margs / beer / wine, any pizza ✓
+    Pizzas $27-$34 · Brunswick $34 is the dearest ✓ (live /menu)
+    Bottles $54-$75 · Tiramisu $15 · Burrata $21 · Tuscan Slaw $17 ✓
+    4.7 from 349 Google reviews ✓
+    Phone +61 431 471 911 ✓ · relax@jordyscasuarina.com ✓
+    480 Casuarina Way, at The Commons, Casuarina NSW 2487 ✓
+    Supplier term, verbatim from the live checkout: "Gift Vouchers can
+    only be used in a single transaction; and cannot be exchanged for
+    cash. No change or refund will be given." ✓  → see ★DECISION in §07
+
+  ⚠ BEFORE PASTE
+    1. If the site header is already in Code Injection → Footer (it is,
+       as of 1 Sept), DELETE §01 and the overlay below it.
+    2. ★GIFT — this ships pointed at the LEGACY Gift-it checkout,
+       because that is what is live today and it is verified embeddable
+       (no X-Frame-Options, no frame-ancestors; tested cross-origin
+       1 Sept 2026). When Jordan switches on Now Book It's current gift
+       card widget, swap the one URL and drop the crop to 0.
+    3. Like /book, the embed will NOT render on the-service-edit.github.io
+       if the supplier gates on parent origin. Judge the frame on
+       jordyscasuarina.com, not on the mockup host.
+============================================================= -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,340..900,0..100,0..1;1,9..144,340..900,0..100,0..1&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<div id="jordys8">
+<style>
+  /* ================= TOKENS — identical to v5 ================= */
+  #jordys8{
+    --paper:#FFFFFF;
+    --paper2:#FBF6EC;          /* warm ground for the quiet bands */
+    --ink:#241B12;
+    --ink70:rgba(36,27,18,.72);
+    --ink45:rgba(36,27,18,.45);
+    --ink14:rgba(36,27,18,.14);
+    --terra:#C2724C;
+    --terraD:#A2532F;
+    --terraDD:#8A431F;
+    /* the supplier checkout's own body colour, sampled from the live
+       app 1 Sept 2026. The form section's ground must equal this or
+       the iframe grows a visible edge. Resample if it ever changes. */
+    --host-bg:#FFFFFF;
+    --disp:'Fraunces',Georgia,serif;
+    --grot:'Jost','Clarika Geometric',Arial,sans-serif;
+    --ease:cubic-bezier(.22,.9,.3,1);
+    font-family:var(--grot);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.5;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    display:block;
+    position:relative;
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    overflow-x:clip;
+  }
+  #jordys8 *,#jordys8 *::before,#jordys8 *::after{box-sizing:border-box;margin:0;padding:0}
+  #jordys8 img{display:block;max-width:100%;height:auto}
+  #jordys8 a{color:inherit;text-decoration:none}
+  #jordys8 a:focus-visible,#jordys8 button:focus-visible,#jordys8 summary:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:4px}
+  #jordys8 .j8-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  #jordys8 .j8-disp{
+    font-family:var(--disp);font-weight:680;
+    font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;line-height:.86;letter-spacing:-.015em;
+  }
+  #jordys8 .j8-lab{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;
+    letter-spacing:.26em;font-size:11.5px;line-height:1.7;color:var(--terraD);
+  }
+
+  /* Reveals are declared but switched ON immediately by the script.
+     Standing constraint from the 31 Aug homepage-blanking incident:
+     no copy may depend on JS or a specificity contest to become visible. */
+  #jordys8 .rv{opacity:1;transform:none}
+
+  /* ================= BUTTONS — v5 ================= */
+  #jordys8 .j8-btn{
+    position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.14em;
+    font-size:13.5px;padding:17px 30px;border-radius:6px;border:0;
+    min-height:54px;white-space:nowrap;cursor:pointer;
+    overflow:hidden;isolation:isolate;
+    transition:color .22s var(--ease),transform .18s var(--ease),box-shadow .25s var(--ease);
+    box-shadow:0 8px 24px rgba(36,27,18,.18);
+  }
+  #jordys8 .j8-btn::before{
+    content:"";position:absolute;inset:0;background:var(--ink);border-radius:inherit;
+    transform:translateY(101%);transition:transform .28s var(--ease);z-index:-1;
+  }
+  #jordys8 .j8-btn:hover{color:var(--paper)}
+  #jordys8 .j8-btn:hover::before{transform:none}
+  #jordys8 .j8-btn:active{transform:scale(.97)}
+  #jordys8 .j8-btn .j8-arr{display:inline-block;transition:transform .22s var(--ease)}
+  #jordys8 .j8-btn:hover .j8-arr{transform:translateX(5px)}
+  #jordys8 .j8-btn--terra{background:var(--terraD);color:#fff}
+  #jordys8 .j8-btn--white{background:#fff;color:var(--terraDD)}
+  #jordys8 .j8-btn--white::before{background:var(--ink)}
+  #jordys8 .j8-btn--white:hover{color:#fff}
+  #jordys8 .j8-btn--quiet{background:transparent;color:var(--ink);border:2px solid var(--ink14);box-shadow:none}
+  #jordys8 .j8-btn--quiet::before{background:var(--ink)}
+  #jordys8 .j8-btn--quiet:hover{border-color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){
+    #jordys8 .j8-btn,#jordys8 .j8-btn::before{transition:none}
+  }
+
+  /* ================= HEADER — v5 ================= */
+  #jordys8 .j8-head{
+    position:fixed;top:0;left:0;right:0;z-index:1500;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px clamp(16px,2.6vw,36px);
+    transition:background .3s ease,box-shadow .3s ease,padding .3s ease;
+  }
+  #jordys8 .j8-head.scrolled{background:var(--paper);box-shadow:0 1px 0 rgba(36,27,18,.14);padding-block:10px}
+  #jordys8 .j8-burger{
+    display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;
+    width:54px;height:54px;border:0;border-radius:10px;background:var(--paper);cursor:pointer;
+    box-shadow:0 8px 24px rgba(36,27,18,.18);transition:transform .2s var(--ease);
+  }
+  #jordys8 .j8-burger:hover{transform:scale(1.06)}
+  #jordys8 .j8-burger span{display:block;height:2.5px;width:26px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease)}
+  #jordys8 .j8-burger:hover span:first-child{transform:translateY(-2px)}
+  #jordys8 .j8-burger:hover span:last-child{transform:translateY(2px)}
+  #jordys8 .j8-logo{position:absolute;left:50%;top:16px;transform:translateX(-50%)}
+  #jordys8 .j8-logo img{height:clamp(72px,18vw,96px);width:auto;filter:drop-shadow(0 4px 14px rgba(36,27,18,.25));transition:transform .25s var(--ease),height .3s var(--ease)}
+  #jordys8 .j8-logo:hover img{transform:rotate(-4deg) scale(1.05)}
+  #jordys8 .j8-head.scrolled .j8-logo img{height:52px}
+  #jordys8 .j8-head-cta{display:none}
+  @media (min-width:700px){
+    #jordys8 .j8-head-cta{display:inline-flex}
+    #jordys8 .j8-logo img{height:clamp(104px,10vw,132px)}
+    #jordys8 .j8-head.scrolled .j8-logo img{height:64px}
+    #jordys8 .j8-logo:hover img{transform:rotate(-2deg) scale(1.03)}
+  }
+
+  /* ================= MOBILE OVERLAY — v5 ================= */
+  #jordys8 .j8-ovl{position:fixed;inset:0;background:var(--terra);color:#fff;z-index:3000;display:flex;flex-direction:column;padding:24px;transform:translateY(-103%);transition:transform .38s var(--ease);overflow:auto}
+  #jordys8 .j8-ovl.open{transform:none}
+  #jordys8 .j8-ovl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6vh}
+  #jordys8 .j8-ovl-top img{height:44px;width:auto;filter:brightness(0) invert(1)}
+  #jordys8 .j8-ovl-close{background:none;border:0;color:#fff;font-family:var(--grot);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px;cursor:pointer;padding:12px}
+  #jordys8 .j8-ovl-nav{display:flex;flex-direction:column}
+  #jordys8 .j8-ovl-nav a{font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;text-transform:uppercase;font-size:clamp(38px,9vw,66px);line-height:1.16;letter-spacing:-.01em;display:flex;align-items:baseline;gap:14px}
+  #jordys8 .j8-ovl-nav a i{font-style:normal;font-family:var(--grot);font-weight:500;font-size:11px;letter-spacing:.24em;opacity:.75}
+  #jordys8 .j8-ovl-nav a[aria-current] i{opacity:1}
+  #jordys8 .j8-ovl-sub{margin-top:auto;padding-top:5vh;display:flex;flex-direction:column;gap:12px}
+  #jordys8 .j8-ovl-sub a{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:rgba(255,255,255,.85)}
+  @media (prefers-reduced-motion:reduce){#jordys8 .j8-ovl{transition:none}}
+</style>
+
+<!-- ================= 01 · HEADER — v5 =================
+  ⚠ DELETE this header + the overlay if the site chrome is already in
+  Code Injection → Footer. Two headers will otherwise stack.
+============================================================= -->
+<header class="j8-head" id="j8-head">
+  <button class="j8-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="j8-ovl">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="j8-logo" href="index.html" aria-label="Jordy's Casuarina — home">
+    <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=750w" alt="Jordy's" width="750" height="530">
+  </a>
+  <!-- ★LINKS — on THIS page the header CTA is the form below, not a booking. -->
+  <a class="j8-btn j8-btn--terra j8-head-cta" href="#j8-buy">Buy a card</a>
+</header>
+
+<div class="j8-ovl" id="j8-ovl" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="j8-ovl-top">
+    <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's">
+    <button class="j8-ovl-close" type="button">Close &#10005;</button>
+  </div>
+  <nav class="j8-ovl-nav" aria-label="Site">
+    <a href="menu.html">Menu <i>01</i></a>
+    <a href="https://www.meandu.app/jordys/pickup">Order <i>02</i></a>
+    <a href="book.html">Book <i>03</i></a>
+    <a href="#j8-buy" data-close aria-current="page">Gift cards <i>04</i></a>
+    <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">Instagram <i>05</i></a>
+  </nav>
+  <div class="j8-ovl-sub">
+    <a href="merch.html">Jordy's merch &#8599;</a>
+    <a href="tel:+61431471911">+61 431 471 911</a>
+  </div>
+</div>
+
+<!-- ================= 02 · GIFT HEAD =================
+  NOT a 100svh poster. Someone on this page is buying, not browsing.
+
+  THE ONE IDEA ON THIS PAGE
+  The live checkout shows a blue Gift-it template with a "display only"
+  watermark tiled across it — so today the guest cannot see the thing
+  they are buying. Here they can. The card at right is real markup, in
+  brand colours, and its amount changes the instant you pick one in §03.
+  Everything else on this page is arrangement; this is the argument.
+
+  The arch is the brand's support graphic ("to be seen along windows",
+  Cherie Allan brand guide 2020) — the same motif as the homepage.
+============================================================= -->
+<style>
+  #jordys8 .j8-top{
+    background:var(--paper2);
+    padding:calc(clamp(96px,12vw,150px)) clamp(20px,4vw,64px) clamp(48px,6vw,84px);
+  }
+  #jordys8 .j8-top-in{
+    max-width:1280px;margin-inline:auto;
+    display:grid;grid-template-columns:1fr;gap:clamp(38px,5vw,64px);align-items:center;
+  }
+  @media (min-width:900px){
+    #jordys8 .j8-top-in{grid-template-columns:1.02fr .98fr;gap:clamp(40px,4.5vw,76px)}
+  }
+  #jordys8 .j8-top h1{
+    font-family:var(--disp);font-weight:680;
+    font-variation-settings:'opsz' 144,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;line-height:.88;letter-spacing:-.018em;
+    font-size:clamp(44px,7.4vw,92px);margin:14px 0 0;
+  }
+  #jordys8 .j8-top h1 em{font-style:italic;text-transform:none;color:var(--terraD);font-variation-settings:'opsz' 144,'SOFT' 100,'WONK' 1}
+  #jordys8 .j8-top-sub{
+    font-family:var(--grot);font-weight:400;font-size:clamp(17px,1.6vw,20px);
+    color:var(--ink70);max-width:44ch;margin-top:20px;line-height:1.62;
+  }
+  #jordys8 .j8-top-ctas{display:flex;flex-wrap:wrap;gap:12px 16px;margin-top:30px}
+  #jordys8 .j8-top-meta{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;
+    font-size:10.5px;color:var(--ink45);
+  }
+  #jordys8 .j8-top-meta span{display:inline-flex;align-items:center;gap:8px}
+  #jordys8 .j8-top-meta span::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--terra)}
+
+  /* ---- THE CARD ---- */
+  #jordys8 .j8-cardwrap{display:flex;flex-direction:column;align-items:center;gap:16px}
+  #jordys8 .j8-card3d{perspective:1400px;width:100%;max-width:460px}
+  #jordys8 .j8-card{
+    position:relative;width:100%;aspect-ratio:1.586;border-radius:16px;overflow:hidden;
+    background:
+      radial-gradient(120% 140% at 12% 8%, #CE8058 0%, #C2724C 42%, #A2532F 78%, #8A431F 100%);
+    box-shadow:0 30px 60px -18px rgba(36,27,18,.45),0 4px 12px rgba(36,27,18,.18),
+               inset 0 1px 0 rgba(255,255,255,.28);
+    color:#fff;padding:clamp(18px,3.4vw,28px);
+    display:flex;flex-direction:column;justify-content:space-between;
+    transform:rotateX(7deg) rotateY(-11deg) rotateZ(-1.4deg);
+    transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+    will-change:transform;
+  }
+  #jordys8 .j8-card3d:hover .j8-card,#jordys8 .j8-card3d:focus-within .j8-card{
+    transform:rotateX(2deg) rotateY(-3deg) rotateZ(0deg) translateY(-4px);
+    box-shadow:0 40px 80px -20px rgba(36,27,18,.5),0 6px 16px rgba(36,27,18,.2),inset 0 1px 0 rgba(255,255,255,.32);
+  }
+  @media (max-width:899px){#jordys8 .j8-card{transform:rotateZ(-1deg)}}
+  @media (prefers-reduced-motion:reduce){
+    #jordys8 .j8-card{transform:none;transition:none}
+    #jordys8 .j8-card3d:hover .j8-card{transform:none}
+  }
+  /* the arch — brand support graphic, cropped off the bottom-right */
+  #jordys8 .j8-card::before{
+    content:"";position:absolute;right:-14%;bottom:-52%;width:74%;aspect-ratio:1;
+    border-radius:999px 999px 0 0;background:rgba(255,255,255,.085);pointer-events:none;
+  }
+  /* paper grain + a single soft gloss sweep */
+  #jordys8 .j8-card::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(104deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 34%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
+    mix-blend-mode:soft-light;opacity:.6;
+  }
+  #jordys8 .j8-card-row{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+  #jordys8 .j8-card-mark img{height:clamp(26px,4.4vw,34px);width:auto;filter:brightness(0) invert(1);opacity:.97}
+  #jordys8 .j8-card-kind{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.24em;
+    font-size:9.5px;color:rgba(255,255,255,.82);text-align:right;padding-top:4px;
+  }
+  #jordys8 .j8-card-mid{position:relative;z-index:2}
+  #jordys8 .j8-card-amt{
+    font-family:var(--disp);font-weight:700;
+    font-variation-settings:'opsz' 144,'SOFT' 92,'WONK' 1;
+    font-size:clamp(50px,10.6vw,78px);line-height:.84;letter-spacing:-.02em;
+    display:block;
+  }
+  #jordys8 .j8-card-amt sup{font-size:.42em;vertical-align:.72em;margin-right:.06em;font-weight:600}
+  #jordys8 .j8-card-name{
+    font-family:var(--grot);font-weight:500;font-size:clamp(12.5px,1.4vw,14.5px);
+    letter-spacing:.02em;color:rgba(255,255,255,.9);margin-top:9px;font-style:italic;
+    min-height:1.4em;
+  }
+  #jordys8 .j8-card-foot{
+    position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.2em;
+    font-size:9px;color:rgba(255,255,255,.78);
+  }
+  #jordys8 .j8-card-foot b{font-weight:600;letter-spacing:.16em;font-variant-numeric:tabular-nums}
+  #jordys8 .j8-card-cap{
+    font-family:var(--grot);font-weight:500;font-size:12.5px;color:var(--ink45);
+    text-align:center;max-width:34ch;line-height:1.6;
+  }
+</style>
+
+<section class="j8-top">
+  <div class="j8-top-in">
+    <div>
+      <span class="j8-lab rv">Jordy&rsquo;s gift cards</span>
+      <h1 class="rv">Give them a<br>Friday night<br><em>off.</em></h1>
+      <p class="j8-top-sub rv">
+        Sourdough, the playground next door, and nobody cooking. Pick what it&rsquo;s
+        worth, write something short, and it lands in their inbox in about ten
+        seconds &mdash; which is faster than anything you could have wrapped.
+      </p>
+      <div class="j8-top-ctas rv">
+        <a class="j8-btn j8-btn--terra" href="#j8-pick" data-track="gift_hero_pick">Choose an amount <span class="j8-arr">&rarr;</span></a>
+        <a class="j8-btn j8-btn--quiet" href="menu.html" data-track="gift_hero_menu">See what&rsquo;s on the menu</a>
+      </div>
+      <!-- ★HOURS -->
+      <div class="j8-top-meta rv">
+        <span>Emailed instantly</span>
+        <span>Any amount up to $2,000</span>
+        <span>Wed&ndash;Sun &middot; 5&ndash;9pm</span>
+      </div>
+    </div>
+
+    <div class="j8-cardwrap rv">
+      <div class="j8-card3d">
+        <div class="j8-card" id="j8-card" role="img" aria-label="Jordy's gift card preview">
+          <div class="j8-card-row">
+            <span class="j8-card-mark">
+              <img src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="" width="120" height="85">
+            </span>
+            <span class="j8-card-kind">Gift card<br>Casuarina</span>
+          </div>
+          <div class="j8-card-mid">
+            <span class="j8-card-amt"><sup>$</sup><span id="j8-amt">130</span></span>
+            <span class="j8-card-name" id="j8-cardname">Two pizzas and a bottle</span>
+          </div>
+          <div class="j8-card-foot">
+            <span>480 Casuarina Way &middot; NSW</span>
+            <b id="j8-code">JRDY&middot;4C7B&middot;91</b>
+          </div>
+        </div>
+      </div>
+      <p class="j8-card-cap">This is what lands in their inbox. Not a receipt &mdash; a present.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 · ★ CHOOSE — THE MONEY SECTION =================
+  THE PROBLEM THIS SOLVES
+  The live checkout opens with an empty <input type="number">. A person
+  buying a present for a restaurant they have not eaten at has no way to
+  answer it, so they either guess low (and the card under-delivers) or
+  abandon. Naming the amounts removes the guess and anchors the middle
+  option, which is the one built to be chosen.
+
+  ★PRICES — the arithmetic, against the LIVE /menu, 1 Sept 2026.
+  Check it before publishing; if the menu moves, these move.
+
+    $70   two pizzas. Dearest pair on the list is Brunswick $34 x2 = $68.
+          So this covers ANY two, with change. Nothing on the menu breaks it.
+    $130  two pizzas + a bottle + something sweet.
+          $68 (worst-case pizzas) + $54 (Origami rosé / MDI pinot grigio,
+          the entry bottles) = $122. Tiramisu $15 tips a mid pair over.
+          Honest phrasing: "two pizzas and a bottle" — the dessert is upside.
+    $250  four pizzas + a couple of sides + a round.
+          $136 (4 x Brunswick) + $38 (Burrata $21 + Tuscan Slaw $17)
+          + $72 (4 cocktails at $18-23) = $246. Tight but true at worst case;
+          on a typical order it leaves room.
+
+  Note the Happy Nights lever: on a Wednesday or Thursday every one of these
+  goes materially further ($10 margs, beer and wine with any pizza), which is
+  why the midweek line sits under the cards rather than in a separate band.
+  Midweek is the night with capacity — pointing gift cards at it is free yield.
+
+  MECHANICS
+  Choosing a card updates the preview in §02 and scrolls to the form. It
+  cannot pre-fill the supplier's amount field: tested 1 Sept 2026, the
+  legacy checkout ignores ?amount= / ?purchaseAmount= / ?value=. So the
+  chosen number is ALSO printed above the form, large, for the guest to
+  copy. When the Now Book It widget replaces it, fixed-value cards are a
+  back-office setting and this becomes a real hand-off. See ★GIFT.
+============================================================= -->
+<style>
+  #jordys8 .j8-pick{background:var(--paper);padding:clamp(56px,7vw,104px) clamp(20px,4vw,64px)}
+  #jordys8 .j8-pick-in{max-width:1280px;margin-inline:auto}
+  #jordys8 .j8-pick-head{max-width:62ch;margin-bottom:clamp(28px,3.4vw,44px)}
+  #jordys8 .j8-pick-head h2{
+    font-family:var(--disp);font-weight:660;
+    font-variation-settings:'opsz' 110,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;font-size:clamp(32px,4.6vw,60px);line-height:.94;
+    letter-spacing:-.015em;margin-top:12px;
+  }
+  #jordys8 .j8-pick-head p{margin-top:16px;color:var(--ink70);font-size:clamp(15.5px,1.4vw,17.5px);max-width:52ch}
+
+  #jordys8 .j8-grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:720px){#jordys8 .j8-grid{grid-template-columns:repeat(2,1fr);gap:16px}}
+  @media (min-width:1080px){#jordys8 .j8-grid{grid-template-columns:repeat(4,1fr);gap:18px}}
+
+  #jordys8 .j8-opt{
+    position:relative;display:flex;flex-direction:column;text-align:left;
+    background:var(--paper);border:2px solid var(--ink14);border-radius:12px;
+    padding:clamp(22px,2.4vw,30px);cursor:pointer;font:inherit;color:inherit;
+    transition:border-color .22s var(--ease),transform .22s var(--ease),box-shadow .28s var(--ease),background .22s var(--ease);
+  }
+  #jordys8 .j8-opt:hover{border-color:var(--terra);transform:translateY(-3px);box-shadow:0 18px 36px -16px rgba(36,27,18,.32)}
+  #jordys8 .j8-opt[aria-pressed="true"]{border-color:var(--terraD);background:var(--paper2);box-shadow:0 18px 36px -18px rgba(36,27,18,.3)}
+  #jordys8 .j8-opt[aria-pressed="true"]::after{
+    content:"Selected";position:absolute;top:-11px;left:clamp(20px,2.2vw,26px);
+    background:var(--terraD);color:#fff;border-radius:999px;padding:4px 12px;
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:9px;
+  }
+  #jordys8 .j8-opt .tag{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.22em;
+    font-size:9.5px;color:var(--ink45);
+  }
+  #jordys8 .j8-opt .amt{
+    font-family:var(--disp);font-weight:700;
+    font-variation-settings:'opsz' 110,'SOFT' 90,'WONK' 1;
+    font-size:clamp(44px,4.6vw,58px);line-height:.9;letter-spacing:-.02em;margin:12px 0 2px;
+  }
+  #jordys8 .j8-opt .amt sup{font-size:.44em;vertical-align:.68em;margin-right:.04em}
+  #jordys8 .j8-opt h3{
+    font-family:var(--disp);font-weight:620;font-variation-settings:'opsz' 40,'SOFT' 88,'WONK' 0;
+    font-size:clamp(19px,1.9vw,22px);line-height:1.16;margin-top:10px;
+  }
+  #jordys8 .j8-opt p{margin-top:10px;color:var(--ink70);font-size:14.5px;line-height:1.6}
+  #jordys8 .j8-opt .go{
+    margin-top:auto;padding-top:18px;
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.18em;
+    font-size:10.5px;color:var(--terraD);display:inline-flex;align-items:center;gap:8px;
+  }
+  #jordys8 .j8-opt .go i{font-style:normal;transition:transform .22s var(--ease)}
+  #jordys8 .j8-opt:hover .go i{transform:translateX(4px)}
+  /* the middle card is the one built to be chosen — it gets the weight */
+  #jordys8 .j8-opt--lead{border-color:rgba(194,114,76,.55)}
+  #jordys8 .j8-opt--lead .tag{color:var(--terraD)}
+
+  #jordys8 .j8-pick-note{
+    margin-top:clamp(22px,2.6vw,32px);display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;
+    padding:18px 22px;border-radius:10px;background:var(--paper2);
+    font-family:var(--grot);font-size:14.5px;color:var(--ink70);
+  }
+  #jordys8 .j8-pick-note b{color:var(--ink);font-weight:600}
+</style>
+
+<section class="j8-pick" id="j8-pick">
+  <div class="j8-pick-in">
+    <div class="j8-pick-head">
+      <span class="j8-lab rv">01 &middot; How much is enough?</span>
+      <h2 class="rv">Pick the night,<br>not the number.</h2>
+      <p class="rv">Every amount below is worked back from the actual menu, so you know
+      what you&rsquo;re giving instead of guessing at it. Any other number is fine too.</p>
+    </div>
+
+    <div class="j8-grid">
+      <!-- ★PRICES — see the arithmetic in the section comment above -->
+      <button type="button" class="j8-opt rv" data-amt="70" data-name="Two pizzas, sorted" data-track="gift_pick_70" aria-pressed="false">
+        <span class="tag">01 &middot; The easy one</span>
+        <span class="amt"><sup>$</sup>70</span>
+        <h3>Two pizzas, sorted</h3>
+        <p>Any two on the list, right up to the Brunswick. Dinner handled, no maths at the table.</p>
+        <span class="go">Copy $70 &amp; go <i>&rarr;</i></span>
+      </button>
+
+      <button type="button" class="j8-opt j8-opt--lead rv" data-amt="130" data-name="Two pizzas and a bottle" data-track="gift_pick_130" aria-pressed="true">
+        <span class="tag">02 &middot; Most given</span>
+        <span class="amt"><sup>$</sup>130</span>
+        <h3>Two pizzas and a bottle</h3>
+        <p>A proper night. Two pizzas, something off the wine list, and enough left over to argue over the tiramisu.</p>
+        <span class="go">Copy $130 &amp; go <i>&rarr;</i></span>
+      </button>
+
+      <button type="button" class="j8-opt rv" data-amt="250" data-name="The whole table" data-track="gift_pick_250" aria-pressed="false">
+        <span class="tag">03 &middot; The big one</span>
+        <span class="amt"><sup>$</sup>250</span>
+        <h3>The whole table</h3>
+        <p>Four pizzas, a couple of sides and a round. Birthdays, thank-yous, and the favour you still owe someone.</p>
+        <span class="go">Copy $250 &amp; go <i>&rarr;</i></span>
+      </button>
+
+      <button type="button" class="j8-opt rv" data-amt="" data-name="Your own number" data-track="gift_pick_custom" aria-pressed="false">
+        <span class="tag">04 &middot; Anything else</span>
+        <span class="amt">Any</span>
+        <h3>Your own number</h3>
+        <p>Anything from a round of coffees up to $2,000 &mdash; whatever the occasion actually is.</p>
+        <span class="go">Enter an amount <i>&rarr;</i></span>
+      </button>
+    </div>
+
+    <!-- ★HAPPY — verified: Wed + Thu, $10 margs / beer / wine with any pizza -->
+    <p class="j8-pick-note rv">
+      <span><b>Tell them to come on a Wednesday.</b> Happy Nights run Wednesday and
+      Thursday &mdash; $10 margaritas, beer and wine with any pizza &mdash; so every one of
+      these stretches a good deal further midweek.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ================= 04 · OCCASION STRIP =================
+  Day-aware, and deliberately NOT a hardcoded Father's Day banner that
+  someone has to remember to delete on the 7th.
+
+  ★OCCASIONS below is a dated table. The strip shows the next occasion
+  that is 0-21 days away and hides itself entirely the rest of the year.
+  Extend the table when it runs out — the last entry is Sept 2027.
+
+  Why this earns its place: an emailed gift card is the ONLY present that
+  can still be bought at 9pm the night before. That is the single strongest
+  thing this product has, and the current checkout never says it.
+============================================================= -->
+<style>
+  #jordys8 .j8-occ{
+    display:none;background:var(--terraD);color:#fff;
+    padding:clamp(18px,2.4vw,26px) clamp(20px,4vw,64px);
+  }
+  #jordys8 .j8-occ.on{display:block}
+  #jordys8 .j8-occ-in{
+    max-width:1280px;margin-inline:auto;display:flex;flex-wrap:wrap;align-items:center;
+    justify-content:space-between;gap:14px 28px;
+  }
+  #jordys8 .j8-occ-txt{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+  #jordys8 .j8-occ-when{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.22em;
+    font-size:10px;color:rgba(255,255,255,.72);
+  }
+  #jordys8 .j8-occ-line{
+    font-family:var(--disp);font-weight:620;font-variation-settings:'opsz' 60,'SOFT' 88,'WONK' 0;
+    font-size:clamp(19px,2.2vw,27px);line-height:1.14;
+  }
+  #jordys8 .j8-occ-line em{font-style:italic;color:#F6DED2}
+</style>
+
+<section class="j8-occ" id="j8-occ" aria-live="off">
+  <div class="j8-occ-in">
+    <div class="j8-occ-txt">
+      <span class="j8-occ-when" id="j8-occ-when"></span>
+      <span class="j8-occ-line" id="j8-occ-line"></span>
+    </div>
+    <a class="j8-btn j8-btn--white" href="#j8-buy" data-track="gift_occasion">Send one now <span class="j8-arr">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- ================= 05 · ★ THE FORM =================
+  Same three decisions as /book, retuned for this supplier.
+
+  1 · GROUND COLOUR. The checkout's own <body> is plain white, so the
+      section ground is --host-bg:#FFFFFF and the iframe has no visible
+      edge. No card, no border, no "third-party embed" look. If the
+      supplier ever repaints, resample and change that one token.
+
+  2 · ★GIFT-CROP. The checkout renders its own header band: the Gift-it
+      logo and the words "Gift Voucher Purchase". Neither belongs on a
+      Jordy's page, and the logo is the single most off-brand element in
+      the whole flow. Measured 1 Sept 2026 by loading the page same-origin
+      inside a frame and reading the .brand box:
+
+          frame width      Gift-it header ends at
+          < 940px          103px   (the title wraps under the logo)
+          >= 940px          70px
+
+      The crops below sit deliberately UNDER those, so the failure mode is
+      a sliver of the supplier's white header rather than a clipped first
+      form field. .j8-mask covers up to 20px of that.
+
+  3 · HEIGHT. Measured document heights, same method:
+          420px wide -> 1581px    760px wide -> 1694px    940px wide -> 1649px
+      Unlike the booking widget, this one does NOT stretch to its frame —
+      it is a static PHP page with its own height, so an undersized frame
+      produces a nested scrollbar and a PAY button the guest has to hunt
+      for. Bias TALL here. The surplus is white on a white ground and
+      therefore invisible; a nested scrollbar is not.
+
+  ⚠ WHAT WE STILL CANNOT FIX INSIDE THE BOX (all of it is why the
+    Now Book It migration is the real answer, not this page):
+      · the Gift-it logo on the voucher artwork itself — that slot is
+        the MERCHANT logo slot, currently serving Gift-it's default
+        because no Jordy's logo has ever been uploaded. Back office fix.
+      · the Gift-it blue #2271b8 on the greeting band, price ribbon and
+        footer strip — a server-rendered inline style, i.e. a setting
+        nobody has set. Should be #C2724C. Back office fix.
+      · the "display only" watermark tiled across the voucher preview.
+      · "Total Price (Including Processing Fee)" announcing a fee at the
+        moment of payment. Now Book It's 1.99% can be absorbed.
+      · the "Powered by Gift-it" strip.
+
+  ★GIFT — ONE URL TO SWAP. When the Now Book It gift card widget is
+    switched on, replace the src below with the Now Book It embed, set
+    both --gift-crop values to 0, delete .j8-mask, and delete the
+    "your amount" reminder block (fixed-value cards make it redundant).
+    Jordy's Now Book It ids, from the /book embed:
+      accountid=933ec4b6-ecbc-4f71-bb42-cd00e0176c00 · venueid=10578
+    ⚠ The gift-card widget URL itself is NOT verified — do not guess it.
+      Get it from the Now Book It admin's own embed-code generator.
+============================================================= -->
+<style>
+  #jordys8 .j8-buy{background:var(--host-bg);padding:clamp(52px,6.5vw,96px) clamp(14px,3vw,40px) clamp(48px,6vw,84px)}
+  #jordys8 .j8-buy-in{max-width:980px;margin-inline:auto;container-type:inline-size}
+  #jordys8 .j8-buy-head{
+    display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+    gap:14px 28px;margin-bottom:clamp(18px,2.2vw,26px);padding-inline:6px;
+  }
+  #jordys8 .j8-buy-head h2{
+    font-family:var(--disp);font-weight:660;
+    font-variation-settings:'opsz' 90,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;font-size:clamp(26px,3.2vw,40px);line-height:1;letter-spacing:-.012em;
+  }
+  /* ★GIFT — THE PREFILL PROBLEM, and why this button exists.
+
+     The picker in §03 CANNOT prefill the amount field in the checkout below.
+     Two independent reasons, both measured on 1 Sept 2026:
+
+       1. The legacy checkout ignores URL parameters. Nineteen names tested
+          against the live page — amount, purchaseAmount, value, amt, v, price,
+          gift_amount, voucherAmount, giftAmount, val, a, denomination, preset,
+          purchase_amount, face_value, total, totalPrice, initialAmount,
+          default_amount — every one leaves #purchaseAmount empty. There is no
+          URLSearchParams handling anywhere in its client code either.
+       2. It is a cross-origin iframe. No script on this page can reach into it,
+          now or ever, whatever we do to the markup.
+
+     So this is the best available hand-off: one tap copies the chosen number,
+     and the guest pastes it into Amount. It is a workaround, not a solution.
+
+     THE SOLUTION is Now Book It's current gift card widget, where fixed-value
+     cards are a back-office setting and the amount is chosen inside the widget
+     itself. When that is switched on: swap the iframe src, set --gift-crop to 0,
+     delete .j8-mask, and delete this button and its script. The picker in §03
+     then becomes the widget's own card selection, or goes away entirely.
+
+     Also measured on the live input: min="1", max="2000". The $2,000 ceiling is
+     real — it is why the copy says "up to $2,000" rather than "any amount". */
+  #jordys8 .j8-carry{
+    display:flex;align-items:center;gap:14px;padding:12px 18px;border-radius:10px;
+    background:var(--paper2);border:2px solid rgba(194,114,76,.35);
+    font:inherit;color:inherit;cursor:pointer;text-align:left;
+    transition:border-color .2s var(--ease),transform .18s var(--ease),background .2s var(--ease);
+  }
+  #jordys8 .j8-carry:hover{border-color:var(--terraD);transform:translateY(-2px)}
+  #jordys8 .j8-carry:active{transform:none}
+  #jordys8 .j8-carry.copied{border-color:var(--terraD);background:#F6E9DC}
+  #jordys8 .j8-carry .hint{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;
+    font-size:9px;color:var(--terraD);max-width:9ch;line-height:1.5;
+  }
+  #jordys8 .j8-carry .lbl{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.18em;
+    font-size:9.5px;color:var(--ink45);line-height:1.5;max-width:11ch;
+  }
+  #jordys8 .j8-carry .val{
+    font-family:var(--disp);font-weight:700;font-variation-settings:'opsz' 60,'SOFT' 90,'WONK' 1;
+    font-size:clamp(28px,3vw,36px);line-height:.9;color:var(--terraDD);
+  }
+  #jordys8 .j8-carry .val sup{font-size:.5em;vertical-align:.6em}
+
+  #jordys8 .j8-frame{
+    --gift-crop:96px;
+    --gift-h:1560px;
+    position:relative;overflow:hidden;height:var(--gift-h);background:var(--host-bg);
+    border-radius:4px;
+  }
+  #jordys8 .j8-frame iframe{
+    position:absolute;left:0;top:calc(-1 * var(--gift-crop));
+    width:100%;height:calc(var(--gift-h) + var(--gift-crop));
+    border:0;display:block;background:var(--host-bg);z-index:1;
+  }
+  #jordys8 .j8-mask{position:absolute;left:0;right:0;top:0;height:20px;z-index:2;background:var(--host-bg);pointer-events:none}
+  @container (min-width:940px){
+    #jordys8 .j8-frame{--gift-crop:64px;--gift-h:1600px}
+  }
+  @supports not (container-type:inline-size){
+    @media (min-width:1000px){#jordys8 .j8-frame{--gift-crop:64px;--gift-h:1600px}}
+  }
+
+  /* skeleton — the checkout loads Stripe and reCAPTCHA before it paints */
+  #jordys8 .j8-skel{
+    position:absolute;inset:0;z-index:3;background:var(--host-bg);
+    display:flex;flex-direction:column;align-items:center;padding:clamp(24px,4vw,40px) clamp(16px,3vw,30px);gap:16px;
+    transition:opacity .45s var(--ease);
+  }
+  #jordys8 .j8-frame.ready .j8-skel{opacity:0;pointer-events:none}
+  #jordys8 .j8-skel-bar,#jordys8 .j8-skel-card{
+    width:100%;max-width:800px;border-radius:12px;
+    background:linear-gradient(100deg,rgba(36,27,18,.05) 30%,rgba(36,27,18,.10) 50%,rgba(36,27,18,.05) 70%);
+    background-size:220% 100%;animation:j8-shim 1.5s linear infinite;
+  }
+  #jordys8 .j8-skel-bar{height:58px}
+  #jordys8 .j8-skel-card{height:220px}
+  #jordys8 .j8-skel-note{
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.2em;
+    font-size:11px;color:var(--ink45);margin-top:4px;text-align:center;
+  }
+  @keyframes j8-shim{to{background-position:-220% 0}}
+  @media (prefers-reduced-motion:reduce){#jordys8 .j8-skel-bar,#jordys8 .j8-skel-card{animation:none}}
+  /* shown only if the checkout never loads — see the 14s branch in the script */
+  #jordys8 .j8-dead{
+    margin:clamp(40px,7vw,90px) auto 0;max-width:44ch;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:18px;
+  }
+  #jordys8 .j8-dead p{
+    font-family:var(--disp);font-weight:640;font-variation-settings:'opsz' 60,'SOFT' 88,'WONK' 0;
+    font-size:clamp(20px,2.4vw,27px);line-height:1.2;
+  }
+  #jordys8 .j8-dead span{font-family:var(--grot);font-size:14px;color:var(--ink70)}
+  #jordys8 .j8-dead a[href^="tel"]{color:var(--terraD);font-weight:600}
+
+  #jordys8 .j8-buy-foot{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;
+    margin-top:clamp(20px,2.4vw,30px);padding:0 6px;
+  }
+  #jordys8 .j8-buy-foot p{font-family:var(--grot);font-weight:500;font-size:14.5px;color:var(--ink70);max-width:48ch}
+  #jordys8 .j8-buy-foot a.tel{font-weight:700;color:var(--terraDD);border-bottom:2px solid rgba(138,67,31,.3)}
+  #jordys8 .j8-buy-foot a.tel:hover{border-bottom-color:var(--terraDD)}
+</style>
+
+<section class="j8-buy" id="j8-buy">
+  <div class="j8-buy-in">
+    <div class="j8-buy-head">
+      <div>
+        <span class="j8-lab">02 &middot; Send it</span>
+        <h2>Who&rsquo;s it for?</h2>
+      </div>
+      <!-- ★GIFT — the prefill bridge. DELETE THIS WHOLE BLOCK once Now Book It's
+           widget carries fixed-value cards; it exists only because the legacy
+           checkout cannot be prefilled. See the section comment. -->
+      <button type="button" class="j8-carry" id="j8-carry" data-track="gift_copy_amount"
+              aria-live="polite" aria-label="Copy your chosen amount to the clipboard">
+        <span class="lbl">Your<br>amount</span>
+        <span class="val"><sup>$</sup><span id="j8-carry-val">130</span></span>
+        <span class="hint" id="j8-carry-hint">Tap to copy</span>
+      </button>
+    </div>
+
+    <div class="j8-frame" id="j8-frame">
+      <span class="j8-mask" aria-hidden="true"></span>
+      <div class="j8-skel" aria-hidden="true">
+        <div class="j8-skel-bar"></div>
+        <div class="j8-skel-card"></div>
+        <div class="j8-skel-bar"></div>
+        <span class="j8-skel-note">Opening the secure checkout&hellip;</span>
+      </div>
+      <!-- ★GIFT — the ONE url to swap after migration. See section comment. -->
+      <iframe
+        title="Buy a Jordy's Casuarina gift card"
+        src="https://app.gift-it.com.au/buy/jordyspizza"
+        loading="lazy"
+        allow="payment *"
+        referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <div class="j8-buy-foot">
+      <p>Card declined, wrong email, or you need it printed for someone who doesn&rsquo;t
+      do inboxes? Call the venue &mdash; <a class="tel" data-track="gift_call" href="tel:+61431471911">+61&nbsp;431&nbsp;471&nbsp;911</a>.</p>
+      <a class="j8-btn j8-btn--quiet" data-track="gift_new_tab" href="https://app.gift-it.com.au/buy/jordyspizza" target="_blank" rel="noopener">Open the checkout in a new tab <span class="j8-arr">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 · HOW IT WORKS =================
+  Three steps and the terms, stated BEFORE the money rather than in
+  6pt grey under the form. A gift card's whole job is confidence:
+  the buyer is spending on behalf of someone else and cannot test the
+  outcome. Every unanswered question here is an abandoned cart.
+
+  ★HEAD-IMG — the venue night shot, 1540x1021 (image-library-audit.md).
+  It is used in a HALF-WIDTH arched block, not full-bleed: at 1540px it
+  is only safe to about 1600px of render width. Do not promote it to a
+  full-bleed band without a bigger source.
+  The arch is the brand support graphic, same as the homepage.
+============================================================= -->
+<style>
+  #jordys8 .j8-how{background:var(--paper2);padding:clamp(56px,7vw,104px) clamp(20px,4vw,64px)}
+  #jordys8 .j8-how-in{
+    max-width:1280px;margin-inline:auto;display:grid;grid-template-columns:1fr;
+    gap:clamp(34px,4vw,64px);align-items:center;
+  }
+  @media (min-width:900px){#jordys8 .j8-how-in{grid-template-columns:.86fr 1.14fr}}
+  #jordys8 .j8-how-fig{position:relative}
+  #jordys8 .j8-how-fig img{
+    width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 42%;
+    border-radius:999px 999px 12px 12px;
+  }
+  #jordys8 .j8-how-fig figcaption{
+    margin-top:14px;font-family:var(--grot);font-weight:600;text-transform:uppercase;
+    letter-spacing:.2em;font-size:9.5px;color:var(--ink45);
+  }
+  #jordys8 .j8-how h2{
+    font-family:var(--disp);font-weight:660;font-variation-settings:'opsz' 110,'SOFT' 88,'WONK' 1;
+    text-transform:uppercase;font-size:clamp(30px,4.2vw,54px);line-height:.95;letter-spacing:-.015em;margin-top:12px;
+  }
+  #jordys8 .j8-steps{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column}
+  #jordys8 .j8-step{display:grid;grid-template-columns:auto 1fr;gap:18px 20px;padding:22px 0;border-top:1px solid var(--ink14)}
+  #jordys8 .j8-step:last-child{border-bottom:1px solid var(--ink14)}
+  #jordys8 .j8-step .n{
+    font-family:var(--disp);font-weight:680;font-variation-settings:'opsz' 40,'SOFT' 90,'WONK' 1;
+    font-size:clamp(26px,2.6vw,34px);line-height:1;color:var(--terra);min-width:1.6em;
+  }
+  #jordys8 .j8-step h3{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:12.5px}
+  #jordys8 .j8-step p{margin-top:8px;color:var(--ink70);font-size:15.5px;line-height:1.62;max-width:46ch}
+  #jordys8 .j8-step p b{color:var(--ink);font-weight:600}
+</style>
+
+<section class="j8-how">
+  <div class="j8-how-in">
+    <figure class="j8-how-fig rv">
+      <img loading="lazy" decoding="async"
+        src="https://images.squarespace-cdn.com/content/5ee715c4af5f2c14ccec67c1/cde633a2-ec1a-4815-8ced-a4099ba658d6/a2344860-08ba-448a-99c5-084b07dfaecc.png?format=1500w"
+        alt="Jordy's Casuarina at night — the awning, the lights and the tables outside" width="1540" height="1021">
+      <figcaption>Where it gets spent &middot; 480 Casuarina Way</figcaption>
+    </figure>
+
+    <div>
+      <span class="j8-lab rv">03 &middot; No surprises</span>
+      <h2 class="rv">How it actually works.</h2>
+
+      <div class="j8-steps">
+        <div class="j8-step rv">
+          <span class="n">01</span>
+          <div>
+            <h3>You pay, they get an email</h3>
+            <!-- ★VERIFY — "about ten seconds" is the observed behaviour of the
+                 current checkout ("Your voucher has been emailed"). Confirm the
+                 real send time with Jordan before publishing this number. -->
+            <p>Straight away, or <b>on a date you pick</b> &mdash; useful if the birthday is
+            Thursday and you are the kind of person who buys things on Tuesday.
+            Tell them to check the spam folder if it hides.</p>
+          </div>
+        </div>
+
+        <div class="j8-step rv">
+          <span class="n">02</span>
+          <div>
+            <h3>They book a table</h3>
+            <p>Wed&ndash;Sun, 5&ndash;9pm. Bookings take up to 16 online &mdash;
+            <a href="book.html" style="color:var(--terraD);font-weight:600;border-bottom:2px solid rgba(138,67,31,.3)">right here</a>.
+            Midweek is the quiet, generous night; Saturday is the hard one.</p>
+          </div>
+        </div>
+
+        <div class="j8-step rv">
+          <span class="n">03</span>
+          <div>
+            <h3>They show the code</h3>
+            <!-- ★VERIFY — Jordan to confirm redemption in person only, and whether
+                 it works on the me&u takeaway ordering flow. Do not ship unchecked. -->
+            <p>Printed or on a phone, at the table. No app, no account, nothing to
+            remember except the pizza they came for.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 · FOOTER — v5 ================= -->
+<style>
+  #jordys8 .j8-foot{background:var(--paper);padding:clamp(36px,4.5vw,60px) clamp(20px,4vw,64px) clamp(28px,3.5vw,44px);border-top:1px solid var(--ink14)}
+  #jordys8 .j8-foot-in{max-width:1560px;margin-inline:auto}
+  #jordys8 .j8-foot-logo img{height:44px;width:auto}
+  #jordys8 .j8-foot-rule{border:0;border-top:1px solid var(--ink14);margin:clamp(18px,2.2vw,28px) 0}
+  #jordys8 .j8-foot-links{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:clamp(16px,2vw,24px)}
+  #jordys8 .j8-foot-links a{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--ink)}
+  #jordys8 .j8-foot-links a:hover{color:var(--terraD)}
+  #jordys8 .j8-foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 32px}
+  #jordys8 .j8-foot-row p,#jordys8 .j8-foot-row a{font-family:var(--grot);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;line-height:1.9;color:var(--ink70)}
+  #jordys8 .j8-foot-row a:hover{color:var(--terraD)}
+  #jordys8 .j8-foot-sign{font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--terraD)}
+  #jordys8 .j8-foot-rate{
+    display:inline-flex;align-items:center;gap:10px;margin-bottom:clamp(16px,2vw,22px);
+    font-family:var(--grot);font-weight:600;text-transform:uppercase;letter-spacing:.14em;
+    font-size:12px;padding:12px 20px;border:2px solid rgba(36,27,18,.2);border-radius:6px;color:var(--ink);
+    transition:border-color .22s var(--ease);
+  }
+  #jordys8 .j8-foot-rate:hover{border-color:var(--terra)}
+  #jordys8 .j8-foot-rate .stars{color:var(--terra);letter-spacing:.12em;line-height:1}
+</style>
+
+<footer class="j8-foot">
+  <div class="j8-foot-in">
+    <a class="j8-foot-logo" href="index.html" aria-label="Jordy's Casuarina — home">
+      <img loading="lazy" decoding="async" src="https://images.squarespace-cdn.com/content/v1/5ee715c4af5f2c14ccec67c1/1592207833018-G8H3X5S01GZ4XRCR5S3D/Jordy%27s_logo_orange.png?format=300w" alt="Jordy's" width="120" height="85">
+    </a>
+    <hr class="j8-foot-rule">
+    <a class="j8-foot-rate" href="https://www.google.com/maps/search/?api=1&amp;query=Jordy%27s+Pizza+Casuarina+Shop+2%2F480+Casuarina+Way+Casuarina+NSW"
+       target="_blank" rel="noopener"
+       aria-label="Rated 4.7 out of 5 from 349 Google reviews. Read them on Google Maps.">
+      <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span>4.7 from 349 &middot; Google</span>
+    </a>
+    <div class="j8-foot-links">
+      <a href="menu.html">Menu</a>
+      <a href="book.html">Book</a>
+      <a href="https://www.meandu.app/jordys/pickup">Order</a>
+      <a href="merch.html">Merch</a>
+      <a href="#j8-buy">Gift cards</a>
+      <a href="https://www.instagram.com/jordys.casuarina/" target="_blank" rel="noopener">Instagram &#8599;</a>
+    </div>
+    <div class="j8-foot-row">
+      <!-- ★HOURS -->
+      <p>480 Casuarina Way, at The Commons, Casuarina NSW &middot; Wed&ndash;Sun 5&ndash;9pm &middot; <a href="mailto:relax@jordyscasuarina.com">relax@jordyscasuarina.com</a></p>
+      <p class="j8-foot-sign">Eat your crust. &mdash; Jordy &middot; &copy; 2026 Jordy&rsquo;s Casuarina</p>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Jordy's Casuarina",
+  "url":"https://jordyscasuarina.com/",
+  "email":"relax@jordyscasuarina.com",
+  "telephone":"+61431471911",
+  "servesCuisine":["Pizza"],
+  "priceRange":"$$",
+  "menu":"menu.html",
+  "acceptsReservations":"https://jordyscasuarina.com/book",
+  "address":{"@type":"PostalAddress","streetAddress":"Shop 2/480 Casuarina Way","addressLocality":"Casuarina","addressRegion":"NSW","postalCode":"2487","addressCountry":"AU"},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"17:00","closes":"21:00"}],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"349"},
+  "sameAs":["https://www.instagram.com/jordys.casuarina/"]
+}
+</script>
+
+<script>
+(function(){
+  var root=document.getElementById('jordys8');
+  if(!root) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- ★TRACK — fires into GA4/GTM if either exists, no-ops if not.
+       Nothing here loads a tag or sets a cookie.
+         gift_pick_70 / _130 / _250 / _custom   which amount was chosen
+         gift_widget_ready                       the checkout painted
+         gift_occasion                           clicked the dated strip
+         gift_call / gift_new_tab                escape hatches           */
+  function j8track(name,extra){
+    try{
+      var d=extra||{};d.event=name;d.page='gift-cards';
+      if(window.dataLayer&&window.dataLayer.push)window.dataLayer.push(d);
+      if(typeof window.gtag==='function')window.gtag('event',name,d);
+    }catch(e){}
+  }
+  root.querySelectorAll('[data-track]').forEach(function(el){
+    el.addEventListener('click',function(){j8track(el.getAttribute('data-track'))});
+  });
+
+  /* ---- burger overlay (v5) ---- */
+  var burger=root.querySelector('.j8-burger'),ovl=document.getElementById('j8-ovl'),closeBtn=root.querySelector('.j8-ovl-close');
+  function setMenu(open){
+    if(!ovl)return;
+    ovl.classList.toggle('open',open);
+    if(burger)burger.setAttribute('aria-expanded',open?'true':'false');
+    document.documentElement.style.overflow=open?'hidden':'';
+  }
+  if(burger&&ovl){
+    burger.addEventListener('click',function(){setMenu(true)});
+    if(closeBtn)closeBtn.addEventListener('click',function(){setMenu(false)});
+    ovl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+  }
+
+  /* ---- header turns paper past the band ---- */
+  var head=document.getElementById('j8-head');
+  if(head){
+    window.addEventListener('scroll',function(){
+      head.classList.toggle('scrolled',(window.scrollY||window.pageYOffset)>40);
+    },{passive:true});
+  }
+
+  /* ---- ★ THE PICKER — §03 drives the card in §02 ----
+     The amount is counted up rather than snapped, because the card is the
+     only thing on this page that proves the product exists and movement is
+     what makes the eye go back to it. Falls back to a straight set when the
+     visitor has asked for reduced motion. */
+  var amtEl=document.getElementById('j8-amt'),
+      nameEl=document.getElementById('j8-cardname'),
+      codeEl=document.getElementById('j8-code'),
+      carryEl=document.getElementById('j8-carry'),
+      carryVal=document.getElementById('j8-carry-val'),
+      opts=root.querySelectorAll('.j8-opt');
+
+  function countTo(el,to){
+    var from=parseInt((el.textContent||'0').replace(/\D/g,''),10)||0;
+    if(reduce||from===to){el.textContent=to;return}
+    var t0=null,dur=420;
+    function step(t){
+      if(!t0)t0=t;
+      var p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(from+(to-from)*e);
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  /* decorative only — the real code comes from the supplier's email */
+  function fakeCode(){
+    var h='0123456789ABCDEF',a='',b='';
+    for(var i=0;i<4;i++)a+=h[Math.floor(Math.random()*16)];
+    for(var j=0;j<2;j++)b+=h[Math.floor(Math.random()*16)];
+    return 'JRDY·'+a+'·'+b;
+  }
+  function choose(btn){
+    opts.forEach(function(o){o.setAttribute('aria-pressed',o===btn?'true':'false')});
+    var amt=btn.getAttribute('data-amt'), name=btn.getAttribute('data-name')||'';
+    if(nameEl)nameEl.textContent=name;
+    if(codeEl)codeEl.textContent=fakeCode();
+    if(amt){
+      if(amtEl)countTo(amtEl,parseInt(amt,10));
+      if(carryVal)carryVal.textContent=amt;
+      if(carryEl)carryEl.style.display='';
+    }else{
+      if(amtEl)amtEl.textContent='—';
+      if(carryEl)carryEl.style.display='none';
+    }
+  }
+
+  /* ---- ★GIFT — the copy hand-off ----
+     navigator.clipboard requires a user gesture and a secure context, and can
+     still be refused by permissions policy. execCommand is the fallback, and if
+     BOTH fail the number is selected instead so a long-press copy works. The
+     hint text always tells the truth about which of the three happened — a
+     "Copied" that did not copy is worse than no button at all. */
+  var hintEl=document.getElementById('j8-carry-hint'), hintTimer=null;
+  function setHint(txt,ok){
+    if(!hintEl||!carryEl)return;
+    hintEl.textContent=txt;
+    carryEl.classList.toggle('copied',!!ok);
+    clearTimeout(hintTimer);
+    hintTimer=setTimeout(function(){
+      hintEl.textContent='Tap to copy';carryEl.classList.remove('copied');
+    },2600);
+  }
+  function copyAmount(){
+    var v=(carryVal&&carryVal.textContent||'').trim();
+    if(!v)return;
+    function fallback(){
+      try{
+        var ta=document.createElement('textarea');
+        ta.value=v;ta.setAttribute('readonly','');
+        ta.style.cssText='position:fixed;left:-9999px;top:0';
+        document.body.appendChild(ta);ta.select();
+        var ok=document.execCommand('copy');
+        document.body.removeChild(ta);
+        setHint(ok?'Copied — paste it in':'Select and copy',ok);
+      }catch(e){setHint('Select and copy',false)}
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText&&window.isSecureContext){
+      navigator.clipboard.writeText(v).then(function(){setHint('Copied — paste it in',true)},fallback);
+    }else{fallback()}
+  }
+  if(carryEl)carryEl.addEventListener('click',copyAmount);
+  opts.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      choose(btn);
+      if(btn.getAttribute('data-amt'))copyAmount();
+      var t=document.getElementById('j8-buy');
+      if(t){
+        var y=t.getBoundingClientRect().top+(window.scrollY||window.pageYOffset)-84;
+        window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+      }
+    });
+  });
+
+  /* ---- ★OCCASIONS — the dated strip ----
+     Shows the next occasion 0-21 days out and stays hidden the rest of the
+     year, so nobody has to remember to take a banner down. Dates are AU.
+     EXTEND THIS TABLE — the last entry is September 2027. */
+  try{
+    var OCCASIONS=[
+      {d:'2026-09-06',n:"Father’s Day"},
+      {d:'2026-12-25',n:'Christmas'},
+      {d:'2027-02-14',n:"Valentine’s Day"},
+      {d:'2027-05-09',n:"Mother’s Day"},
+      {d:'2027-09-05',n:"Father’s Day"}
+    ];
+    var todayStr=new Intl.DateTimeFormat('en-CA',{timeZone:'Australia/Sydney',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+    var today=new Date(todayStr+'T00:00:00Z'), best=null;
+    OCCASIONS.forEach(function(o){
+      var days=Math.round((new Date(o.d+'T00:00:00Z')-today)/86400000);
+      if(days>=0&&days<=21&&(!best||days<best.days))best={n:o.n,days:days};
+    });
+    if(best){
+      var when=best.days===0?'Today':best.days===1?'Tomorrow':best.days+' days to go';
+      var line=best.days===0
+        ? best.n+' is today. <em>Still fixable</em> — this lands in an inbox in about ten seconds.'
+        : best.n+' is '+(best.days===1?'tomorrow':'in '+best.days+' days')+'. <em>Nothing to wrap, nothing to post.</em>';
+      document.getElementById('j8-occ-when').textContent=when;
+      document.getElementById('j8-occ-line').innerHTML=line;
+      document.getElementById('j8-occ').classList.add('on');
+    }
+  }catch(e){}
+
+  /* ---- checkout skeleton swap ----
+     The checkout loads Stripe and reCAPTCHA before it paints. The skeleton
+     sits over the frame and is faded out on load, with a 14s belt-and-braces
+     timeout so a failed load never leaves a shimmer running forever. */
+  var frame=document.getElementById('j8-frame');
+  if(frame){
+    var ifr=frame.querySelector('iframe'),
+        SRC=ifr?ifr.getAttribute('src'):'',
+        settled=false;
+
+    function ready(){
+      if(settled)return;settled=true;
+      frame.classList.add('ready');j8track('gift_widget_ready');
+    }
+    /* Shown when the checkout will not appear. Fading the skeleton in that case
+       would leave ~1600px of white nothing above the escape hatch, which is the
+       worst available failure. Show the way out instead. */
+    function dead(reason){
+      if(settled)return;settled=true;
+      var skel=frame.querySelector('.j8-skel');
+      if(skel){
+        skel.setAttribute('aria-hidden','false');
+        skel.innerHTML='<div class="j8-dead">'+
+          '<p>The checkout isn&rsquo;t loading in the page.</p>'+
+          '<a class="j8-btn j8-btn--terra" href="'+SRC+'" target="_blank" rel="noopener">Open it in a new tab <span class="j8-arr">&rarr;</span></a>'+
+          '<span>Or call the venue on <a href="tel:+61431471911">+61&nbsp;431&nbsp;471&nbsp;911</a> and we&rsquo;ll sort it.</span>'+
+        '</div>';
+      }
+      j8track('gift_widget_failed',{reason:reason});
+    }
+
+    /* A cross-origin iframe cannot be inspected, and Chrome fires `load` even on
+       its own network-error page — so the load event alone cannot tell a working
+       checkout from a dead one. A no-cors probe can: it resolves opaque when the
+       supplier answers and rejects when it does not. Probe decides; the load
+       event only controls WHEN the skeleton clears on the happy path. */
+    var loaded=false, alive=null;
+    function settle(){
+      if(alive===false){dead('unreachable');return}
+      if(alive===true&&loaded)ready();
+    }
+    if(ifr)ifr.addEventListener('load',function(){loaded=true;setTimeout(settle,700)});
+    if(window.fetch&&SRC){
+      fetch(SRC,{mode:'no-cors',cache:'no-store'}).then(
+        function(){alive=true;settle()},
+        function(){alive=false;settle()}
+      );
+    }else{alive=true}
+    /* belt and braces — never leave a shimmer running forever */
+    setTimeout(function(){ if(!settled){ loaded?ready():dead('timeout') } },14000);
+  }
+
+  /* ---- in-page anchors clear the fixed header ---- */
+  root.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href').slice(1);
+      var t=document.getElementById(id);
+      if(!t)return;
+      e.preventDefault();
+      var y=t.getBoundingClientRect().top+(window.scrollY||window.pageYOffset)-84;
+      window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+    });
+  });
+})();
+</script>
+</div>
+<!-- ============================================================
+  END JORDY'S /GIFT-CARDS CODE BLOCK
+============================================================= -->
+
+</div>
+<div class="v5-flag">/gift-cards mockup</div>
+</body></html>
