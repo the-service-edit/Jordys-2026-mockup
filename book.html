@@ -360,13 +360,9 @@
   1 · GROUND COLOUR. The section is #FBF6EC, sampled from the live
       NowBookit app's own <body>. Because the two grounds match to the
       byte, the iframe has no visible edge — no card, no border, no
-      "third-party embed" look — AND the iframe can be over-tall
-      without penalty, because the empty space below the widget's
-      content is indistinguishable from section padding. That is what
-      lets us avoid an inner scrollbar without measuring every step
-      of the flow. If NowBookit ever changes that cream, resample it
-      and update --nbi-cream. It is the single most important number
-      on this page.
+      "third-party embed" look. If NowBookit ever changes that cream,
+      resample it and update --nbi-cream. It is the single most
+      important number on this page.
 
   2 · ★NBI-CROP. The widget renders its own header band: the Jordy's
       logo, "CASUARINA", the address and the phone number, laid over
@@ -383,12 +379,33 @@
       → If NowBookit changes their header height, this is the one
         number to retune. Check on the deployed page, not locally.
 
-  3 · NO iframe-resizer. NowBookit's generator still ships the
-      resizer bundle with the OLD widget (bookings.nowbookit.com).
-      This page embeds the NEW one (book.nowbookit.com), which the
-      generator does not yet emit an embed code for, so the resizer
-      is unverified against it. Fixed generous heights + a matching
-      ground is the robust answer and costs nothing visually.
+  3 · ⚠ THE WIDGET FILLS ITS FRAME — DO NOT OVERSIZE IT.
+      Measured same-origin at seven frame sizes: the app's document
+      height is ALWAYS exactly the iframe height. Its root is
+      .widget-fill with flex-1 children, so it stretches to whatever
+      box it is given and distributes the slack INSIDE the content
+      area, above the area cards — not as harmless padding below them.
+
+      The first deploy of this page set the frame to 880px and the
+      result was ~340px of empty cream above "Where would you like to
+      sit?". Making the frame taller does not buy headroom; it buys a
+      hole. Height is now screen-relative and deliberately tight:
+
+        mobile   max(520px, min(660px, 100svh - 150px))
+        ≥660px   max(420px, min(540px, 100svh - 180px))
+
+      Step one needs roughly 390px of visible content at desktop width,
+      so this reads as a framed panel with normal padding, always fits
+      the screen, and the taller guest-details step scrolls inside a
+      screen-sized panel exactly as a native booking app would.
+      **Bias small.** Too short costs a short internal scroll on one
+      step; too tall costs a visible void on every single page load.
+
+      NowBookit's generator still ships the iframe-resizer bundle with
+      the OLD widget (bookings.nowbookit.com); the NEW one is
+      unverified against it, so the postMessage adapter below is
+      progressive enhancement and can only grow the frame, never
+      shrink it below these floors.
 
   ⚠ The widget takes 8-12 seconds to paint on a cold load. That is
     NowBookit's app, not this page — it is a Next.js bundle plus
@@ -441,7 +458,7 @@
   #jordys6 .j6-book-in{container-type:inline-size}
   #jordys6 .j6-frame{
     --nbi-crop:170px;
-    --nbi-h:1000px;        /* generous: the guest-details step is the tall one */
+    --nbi-h:max(520px,min(660px,calc(100svh - 150px)));
     position:relative;overflow:hidden;height:var(--nbi-h);
     background:var(--nbi-cream);
   }
@@ -456,13 +473,13 @@
     background:var(--nbi-cream);pointer-events:none;
   }
   @container (min-width:660px){
-    #jordys6 .j6-frame{--nbi-crop:238px;--nbi-h:880px}
+    #jordys6 .j6-frame{--nbi-crop:238px;--nbi-h:max(420px,min(540px,calc(100svh - 180px)))}
   }
   /* fallback for engines without container queries — the viewport/frame
      mismatch above applies, so the breakpoint is pushed clear of it */
   @supports not (container-type:inline-size){
     @media (min-width:760px){
-      #jordys6 .j6-frame{--nbi-crop:238px;--nbi-h:880px}
+      #jordys6 .j6-frame{--nbi-crop:238px;--nbi-h:max(420px,min(540px,calc(100svh - 180px)))}
     }
   }
 
